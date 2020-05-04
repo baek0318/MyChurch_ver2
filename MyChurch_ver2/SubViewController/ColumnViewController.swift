@@ -10,7 +10,15 @@ import UIKit
 
 class ColumnViewController : UIViewController {
     
+    @IBOutlet var columnTitle: UILabel!
+    @IBOutlet var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.isEditable = false
+    }
+    
+    @IBAction func closeAction(_ sender: Any) {
+        self.dismiss(animated: true)
     }
 }

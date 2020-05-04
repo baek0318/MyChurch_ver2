@@ -10,6 +10,9 @@ import UIKit
 
 class MainViewController : UIViewController {
     
+    @IBOutlet var calanderText: UILabel!
+    @IBOutlet var sermonKind: UILabel!
+    
     @IBOutlet var todaySermonView: UIView!
     var sermonTap : UIGestureRecognizer!
     

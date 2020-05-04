@@ -13,4 +13,8 @@ class NewsViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func closeAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
