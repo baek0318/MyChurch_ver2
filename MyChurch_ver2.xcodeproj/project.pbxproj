@@ -23,6 +23,7 @@
 		E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966ED245DD45500BBD851 /* NewsViewController.swift */; };
 		E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966EF245DD47100BBD851 /* ColumnViewController.swift */; };
 		E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* MoreViewController.swift */; };
+		E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		E84966ED245DD45500BBD851 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E84966EF245DD47100BBD851 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		E84966F1245DD47F00BBD851 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				E8467387245ED77400256D01 /* CustomMoreButton.swift */,
 				E846738B245EDAC800256D01 /* CustomCloseButton.swift */,
+				E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */,
+				E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */,
 				E84966E9245DC5EB00BBD851 /* CalanderViewController.swift in Sources */,
 				E84966E7245DC5DD00BBD851 /* MainViewController.swift in Sources */,
 				E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */,

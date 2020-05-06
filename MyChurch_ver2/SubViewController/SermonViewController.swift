@@ -27,10 +27,7 @@ class SermonViewController : UIViewController {
         super.viewDidLoad()
         loadVideo()
         loadScrollView()
-        self.textView = UITextView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.scrollView.frame.height))
-        scrollView.addSubview(textView)
-        self.textView.text = "텍스트"
-        self.textView.isEditable = false
+        
         segment.addTarget(self, action: #selector(self.segmentedAction(_:)), for: .valueChanged)
     }
     
@@ -54,25 +51,25 @@ class SermonViewController : UIViewController {
                     self.sermonView.frame.origin.y = 368
                     self.sermonView.frame.size.height = 444
                     self.scrollView.frame.size.height = 398
-                    self.textView.frame.size.height = 398
+                    
                 }) { (_) in
                     self.webView.translatesAutoresizingMaskIntoConstraints = false
                     self.sermonView.translatesAutoresizingMaskIntoConstraints = false
                     self.scrollView.translatesAutoresizingMaskIntoConstraints = false
-                    self.textView.translatesAutoresizingMaskIntoConstraints = false
+                    
                 }
                 
             }else {
                 self.webView.translatesAutoresizingMaskIntoConstraints = true
                 self.sermonView.translatesAutoresizingMaskIntoConstraints = true
                 self.scrollView.translatesAutoresizingMaskIntoConstraints = true
-                self.textView.translatesAutoresizingMaskIntoConstraints = true
+                
                 
                 self.webView.frame.size = CGSize(width: self.view.frame.width, height: 0)
                 self.sermonView.frame.origin.y = 112
                 self.sermonView.frame.size.height = 657
                 self.scrollView.frame.size.height = 657
-                self.textView.frame.size.height = 657
+                
             }
         }
     }

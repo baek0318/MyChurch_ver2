@@ -24,7 +24,7 @@ class CalanderViewController : UIViewController {
 extension CalanderViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 31
+        return 42
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,5 +39,7 @@ extension CalanderViewController : UICollectionViewDelegate, UICollectionViewDat
 //MARK:-CollectionViewLayout
 
 extension CalanderViewController : UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width/8, height: self.view.frame.height/12)
+    }
 }
