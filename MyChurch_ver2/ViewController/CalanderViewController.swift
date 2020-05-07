@@ -40,6 +40,10 @@ extension CalanderViewController : UICollectionViewDelegate, UICollectionViewDat
 
 extension CalanderViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width/8, height: self.view.frame.height/12)
+        return CGSize(width: self.view.frame.width/7, height: self.view.frame.height/12)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
 }

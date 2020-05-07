@@ -85,12 +85,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="jtS-bX-LVX" secondAttribute="trailing" constant="15" id="1pO-5f-r58"/>
-                                                <constraint firstItem="t4Z-ud-HS2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uDd-WU-4aO" secondAttribute="trailing" constant="207" id="C2z-p5-NPM"/>
+                                                <constraint firstAttribute="trailing" secondItem="t4Z-ud-HS2" secondAttribute="trailing" constant="14.999999999999943" id="9nJ-FL-cnn"/>
                                                 <constraint firstItem="jtS-bX-LVX" firstAttribute="leading" secondItem="81f-S8-SW0" secondAttribute="leading" constant="15" id="CSa-Hj-BAo"/>
                                                 <constraint firstItem="jtS-bX-LVX" firstAttribute="top" secondItem="t4Z-ud-HS2" secondAttribute="bottom" constant="1" id="Jn4-vR-nlm"/>
-                                                <constraint firstAttribute="trailing" secondItem="t4Z-ud-HS2" secondAttribute="trailing" constant="15" id="Qta-ga-MM3"/>
                                                 <constraint firstItem="t4Z-ud-HS2" firstAttribute="top" secondItem="81f-S8-SW0" secondAttribute="top" constant="14" id="Tmz-I0-7IS"/>
                                                 <constraint firstAttribute="bottom" secondItem="jtS-bX-LVX" secondAttribute="bottom" constant="11" id="exH-rq-YTk"/>
+                                                <constraint firstItem="t4Z-ud-HS2" firstAttribute="leading" relation="lessThanOrEqual" secondItem="81f-S8-SW0" secondAttribute="leading" constant="296.66666666666669" id="ui7-RP-0g2"/>
                                                 <constraint firstItem="jtS-bX-LVX" firstAttribute="top" secondItem="uDd-WU-4aO" secondAttribute="bottom" constant="1" id="vcv-Vn-cCL"/>
                                                 <constraint firstItem="uDd-WU-4aO" firstAttribute="top" secondItem="81f-S8-SW0" secondAttribute="top" constant="11" id="wM0-9Z-rbf"/>
                                                 <constraint firstItem="uDd-WU-4aO" firstAttribute="leading" secondItem="81f-S8-SW0" secondAttribute="leading" constant="15" id="xwx-OK-o2N"/>
@@ -237,7 +237,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" secondItem="WSt-E6-JFF" secondAttribute="trailing" constant="274" id="5qT-MX-evZ"/>
+                            <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="WSt-E6-JFF" secondAttribute="trailing" constant="274" id="5qT-MX-evZ"/>
                             <constraint firstItem="qEE-Hk-v3x" firstAttribute="leading" secondItem="GhK-ND-Vd5" secondAttribute="leading" id="QhM-Mq-RRp"/>
                             <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" secondItem="qEE-Hk-v3x" secondAttribute="trailing" id="SR0-bz-Sqi"/>
                             <constraint firstItem="WSt-E6-JFF" firstAttribute="leading" secondItem="GhK-ND-Vd5" secondAttribute="leading" constant="16" id="Vt5-xF-u07"/>
@@ -254,6 +254,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TH2-WO-9Aq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1005.6" y="863.79310344827593"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5aP-Jy-vpv">
+            <objects>
+                <viewController id="OC0-ux-f78" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PD5-86-MC1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="p8D-lD-X5V"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l87-Sk-k4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="602" y="1581"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rC1-Bz-dyZ">
+            <objects>
+                <viewController id="NU5-Rn-yS9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g4j-Ge-8Om">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JAz-33-I6J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="C2u-XP-msS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXb-AW-EFG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1421.5999999999999" y="1580.5418719211823"/>
         </scene>
         <!--홈-->
         <scene sceneID="tne-QT-ifu">
@@ -311,7 +347,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="second"/>
+                                <color key="backgroundColor" name="third"/>
                                 <constraints>
                                     <constraint firstItem="zEQ-1B-HKW" firstAttribute="height" secondItem="Gxr-tn-aZz" secondAttribute="height" multiplier="0.429688" id="4Xd-3Z-aYf"/>
                                     <constraint firstItem="zEQ-1B-HKW" firstAttribute="top" secondItem="Gxr-tn-aZz" secondAttribute="top" id="Lwk-vE-uFn"/>
@@ -327,6 +363,9 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 설교" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEU-YD-Pq2">
                                                 <rect key="frame" x="8" y="24" width="159" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="JEU-YD-Pq2" secondAttribute="height" multiplier="53:14" id="ucH-Vv-W6j"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -411,7 +450,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" id="xYO-rg-RUi"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="doc.richtext" catalog="system" id="xYO-rg-RUi"/>
                     <navigationItem key="navigationItem" id="tMH-R9-JcM"/>
                     <connections>
                         <outlet property="calanderText" destination="dWN-JH-sZo" id="edJ-Rf-bqt"/>
@@ -440,8 +479,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2NE-RR-LGV">
                                 <rect key="frame" x="0.0" y="44" width="375" height="71"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9px-cy-nUv">
-                                        <rect key="frame" x="8" y="36" width="35" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9px-cy-nUv">
+                                        <rect key="frame" x="8" y="36" width="317" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -463,7 +502,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="9px-cy-nUv" secondAttribute="bottom" constant="11" id="9QP-GH-Wjl"/>
-                                    <constraint firstItem="ago-zN-qDk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9px-cy-nUv" secondAttribute="trailing" constant="8" symbolic="YES" id="CeD-4H-wyP"/>
+                                    <constraint firstItem="ago-zN-qDk" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9px-cy-nUv" secondAttribute="trailing" constant="8" symbolic="YES" id="CeD-4H-wyP"/>
                                     <constraint firstItem="ago-zN-qDk" firstAttribute="top" secondItem="2NE-RR-LGV" secondAttribute="top" constant="9" id="GQY-ax-cGS"/>
                                     <constraint firstAttribute="trailing" secondItem="ago-zN-qDk" secondAttribute="trailing" constant="8" id="Kq2-u8-h46"/>
                                     <constraint firstItem="aZR-57-w4L" firstAttribute="leading" secondItem="2NE-RR-LGV" secondAttribute="leading" constant="8" id="LXU-bd-V3o"/>
@@ -485,24 +524,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJk-gI-dKg">
                                 <rect key="frame" x="0.0" y="369" width="375" height="443"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq1-94-2gc">
-                                        <rect key="frame" x="0.0" y="47" width="375" height="396"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="qv2-bc-qKl"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="ubw-bj-AVY"/>
-                                    </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-Ez-8B3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-Ez-8B3">
                                         <rect key="frame" x="337" y="7" width="30" height="30"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="닫기">
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="15"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
+                                        <state key="normal" title="닫기"/>
                                         <connections>
                                             <action selector="closeVideo:" destination="VOZ-qk-o37" eventType="touchUpInside" id="ogB-Nb-yIM"/>
                                         </connections>
@@ -532,6 +556,7 @@
                         <constraints>
                             <constraint firstItem="qJk-gI-dKg" firstAttribute="leading" secondItem="2NE-RR-LGV" secondAttribute="leading" id="BeF-dO-HY4"/>
                             <constraint firstItem="9DE-6h-x7v" firstAttribute="trailing" secondItem="2NE-RR-LGV" secondAttribute="trailing" id="CQI-tB-BpY"/>
+                            <constraint firstItem="ad8-q5-ddm" firstAttribute="top" secondItem="2NE-RR-LGV" secondAttribute="bottom" id="I9G-Or-2Jq"/>
                             <constraint firstItem="qJk-gI-dKg" firstAttribute="leading" secondItem="ad8-q5-ddm" secondAttribute="leading" id="IWD-XB-FD1"/>
                             <constraint firstItem="qJk-gI-dKg" firstAttribute="trailing" secondItem="ad8-q5-ddm" secondAttribute="trailing" id="Jm9-iL-mJy"/>
                             <constraint firstItem="TPK-6G-xxP" firstAttribute="centerY" secondItem="ad8-q5-ddm" secondAttribute="centerY" id="Leh-fP-6N9"/>
@@ -547,7 +572,6 @@
                         <viewLayoutGuide key="safeArea" id="9DE-6h-x7v"/>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="Vq1-94-2gc" id="vWV-9h-b2g"/>
                         <outlet property="segment" destination="4Tr-u3-8nY" id="bgp-eE-9th"/>
                         <outlet property="sermonKind" destination="aZR-57-w4L" id="bTv-ci-LRR"/>
                         <outlet property="sermonTitle" destination="9px-cy-nUv" id="Ls2-OU-h0y"/>
@@ -666,12 +690,9 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="doc.richtext" catalog="system" width="115" height="128"/>
         <namedColor name="moreButton">
             <color red="0.40000000000000002" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="second">
-            <color red="0.40000000000000002" green="0.69999999999999996" blue="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="third">
             <color red="0.5" green="0.80000000000000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
