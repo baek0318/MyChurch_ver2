@@ -54,6 +54,13 @@ class SermonViewController : UIViewController {
         UIView.animate(withDuration: 0.3) {
             if self.webView.frame.height == 0 {
                 UIView.animate(withDuration: 1, animations: {
+                    if(self.webView.isLoading) {
+                        print(true)
+                        self.webLoading.isHidden = false
+                    }else{
+                        print(false)
+                        self.webLoading.isHidden = true
+                    }
                     self.webView.frame.size = CGSize(width: self.view.frame.width, height: 253)
                     self.sermonView.frame.origin.y = 368
                     self.sermonView.frame.size.height = self.view.frame.height
@@ -77,6 +84,7 @@ class SermonViewController : UIViewController {
                 self.searchDevice()
                 self.sermonView.frame.size.height = self.view.frame.height
                 self.scrollView.frame.size.height = self.view.frame.height
+                self.webLoading.isHidden = true
                 
                 self.tableView.topAnchor.constraint(equalTo: self.sermonView.topAnchor, constant: 50).isActive = true
                 self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -137,6 +145,7 @@ extension SermonViewController : WKNavigationDelegate{
         webLoading.isHidden = false
         webLoading.startAnimating()
     }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("finish")
         webLoading.stopAnimating()
