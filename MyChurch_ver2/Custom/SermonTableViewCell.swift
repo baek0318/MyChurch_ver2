@@ -12,7 +12,7 @@ class SermonTableViewCell: UITableViewCell {
 
     @IBOutlet var title: UILabel!
     
-    @IBOutlet var sermonText: UITextView!
+    @IBOutlet var sermonText: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

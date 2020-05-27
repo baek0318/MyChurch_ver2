@@ -27,7 +27,7 @@ class CustomMoreButton: UIButton {
             UIColor.lightGray.setFill()
             path.fill()
         }
-        //path.addCurve(to: <#T##CGPoint#>, controlPoint1: <#T##CGPoint#>, controlPoint2: <#T##CGPoint#>)
+        path.addCurve(to: <#T##CGPoint#>, controlPoint1: <#T##CGPoint#>, controlPoint2: <#T##CGPoint#>)
     }
 
 }

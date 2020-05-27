@@ -14,7 +14,6 @@ class NewsTableViewCell: UITableViewCell {
     
     @IBOutlet var newsKind: UILabel!
     
-    @IBOutlet var newsText: UITextView!
-    
+    @IBOutlet var newsText: UILabel!
     
 }

@@ -7,47 +7,80 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class NewsViewController : UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+    var docRef : DocumentReference?
+    var newArr = [Dictionary<String, String>]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        createTable()
+        getData()
     }
     
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        createTable()
+    }
+    
 }
+
+//MARK:-UITableView Delegate, Data
 
 extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func createTable() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 600
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return newArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let index = newArr[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsTableViewCell
         
-        cell.newsKind.text = "교우 소식"
-        cell.newsTitle.text = "가정의 달"
-        cell.newsText.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  legum odioque civiuda."
-        cell.newsText.isEditable = false
+        cell.newsKind.text = index["kind"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.newsTitle.text = index["title"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.newsText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(180)
+}
+
+//MARK:- FireStore Data read
+
+extension NewsViewController {
+    func getData() {
+        let date = Date(timeIntervalSinceNow: 0)
+        let calendar = Calendar(identifier: .gregorian)
+        let component = calendar.dateComponents([.month, .day], from: date)
+        
+        let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+        docRef = Firestore.firestore().document("news/\(date_path)")
+        
+        docRef?.getDocument(completion: {[weak self] (docSnapshot, error) in
+            guard let _self = self else {return}
+            if let error = error {
+                print(error.localizedDescription)
+            }else {
+                let data = docSnapshot?.data() as? Dictionary<String, Dictionary<String, String>> ?? ["":["":""]]
+                for i in 1...data.count {
+                    _self.newArr.append(data["\(i)"] ?? ["":""])
+                }
+            }
+        })
     }
-    
 }

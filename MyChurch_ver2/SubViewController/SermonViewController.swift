@@ -8,9 +8,10 @@
 
 import UIKit
 import WebKit
+import FirebaseFirestore
 
 class SermonViewController : UIViewController {
-    
+
     @IBOutlet var sermonKind: UILabel!
     @IBOutlet var sermonTitle: UILabel!
     
@@ -23,15 +24,25 @@ class SermonViewController : UIViewController {
     @IBOutlet var segment: UISegmentedControl!
     var tableView : UITableView!
     
+    var docRef : DocumentReference!
+    var kind : String?
+    var sermonArr = [Dictionary<String, String>]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeFirestore()
         loadVideo()
         loadScrollView()
+        segment.addTarget(self, action: #selector(self.segmentedAction(_:)), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        sermonKind.text = kind
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         createTable()
         createSequence()
-        sermonKind.text = "오전예배"
-        sermonTitle.text = "제자 3대를 꿈꾸는 복된 가정"
-        segment.addTarget(self, action: #selector(self.segmentedAction(_:)), for: .valueChanged)
     }
     
     @objc func segmentedAction(_ respond : UISegmentedControl) {
@@ -207,25 +218,24 @@ extension SermonViewController : UITableViewDelegate, UITableViewDataSource {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 600
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return sermonArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let index = sermonArr[indexPath.row]
+        
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "SermonCell", for: indexPath) as! SermonTableViewCell
         
-        cell.title.text = "1. text text text"
-        cell.sermonText.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
-        cell.sermonText.isEditable = false
+        cell.title.text = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.sermonText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(200)
     }
 }
 
@@ -237,5 +247,50 @@ extension SermonViewController {
         let sermonSequenceView = SermonSequenceView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height+100))
         sermonSequenceView.tag = 100
         scrollView.addSubview(sermonSequenceView)
+    }
+}
+
+//MARK:-Firestore Data Read
+
+extension SermonViewController {
+    func makeFirestore() {
+        guard let kind = kind else {return}
+        let date = Date(timeIntervalSinceNow: 0)
+        let calendar = Calendar(identifier: .gregorian)
+        let component = calendar.dateComponents([.month, .day], from: date)
+
+        let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+
+        if kind == "오후 예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/evening")
+        }else if kind == "오전1부 예배" || kind == "오전2부 예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+        }else if kind == "수요예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/wednesday")
+        }else if kind == "금요예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/friday")
+        }else {
+            //아무것도 아닌경우 지정해주기
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+        }
+        getdata()
+    }
+    
+    func getdata() {
+        docRef.getDocument { [weak self](snapshot, error) in
+            guard let _self = self else {return}
+            if let error = error {
+                print(error.localizedDescription)
+            }else {
+                guard let snapshot = snapshot, snapshot.exists else {print("there is no data");return}
+                if let data = snapshot.data() {
+                    _self.sermonTitle.text = data["title"] as? String
+                    for i in 1..<data.count {
+                        let num = data["\(i)"] as? Dictionary<String,String>
+                        _self.sermonArr.append(num ?? ["" : ""])
+                    }
+                }
+            }
+        }
     }
 }

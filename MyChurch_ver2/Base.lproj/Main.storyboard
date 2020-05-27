@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QZO-i6-xE5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QZO-i6-xE5">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,43 +61,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소식 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDd-WU-4aO">
-                                                    <rect key="frame" x="15" y="11" width="73.666666666666671" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="소식 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDd-WU-4aO">
+                                                    <rect key="frame" x="15" y="11" width="74" height="25"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소식 종류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4Z-ud-HS2">
                                                     <rect key="frame" x="296.66666666666669" y="14" width="63.333333333333314" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAT-ti-tVY">
+                                                    <rect key="frame" x="23" y="44" width="329" height="125"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jtS-bX-LVX">
-                                                    <rect key="frame" x="15" y="36" width="345" height="133"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  legum odioque civiuda.</string>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="jtS-bX-LVX" secondAttribute="trailing" constant="15" id="1pO-5f-r58"/>
+                                                <constraint firstItem="pAT-ti-tVY" firstAttribute="top" secondItem="uDd-WU-4aO" secondAttribute="bottom" constant="6.3333333333333286" id="0j4-Rx-BGK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pAT-ti-tVY" secondAttribute="trailing" constant="8" id="3WR-GP-Abk"/>
                                                 <constraint firstAttribute="trailing" secondItem="t4Z-ud-HS2" secondAttribute="trailing" constant="14.999999999999943" id="9nJ-FL-cnn"/>
-                                                <constraint firstItem="jtS-bX-LVX" firstAttribute="leading" secondItem="81f-S8-SW0" secondAttribute="leading" constant="15" id="CSa-Hj-BAo"/>
-                                                <constraint firstItem="jtS-bX-LVX" firstAttribute="top" secondItem="t4Z-ud-HS2" secondAttribute="bottom" constant="1" id="Jn4-vR-nlm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pAT-ti-tVY" secondAttribute="bottom" id="F6A-Xy-tyb"/>
+                                                <constraint firstItem="pAT-ti-tVY" firstAttribute="leading" secondItem="81f-S8-SW0" secondAttribute="leadingMargin" constant="8" id="Lwo-kP-OhT"/>
                                                 <constraint firstItem="t4Z-ud-HS2" firstAttribute="top" secondItem="81f-S8-SW0" secondAttribute="top" constant="14" id="Tmz-I0-7IS"/>
-                                                <constraint firstAttribute="bottom" secondItem="jtS-bX-LVX" secondAttribute="bottom" constant="11" id="exH-rq-YTk"/>
                                                 <constraint firstItem="t4Z-ud-HS2" firstAttribute="leading" relation="lessThanOrEqual" secondItem="81f-S8-SW0" secondAttribute="leading" constant="296.66666666666669" id="ui7-RP-0g2"/>
-                                                <constraint firstItem="jtS-bX-LVX" firstAttribute="top" secondItem="uDd-WU-4aO" secondAttribute="bottom" constant="1" id="vcv-Vn-cCL"/>
                                                 <constraint firstItem="uDd-WU-4aO" firstAttribute="top" secondItem="81f-S8-SW0" secondAttribute="top" constant="11" id="wM0-9Z-rbf"/>
                                                 <constraint firstItem="uDd-WU-4aO" firstAttribute="leading" secondItem="81f-S8-SW0" secondAttribute="leading" constant="15" id="xwx-OK-o2N"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="newsKind" destination="t4Z-ud-HS2" id="pTz-6d-ciq"/>
-                                            <outlet property="newsText" destination="jtS-bX-LVX" id="GOn-pR-z0Q"/>
+                                            <outlet property="newsText" destination="pAT-ti-tVY" id="Ryr-xo-EN8"/>
                                             <outlet property="newsTitle" destination="uDd-WU-4aO" id="WZ8-vd-bGc"/>
                                         </connections>
                                     </tableViewCell>
@@ -471,7 +467,7 @@
         <!--Sermon View Controller-->
         <scene sceneID="DYF-Rc-kug">
             <objects>
-                <viewController id="VOZ-qk-o37" customClass="SermonViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Sermon" id="VOZ-qk-o37" customClass="SermonViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lZ7-5F-eZO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,7 +475,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2NE-RR-LGV">
                                 <rect key="frame" x="0.0" y="44" width="375" height="71"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9px-cy-nUv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교 제목" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9px-cy-nUv">
                                         <rect key="frame" x="8" y="36" width="317" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="highlightedColor"/>
@@ -592,58 +588,10 @@
                     <view key="view" contentMode="scaleToFill" id="gy7-db-VkB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bHn-Ra-0hc">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DC3-fa-FWc">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VIL-C4-0Xo">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O8s-5Z-czt">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wur-ep-Q0V">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="41"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UON-VC-gbP">
-                                                            <rect key="frame" x="90" y="10" width="30" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                </view>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="6D0-Xz-yeH" firstAttribute="bottom" secondItem="bHn-Ra-0hc" secondAttribute="bottom" id="7Va-aI-wxL"/>
-                            <constraint firstItem="bHn-Ra-0hc" firstAttribute="leading" secondItem="6D0-Xz-yeH" secondAttribute="leading" id="FUb-Ta-NRm"/>
-                            <constraint firstItem="6D0-Xz-yeH" firstAttribute="trailing" secondItem="bHn-Ra-0hc" secondAttribute="trailing" id="d7F-HD-3gU"/>
-                            <constraint firstItem="bHn-Ra-0hc" firstAttribute="top" secondItem="6D0-Xz-yeH" secondAttribute="top" id="u3k-5e-6D1"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6D0-Xz-yeH"/>
                     </view>
                     <navigationItem key="navigationItem" title="5월" id="haz-bd-ez5"/>
-                    <connections>
-                        <outlet property="calanderView" destination="bHn-Ra-0hc" id="h5a-yV-zMj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYV-Fs-MYE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,5 +24,4 @@ class CustomCloseButton: UIButton {
         UIColor.lightGray.setFill()
         path.fill()
     }
-
 }
