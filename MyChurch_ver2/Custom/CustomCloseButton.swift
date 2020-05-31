@@ -23,5 +23,21 @@ class CustomCloseButton: UIButton {
         let path = UIBezierPath(ovalIn: rect)
         UIColor.lightGray.setFill()
         path.fill()
+        
+        let closePath = UIBezierPath()
+        closePath.lineWidth = 2.0
+        closePath.move(to: CGPoint(x: 12.0, y: 24.0))
+        closePath.addLine(to: CGPoint(x: 24.0, y: 12.0))
+        UIColor.white.setStroke()
+        closePath.lineCapStyle = .round
+        closePath.stroke()
+
+        let closePath2 = UIBezierPath()
+        closePath2.lineWidth = 2.0
+        closePath2.move(to: CGPoint(x: 12.0, y: 12.0))
+        closePath2.addLine(to: CGPoint(x: 24.0, y: 24.0))
+        UIColor.white.setStroke()
+        closePath2.lineCapStyle = .round
+        closePath2.stroke()
     }
 }

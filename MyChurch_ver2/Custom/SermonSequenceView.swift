@@ -14,12 +14,12 @@ class SermonSequenceView : UIView {
         self.subviews.forEach{$0.removeFromSuperview()}
         let scrollview = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         scrollview.backgroundColor = UIColor(named: "BackGround")
-        scrollview.contentSize.height = self.frame.height+480
         self.addSubview(scrollview)
         
         let view = ListView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 80))
         view.center = CGPoint(x: self.frame.width/2, y: 50)
         scrollview.addSubview(view)
+        scrollview.contentSize.height = view.frame.height+600
         
         
     }

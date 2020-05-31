@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class MainViewController : UIViewController{
     
@@ -23,13 +24,19 @@ class MainViewController : UIViewController{
     var columnTap : UIGestureRecognizer!
     
     @IBOutlet var moreButton: UIButton!
+    @IBOutlet var button: CustomMoreButton!
+    
+    var docRef : DocumentReference!
+    var sermonArr = [Dictionary<String,String>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeFirestore()
         setUpNotification()
         todayColumn.layer.cornerRadius = 10
         todaySermonView.layer.cornerRadius = 10
         todayNewsView.layer.cornerRadius = 10
+        button.layer.cornerRadius = 10
         sermonTap = UITapGestureRecognizer(target: self, action: #selector(self.sermonAction(recognizer:)))
         todaySermonView.addGestureRecognizer(sermonTap)
         newsTap = UITapGestureRecognizer(target: self, action: #selector(self.sermonAction(recognizer:)))
@@ -127,5 +134,40 @@ extension MainViewController {
     @objc func foregroundNotification() {
         setUpDateKind()
         inputDay()
+    }
+}
+
+//MARK:- 왜 되는지 잘 모르겠음
+
+extension MainViewController {
+    func makeFirestore() {
+        guard let kind = sermonKind.text else {return}
+        let date = Date(timeIntervalSinceNow: 0)
+        let calendar = Calendar(identifier: .gregorian)
+        let component = calendar.dateComponents([.month, .day], from: date)
+
+        let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+
+        if kind == "오후 예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/evening")
+        }else if kind == "오전1부 예배" || kind == "오전2부 예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+        }else if kind == "수요예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/wednesday")
+        }else if kind == "금요예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/friday")
+        }else {
+            //아무것도 아닌경우 지정해주기
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+        }
+        getdata()
+    }
+    
+    func getdata() {
+        docRef.getDocument {(snapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }

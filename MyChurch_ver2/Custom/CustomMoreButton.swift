@@ -18,7 +18,10 @@ class CustomMoreButton: UIButton {
         // Drawing code
     }
     */
+    
+    
     override func draw(_ rect: CGRect) {
+        
         let path = UIBezierPath(rect: rect)
         if let color = UIColor(named: "moreButton") {
             color.setFill()
@@ -27,7 +30,6 @@ class CustomMoreButton: UIButton {
             UIColor.lightGray.setFill()
             path.fill()
         }
-        path.addCurve(to: <#T##CGPoint#>, controlPoint1: <#T##CGPoint#>, controlPoint2: <#T##CGPoint#>)
     }
 
 }

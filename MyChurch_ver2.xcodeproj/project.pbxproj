@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B607990BD2123E8043170F5 /* Pods_MyChurch_ver2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */; };
 		CECAFB9D341AE43AB8993F61 /* Pods_MyChurch_ver2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA5EF949C6F7B486632036D /* Pods_MyChurch_ver2Tests.framework */; };
+		E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AEFE2483E72300E69836 /* SermonListTableView.swift */; };
+		E800AF012483E72300E69836 /* SermonListTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E800AEFF2483E72300E69836 /* SermonListTableView.xib */; };
 		E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8467387245ED77400256D01 /* CustomMoreButton.swift */; };
 		E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846738B245EDAC800256D01 /* CustomCloseButton.swift */; };
 		E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966C3245DC19100BBD851 /* AppDelegate.swift */; };
@@ -48,6 +50,8 @@
 		662B937A288669B42F1228EF /* Pods-MyChurch_ver2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2.release.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2.release.xcconfig"; sourceTree = "<group>"; };
 		7F7DB00EDF3B052FB69FFB87 /* Pods-MyChurch_ver2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2Tests/Pods-MyChurch_ver2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E800AEFE2483E72300E69836 /* SermonListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonListTableView.swift; sourceTree = "<group>"; };
+		E800AEFF2483E72300E69836 /* SermonListTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonListTableView.xib; sourceTree = "<group>"; };
 		E8467387245ED77400256D01 /* CustomMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMoreButton.swift; sourceTree = "<group>"; };
 		E846738B245EDAC800256D01 /* CustomCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCloseButton.swift; sourceTree = "<group>"; };
 		E84966C0245DC19100BBD851 /* MyChurch_ver2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChurch_ver2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E800AEFD2483E4D300E69836 /* SubMoreViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubMoreViewController;
+			sourceTree = "<group>";
+		};
 		E8467386245ED74500256D01 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +133,8 @@
 				E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */,
 				E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */,
 				E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */,
+				E800AEFE2483E72300E69836 /* SermonListTableView.swift */,
+				E800AEFF2483E72300E69836 /* SermonListTableView.xib */,
 				E8E05F452464470300F6FB2B /* SermonSequenceView.swift */,
 				E8E05F47246447A600F6FB2B /* ListView.swift */,
 			);
@@ -198,6 +211,7 @@
 				E84966ED245DD45500BBD851 /* NewsViewController.swift */,
 				E84966EF245DD47100BBD851 /* ColumnViewController.swift */,
 				E84966F1245DD47F00BBD851 /* MoreViewController.swift */,
+				E800AEFD2483E4D300E69836 /* SubMoreViewController */,
 			);
 			path = SubViewController;
 			sourceTree = "<group>";
@@ -287,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E84966D0245DC19300BBD851 /* LaunchScreen.storyboard in Resources */,
+				E800AF012483E72300E69836 /* SermonListTableView.xib in Resources */,
 				E84966CD245DC19300BBD851 /* Assets.xcassets in Resources */,
 				E84966CB245DC19100BBD851 /* Main.storyboard in Resources */,
 				E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */,
@@ -379,6 +394,7 @@
 				E84966E7245DC5DD00BBD851 /* MainViewController.swift in Sources */,
 				E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */,
 				E84966EC245DD44400BBD851 /* SermonViewController.swift in Sources */,
+				E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */,
 				E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */,
 				E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */,
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,

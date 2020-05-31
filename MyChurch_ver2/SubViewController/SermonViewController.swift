@@ -65,6 +65,7 @@ class SermonViewController : UIViewController {
         UIView.animate(withDuration: 0.3) {
             if self.webView.frame.height == 0 {
                 UIView.animate(withDuration: 1, animations: {
+                    self.webButton.setTitle("닫기", for: .normal)
                     if(self.webView.isLoading) {
                         print(true)
                         self.webLoading.isHidden = false
@@ -87,6 +88,7 @@ class SermonViewController : UIViewController {
                 }
                 
             }else {
+                self.webButton.setTitle("열기", for: .normal)
                 self.webView.translatesAutoresizingMaskIntoConstraints = true
                 self.sermonView.translatesAutoresizingMaskIntoConstraints = true
                 self.scrollView.translatesAutoresizingMaskIntoConstraints = true
