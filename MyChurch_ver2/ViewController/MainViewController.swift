@@ -48,6 +48,7 @@ class MainViewController : UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         if identifier == "Sermon" {
+            
             let sc = segue.destination as! SermonViewController
             sc.kind = sermonKind.text
         }

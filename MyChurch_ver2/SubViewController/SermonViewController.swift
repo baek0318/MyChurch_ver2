@@ -23,10 +23,12 @@ class SermonViewController : UIViewController {
     var scrollView: UIScrollView!
     @IBOutlet var segment: UISegmentedControl!
     var tableView : UITableView!
+    var listTableView : UITableView!
     
     var docRef : DocumentReference!
     var kind : String?
     var sermonArr = [Dictionary<String, String>]()
+    var sequenceArr = [Dictionary<String, String>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +43,8 @@ class SermonViewController : UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        createTable()
         createSequence()
+        createTable()
     }
     
     @objc func segmentedAction(_ respond : UISegmentedControl) {
@@ -112,22 +114,22 @@ class SermonViewController : UIViewController {
           switch UIScreen.main.nativeBounds.height {
             case 1136:
             print("iPhone se")
-            self.sermonView.frame.origin.y = 80
+            self.sermonView.frame.origin.y = 95
             case 1334:
             print("iPhone 6/6S/7/8")
-            self.sermonView.frame.origin.y = 80
+            self.sermonView.frame.origin.y = 95
             case 2208:
             print("iPhone 6+/6S+/7+/8+")
-            self.sermonView.frame.origin.y = 80
+            self.sermonView.frame.origin.y = 95
             case 2436:
             print("iPhone X")
-            self.sermonView.frame.origin.y = 112
+            self.sermonView.frame.origin.y = 117
             case 2688:
             print("iPhone 11pro Max")
-            self.sermonView.frame.origin.y = 112
+            self.sermonView.frame.origin.y = 117
             case 1792:
             print("iPhone 11/Xr")
-            self.sermonView.frame.origin.y = 112
+            self.sermonView.frame.origin.y = 117
             default:
             print("unknown")
           }
@@ -186,10 +188,12 @@ extension SermonViewController : UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x == 0 {
+        if scrollView == self.scrollView && scrollView.contentOffset.x == 0 {
+            print("=======0=======")
             self.segment.selectedSegmentIndex = 0
             tableView.alpha = 1
-        }else if scrollView.contentOffset.x == self.view.frame.width {
+        }else if scrollView == self.scrollView && scrollView.contentOffset.x == self.view.frame.width {
+            print("=======1=======")
             self.segment.selectedSegmentIndex = 1
             tableView.alpha = 0
         }
@@ -203,13 +207,9 @@ extension SermonViewController : UITableViewDelegate, UITableViewDataSource {
     func createTable() {
         self.tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         
-        let view = UIView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        view.backgroundColor = .clear
-        
         let tableNib = UINib(nibName: "SermonTableViewCell", bundle: nil)
         self.tableView.register(tableNib, forCellReuseIdentifier: "SermonCell")
         self.scrollView.addSubview(tableView)
-        self.scrollView.addSubview(view)
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.topAnchor.constraint(equalTo: self.sermonView.topAnchor, constant: 50).isActive = true
@@ -225,20 +225,36 @@ extension SermonViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sermonArr.count
+        if tableView == self.tableView {
+            return sermonArr.count
+        }else {
+            return sequenceArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let index = sermonArr[indexPath.row]
-        
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "SermonCell", for: indexPath) as! SermonTableViewCell
-        
-        cell.title.text = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
-        cell.sermonText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
-        
-        return cell
+        if tableView == self.tableView {
+            let index = sermonArr[indexPath.row]
+            
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "SermonCell", for: indexPath) as! SermonTableViewCell
+            
+            cell.title.text = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
+            cell.sermonText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+            
+            return cell
+        }else {
+            let index = sequenceArr[indexPath.row]
+            
+            let cell = self.listTableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! SermonListTableView
+            
+            cell.title.text = index["title"]
+            cell.content.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+            
+            return cell
+        }
     }
+    
 }
 
 //MARK:-SequenceView
@@ -246,9 +262,24 @@ extension SermonViewController : UITableViewDelegate, UITableViewDataSource {
 extension SermonViewController {
     
     func createSequence() {
-        let sermonSequenceView = SermonSequenceView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height+100))
-        sermonSequenceView.tag = 100
-        scrollView.addSubview(sermonSequenceView)
+        self.listTableView = UITableView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        
+        let tableNib = UINib(nibName: "SermonListTableView", bundle: nil)
+        self.listTableView.register(tableNib, forCellReuseIdentifier: "ListCell")
+        self.scrollView.addSubview(listTableView)
+        //self.scrollView.addSubview(view)
+        
+        self.listTableView.translatesAutoresizingMaskIntoConstraints = false
+        self.listTableView.topAnchor.constraint(equalTo: self.sermonView.topAnchor, constant: 50).isActive = true
+        self.listTableView.bottomAnchor.constraint(equalTo: self.sermonView.bottomAnchor).isActive = true
+        self.listTableView.leadingAnchor.constraint(equalTo: self.sermonView.leadingAnchor).isActive = true
+        self.listTableView.trailingAnchor.constraint(equalTo: self.sermonView.trailingAnchor).isActive = true
+        
+        self.listTableView.delegate = self
+        self.listTableView.dataSource = self
+        self.listTableView.separatorStyle = .none
+        self.listTableView.rowHeight = UITableView.automaticDimension
+        self.listTableView.estimatedRowHeight = 300
     }
 }
 
@@ -273,7 +304,7 @@ extension SermonViewController {
             docRef = Firestore.firestore().document("sermon/\(date_path)/kind/friday")
         }else {
             //아무것도 아닌경우 지정해주기
-            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+            docRef = Firestore.firestore().document("sermon/5_31/kind/morning")
         }
         getdata()
     }
@@ -290,6 +321,12 @@ extension SermonViewController {
                     for i in 1..<data.count {
                         let num = data["\(i)"] as? Dictionary<String,String>
                         _self.sermonArr.append(num ?? ["" : ""])
+                    }
+                    let sequneceData = data["sequence"] as? Dictionary<String, Dictionary<String,String>>
+                    guard let sequence = sequneceData else {return}
+                    for i in 1...sequence.count {
+                        guard let num = sequence["\(i)"] else {return}
+                        _self.sequenceArr.append(num)
                     }
                 }
             }

@@ -29,8 +29,6 @@
 		E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */; };
 		E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */; };
 		E8E05F442463DA7B00F6FB2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8E05F432463DA7B00F6FB2B /* GoogleService-Info.plist */; };
-		E8E05F462464470300F6FB2B /* SermonSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F452464470300F6FB2B /* SermonSequenceView.swift */; };
-		E8E05F48246447A600F6FB2B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F47246447A600F6FB2B /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +72,6 @@
 		E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonTableViewCell.swift; sourceTree = "<group>"; };
 		E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonTableViewCell.xib; sourceTree = "<group>"; };
 		E8E05F432463DA7B00F6FB2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E8E05F452464470300F6FB2B /* SermonSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonSequenceView.swift; sourceTree = "<group>"; };
-		E8E05F47246447A600F6FB2B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +131,6 @@
 				E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */,
 				E800AEFE2483E72300E69836 /* SermonListTableView.swift */,
 				E800AEFF2483E72300E69836 /* SermonListTableView.xib */,
-				E8E05F452464470300F6FB2B /* SermonSequenceView.swift */,
-				E8E05F47246447A600F6FB2B /* ListView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -398,9 +392,7 @@
 				E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */,
 				E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */,
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,
-				E8E05F48246447A600F6FB2B /* ListView.swift in Sources */,
 				E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */,
-				E8E05F462464470300F6FB2B /* SermonSequenceView.swift in Sources */,
 				E84966C6245DC19100BBD851 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
