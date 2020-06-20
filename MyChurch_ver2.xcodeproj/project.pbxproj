@@ -25,6 +25,8 @@
 		E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966ED245DD45500BBD851 /* NewsViewController.swift */; };
 		E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966EF245DD47100BBD851 /* ColumnViewController.swift */; };
 		E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* MoreViewController.swift */; };
+		E8C73343248897C2006AF284 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73342248897C2006AF284 /* LocationViewController.swift */; };
+		E8C73345248898AE006AF284 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73344248898AE006AF284 /* ListViewController.swift */; };
 		E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */; };
 		E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */; };
 		E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */; };
@@ -68,6 +70,8 @@
 		E84966ED245DD45500BBD851 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E84966EF245DD47100BBD851 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		E84966F1245DD47F00BBD851 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		E8C73342248897C2006AF284 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		E8C73344248898AE006AF284 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonTableViewCell.swift; sourceTree = "<group>"; };
 		E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonTableViewCell.xib; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		E800AEFD2483E4D300E69836 /* SubMoreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E8C73342248897C2006AF284 /* LocationViewController.swift */,
+				E8C73344248898AE006AF284 /* ListViewController.swift */,
 			);
 			path = SubMoreViewController;
 			sourceTree = "<group>";
@@ -388,6 +394,8 @@
 				E84966E7245DC5DD00BBD851 /* MainViewController.swift in Sources */,
 				E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */,
 				E84966EC245DD44400BBD851 /* SermonViewController.swift in Sources */,
+				E8C73343248897C2006AF284 /* LocationViewController.swift in Sources */,
+				E8C73345248898AE006AF284 /* ListViewController.swift in Sources */,
 				E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */,
 				E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */,
 				E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */,

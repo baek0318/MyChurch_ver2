@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "0F9B93C5-7EA4-4E08-8CBD-F9D5288DF47E_1_105_c.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "sequence_background.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -12,10 +12,22 @@ class MoreViewController : UIViewController {
     
     @IBOutlet var tableView: UITableView!
     var data : [String] = ["차량운행","목장안내","선교현황","교회위치"]
+    var saveData : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configTalbeView()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else {return}
+        if id == "ListSegue"{
+            let lvc = segue.destination as! ListViewController
+            lvc.saveTitle = saveData
+        }else if id == "MapSegue"{
+            let locationVC = segue.destination as! LocationViewController
+            locationVC.saveTitle = saveData
+        }
     }
 }
 
@@ -45,6 +57,29 @@ extension MoreViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(100)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            saveData = data[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "ListSegue", sender: self); break
+        case 1:
+            saveData = data[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "ListSegue", sender: self); break
+        case 2:
+            saveData = data[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "ListSegue", sender: self); break
+        case 3:
+            saveData = data[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "MapSegue", sender: self); break
+        default:
+            break
+        }
     }
     
 }

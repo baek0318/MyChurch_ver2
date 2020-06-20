@@ -80,12 +80,14 @@ class SermonViewController : UIViewController {
                     self.sermonView.frame.size.height = self.view.frame.height
                     self.scrollView.frame.size.height = self.view.frame.height
                     self.tableView.frame.size.height = self.view.frame.height
+                    self.listTableView.frame.size.height = self.view.frame.height
                     
                 }) { (_) in
                     self.webView.translatesAutoresizingMaskIntoConstraints = false
                     self.sermonView.translatesAutoresizingMaskIntoConstraints = false
                     self.scrollView.translatesAutoresizingMaskIntoConstraints = false
                     self.tableView.translatesAutoresizingMaskIntoConstraints = false
+                    self.listTableView.translatesAutoresizingMaskIntoConstraints = false
                     
                 }
                 
@@ -105,6 +107,11 @@ class SermonViewController : UIViewController {
                 self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
                 self.tableView.leadingAnchor.constraint(equalTo: self.sermonView.leadingAnchor).isActive = true
                 self.tableView.trailingAnchor.constraint(equalTo: self.sermonView.trailingAnchor).isActive = true
+                
+                self.listTableView.topAnchor.constraint(equalTo: self.sermonView.topAnchor, constant: 50).isActive = true
+                self.listTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+                self.listTableView.leadingAnchor.constraint(equalTo: self.sermonView.leadingAnchor).isActive = true
+                self.listTableView.trailingAnchor.constraint(equalTo: self.sermonView.trailingAnchor).isActive = true
             }
         }
     }
@@ -113,22 +120,22 @@ class SermonViewController : UIViewController {
         if UIDevice().userInterfaceIdiom == .phone {
           switch UIScreen.main.nativeBounds.height {
             case 1136:
-            print("iPhone se")
+            //"iPhone se"
             self.sermonView.frame.origin.y = 95
             case 1334:
-            print("iPhone 6/6S/7/8")
+            //"iPhone 6/6S/7/8"
             self.sermonView.frame.origin.y = 95
             case 2208:
-            print("iPhone 6+/6S+/7+/8+")
+            //"iPhone 6+/6S+/7+/8+"
             self.sermonView.frame.origin.y = 95
             case 2436:
-            print("iPhone X")
+            //"iPhone X"
             self.sermonView.frame.origin.y = 117
             case 2688:
-            print("iPhone 11pro Max")
+            //"iPhone 11pro Max"
             self.sermonView.frame.origin.y = 117
             case 1792:
-            print("iPhone 11/Xr")
+            //"iPhone 11/Xr"
             self.sermonView.frame.origin.y = 117
             default:
             print("unknown")
@@ -156,13 +163,11 @@ extension SermonViewController : WKNavigationDelegate{
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print("start")
         webLoading.isHidden = false
         webLoading.startAnimating()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("finish")
         webLoading.stopAnimating()
         webLoading.isHidden = true
     }
@@ -189,11 +194,9 @@ extension SermonViewController : UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == self.scrollView && scrollView.contentOffset.x == 0 {
-            print("=======0=======")
             self.segment.selectedSegmentIndex = 0
             tableView.alpha = 1
         }else if scrollView == self.scrollView && scrollView.contentOffset.x == self.view.frame.width {
-            print("=======1=======")
             self.segment.selectedSegmentIndex = 1
             tableView.alpha = 0
         }
@@ -248,6 +251,7 @@ extension SermonViewController : UITableViewDelegate, UITableViewDataSource {
             
             let cell = self.listTableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! SermonListTableView
             
+            
             cell.title.text = index["title"]
             cell.content.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
             
@@ -267,7 +271,6 @@ extension SermonViewController {
         let tableNib = UINib(nibName: "SermonListTableView", bundle: nil)
         self.listTableView.register(tableNib, forCellReuseIdentifier: "ListCell")
         self.scrollView.addSubview(listTableView)
-        //self.scrollView.addSubview(view)
         
         self.listTableView.translatesAutoresizingMaskIntoConstraints = false
         self.listTableView.topAnchor.constraint(equalTo: self.sermonView.topAnchor, constant: 50).isActive = true
