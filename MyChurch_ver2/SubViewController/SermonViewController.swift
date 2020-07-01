@@ -150,6 +150,12 @@ class SermonViewController : UIViewController {
 extension SermonViewController : WKNavigationDelegate{
     func loadVideo() {
         self.webView.navigationDelegate = self
+        if #available(iOS 13.0, *) {
+            webLoading.style = .medium
+        }else {
+            webLoading.style = .whiteLarge
+        }
+        
         webLoading.isHidden = false
         
         let webConfig = WKWebViewConfiguration()

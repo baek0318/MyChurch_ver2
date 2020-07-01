@@ -11,6 +11,7 @@
 		CECAFB9D341AE43AB8993F61 /* Pods_MyChurch_ver2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA5EF949C6F7B486632036D /* Pods_MyChurch_ver2Tests.framework */; };
 		E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AEFE2483E72300E69836 /* SermonListTableView.swift */; };
 		E800AF012483E72300E69836 /* SermonListTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E800AEFF2483E72300E69836 /* SermonListTableView.xib */; };
+		E826491524A663BE00FDC160 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826491424A663BE00FDC160 /* DayViewController.swift */; };
 		E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8467387245ED77400256D01 /* CustomMoreButton.swift */; };
 		E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846738B245EDAC800256D01 /* CustomCloseButton.swift */; };
 		E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966C3245DC19100BBD851 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E800AEFE2483E72300E69836 /* SermonListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonListTableView.swift; sourceTree = "<group>"; };
 		E800AEFF2483E72300E69836 /* SermonListTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonListTableView.xib; sourceTree = "<group>"; };
+		E826491424A663BE00FDC160 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		E8467387245ED77400256D01 /* CustomMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMoreButton.swift; sourceTree = "<group>"; };
 		E846738B245EDAC800256D01 /* CustomCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCloseButton.swift; sourceTree = "<group>"; };
 		E84966C0245DC19100BBD851 /* MyChurch_ver2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChurch_ver2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,13 +143,6 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
-		E846738D245EE7A200256D01 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomView;
-			sourceTree = "<group>";
-		};
 		E84966B7245DC19100BBD851 = {
 			isa = PBXGroup;
 			children = (
@@ -171,10 +166,9 @@
 		E84966C2245DC19100BBD851 /* MyChurch_ver2 */ = {
 			isa = PBXGroup;
 			children = (
-				E846738D245EE7A200256D01 /* CustomView */,
 				E8467386245ED74500256D01 /* Custom */,
 				E84966EA245DD41F00BBD851 /* SubViewController */,
-				E84966E5245DC5BF00BBD851 /* ViewController */,
+				E84966E5245DC5BF00BBD851 /* MainViewController */,
 				E84966C3245DC19100BBD851 /* AppDelegate.swift */,
 				E84966C5245DC19100BBD851 /* SceneDelegate.swift */,
 				E84966C9245DC19100BBD851 /* Main.storyboard */,
@@ -195,13 +189,13 @@
 			path = MyChurch_ver2Tests;
 			sourceTree = "<group>";
 		};
-		E84966E5245DC5BF00BBD851 /* ViewController */ = {
+		E84966E5245DC5BF00BBD851 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E84966E6245DC5DD00BBD851 /* MainViewController.swift */,
 				E84966E8245DC5EB00BBD851 /* CalanderViewController.swift */,
 			);
-			path = ViewController;
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 		E84966EA245DD41F00BBD851 /* SubViewController */ = {
@@ -211,6 +205,7 @@
 				E84966ED245DD45500BBD851 /* NewsViewController.swift */,
 				E84966EF245DD47100BBD851 /* ColumnViewController.swift */,
 				E84966F1245DD47F00BBD851 /* MoreViewController.swift */,
+				E826491424A663BE00FDC160 /* DayViewController.swift */,
 				E800AEFD2483E4D300E69836 /* SubMoreViewController */,
 			);
 			path = SubViewController;
@@ -402,6 +397,7 @@
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,
 				E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */,
 				E84966C6245DC19100BBD851 /* SceneDelegate.swift in Sources */,
+				E826491524A663BE00FDC160 /* DayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,7 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC7956454Y;
 				INFOPLIST_FILE = MyChurch_ver2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,7 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "peach.MyChurch-ver2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -587,7 +583,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC7956454Y;
 				INFOPLIST_FILE = MyChurch_ver2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +591,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "peach.MyChurch-ver2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

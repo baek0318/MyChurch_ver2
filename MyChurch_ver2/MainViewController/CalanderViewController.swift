@@ -19,8 +19,13 @@ class CalanderViewController : UIViewController {
     @IBOutlet weak var fifthWeek: UIStackView!
     @IBOutlet weak var sixthWeek: UIStackView!
     
+    @IBOutlet weak var calendarTableView: UITableView!
+    @IBOutlet weak var calendarView: UIStackView!
+    
     var date : Date?
     var calendar : Calendar?
+    var day : String?
+    var month : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +45,18 @@ class CalanderViewController : UIViewController {
         setTitleNDate()
         makeCalendar()
     }
+    
+    @objc func tapDay(recognizer : UIGestureRecognizer) {
+        let label = recognizer.view as? UILabel
+        day = label?.text
+        performSegue(withIdentifier: "DatePick", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //
+        guard let dv = segue.destination as? DayViewController else {return}
+        dv.dateTitle = "\(month ?? 0)월 \(day ?? "0")일"
+    }
 }
 
 //MARK:- Define Calendar
@@ -50,27 +67,31 @@ extension CalanderViewController {
         self.calendar = Calendar(identifier: .gregorian)
         calendar?.locale = Locale(identifier: "ko")
         let comp = calendar?.dateComponents([.month], from: date!)
+        month = comp?.month ?? 0
         self.navigationController?.navigationBar.topItem?.title = "\(comp?.month ?? 0)월"
     }
     
     func makeCalendar() {
-        let first = firstWeek.arrangedSubviews as! [UILabel]
-        let second = secondWeek.arrangedSubviews as! [UILabel]
-        let third = thirdWeek.arrangedSubviews as! [UILabel]
-        let fourth = fourthWeek.arrangedSubviews as! [UILabel]
-        let fifth = fifthWeek.arrangedSubviews as! [UILabel]
-        let sixth = sixthWeek.arrangedSubviews as! [UILabel]
+        guard let first = firstWeek.arrangedSubviews as? [UILabel] else {return}
+        guard let second = secondWeek.arrangedSubviews as? [UILabel] else {return}
+        guard let third = thirdWeek.arrangedSubviews as? [UILabel] else {return}
+        guard let fourth = fourthWeek.arrangedSubviews as? [UILabel] else {return}
+        guard let fifth = fifthWeek.arrangedSubviews as? [UILabel] else {return}
+        guard let sixth = sixthWeek.arrangedSubviews as? [UILabel] else {return}
         let arr = [first, second, third, fourth, fifth, sixth].flatMap { $0 }
         let day = firstNlastDay()
         let today = calendar?.dateComponents([.day], from: date!)
         var number = 0
+        
         for i in (day[1]-1)...(day[2]-1+day[1]-1){
             number+=1
             if number == today?.day {
                 arr[i].text = String(number)
                 arr[i].textColor = UIColor(named: "calendarText")
+                arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
             }else {
                 arr[i].text = String(number)
+                arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
             }
         }
         number = 0
@@ -95,4 +116,19 @@ extension CalanderViewController {
     }
 }
 
+//MARK:-TableView
 
+extension CalanderViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = calendarTableView.dequeueReusableCell(withIdentifier: "CalendarCell")
+        
+        return cell!
+    }
+    
+    
+}

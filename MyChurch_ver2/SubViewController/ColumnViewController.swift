@@ -35,7 +35,7 @@ extension ColumnViewController {
         let component = calendar.dateComponents([.month, .day], from: date)
         
         let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
-        docRef = Firestore.firestore().document("columns/5_31")
+        docRef = Firestore.firestore().document("columns/\(date_path)")
         
         docRef?.getDocument(completion: {[weak self] (docSnapshot, error) in
             guard let _self = self else {return}
