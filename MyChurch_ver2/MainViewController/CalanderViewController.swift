@@ -19,9 +19,6 @@ class CalanderViewController : UIViewController {
     @IBOutlet weak var fifthWeek: UIStackView!
     @IBOutlet weak var sixthWeek: UIStackView!
     
-    @IBOutlet weak var calendarTableView: UITableView!
-    @IBOutlet weak var calendarView: UIStackView!
-    
     var date : Date?
     var calendar : Calendar?
     var day : String?
@@ -116,19 +113,3 @@ extension CalanderViewController {
     }
 }
 
-//MARK:-TableView
-
-extension CalanderViewController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = calendarTableView.dequeueReusableCell(withIdentifier: "CalendarCell")
-        
-        return cell!
-    }
-    
-    
-}

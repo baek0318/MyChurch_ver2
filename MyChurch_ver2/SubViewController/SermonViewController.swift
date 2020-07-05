@@ -32,9 +32,12 @@ class SermonViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeFirestore()
         loadVideo()
         loadScrollView()
+        createSequence()
+        createTable()
+        makeFirestore()
+        getdata()
         segment.addTarget(self, action: #selector(self.segmentedAction(_:)), for: .valueChanged)
     }
     
@@ -43,8 +46,9 @@ class SermonViewController : UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        createSequence()
-        createTable()
+        print("call table")
+        //createSequence()
+        //createTable()
     }
     
     @objc func segmentedAction(_ respond : UISegmentedControl) {
@@ -66,7 +70,8 @@ class SermonViewController : UIViewController {
     @IBAction func closeVideo(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
             if self.webView.frame.height == 0 {
-                UIView.animate(withDuration: 1, animations: {
+                UIView.animate(withDuration: 1, animations: { [weak self] in
+                    guard let self = self else {return}
                     self.webButton.setTitle("닫기", for: .normal)
                     if(self.webView.isLoading) {
                         print(true)
@@ -82,7 +87,8 @@ class SermonViewController : UIViewController {
                     self.tableView.frame.size.height = self.view.frame.height
                     self.listTableView.frame.size.height = self.view.frame.height
                     
-                }) { (_) in
+                }) { [weak self](_) in
+                    guard let self = self else {return}
                     self.webView.translatesAutoresizingMaskIntoConstraints = false
                     self.sermonView.translatesAutoresizingMaskIntoConstraints = false
                     self.scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -245,7 +251,6 @@ extension SermonViewController : UITableViewDelegate, UITableViewDataSource {
         
         if tableView == self.tableView {
             let index = sermonArr[indexPath.row]
-            
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "SermonCell", for: indexPath) as! SermonTableViewCell
             
             cell.title.text = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
@@ -315,10 +320,10 @@ extension SermonViewController {
             //아무것도 아닌경우 지정해주기
             docRef = Firestore.firestore().document("sermon/5_31/kind/morning")
         }
-        getdata()
     }
     
     func getdata() {
+        print("run")
         docRef.getDocument { [weak self](snapshot, error) in
             guard let _self = self else {return}
             if let error = error {
@@ -338,6 +343,8 @@ extension SermonViewController {
                         _self.sequenceArr.append(num)
                     }
                 }
+                _self.tableView.reloadData()
+                _self.listTableView.reloadData()
             }
         }
     }
