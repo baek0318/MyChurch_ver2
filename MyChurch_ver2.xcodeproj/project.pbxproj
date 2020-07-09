@@ -11,6 +11,7 @@
 		CECAFB9D341AE43AB8993F61 /* Pods_MyChurch_ver2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA5EF949C6F7B486632036D /* Pods_MyChurch_ver2Tests.framework */; };
 		E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AEFE2483E72300E69836 /* SermonListTableView.swift */; };
 		E800AF012483E72300E69836 /* SermonListTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E800AEFF2483E72300E69836 /* SermonListTableView.xib */; };
+		E820FB0424B2FFC700577717 /* MyChurch_ver2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820FB0324B2FFC700577717 /* MyChurch_ver2UITests.swift */; };
 		E826491524A663BE00FDC160 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826491424A663BE00FDC160 /* DayViewController.swift */; };
 		E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8467387245ED77400256D01 /* CustomMoreButton.swift */; };
 		E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846738B245EDAC800256D01 /* CustomCloseButton.swift */; };
@@ -35,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E820FB0624B2FFC700577717 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E84966B8245DC19100BBD851 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E84966BF245DC19100BBD851;
+			remoteInfo = MyChurch_ver2;
+		};
 		E84966D7245DC19300BBD851 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E84966B8245DC19100BBD851 /* Project object */;
@@ -53,6 +61,9 @@
 		D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E800AEFE2483E72300E69836 /* SermonListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonListTableView.swift; sourceTree = "<group>"; };
 		E800AEFF2483E72300E69836 /* SermonListTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonListTableView.xib; sourceTree = "<group>"; };
+		E820FB0124B2FFC700577717 /* MyChurch_ver2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyChurch_ver2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E820FB0324B2FFC700577717 /* MyChurch_ver2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChurch_ver2UITests.swift; sourceTree = "<group>"; };
+		E820FB0524B2FFC700577717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E826491424A663BE00FDC160 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		E8467387245ED77400256D01 /* CustomMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMoreButton.swift; sourceTree = "<group>"; };
 		E846738B245EDAC800256D01 /* CustomCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCloseButton.swift; sourceTree = "<group>"; };
@@ -81,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E820FAFE24B2FFC700577717 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E84966BD245DC19100BBD851 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +147,15 @@
 			path = SubMoreViewController;
 			sourceTree = "<group>";
 		};
+		E820FB0224B2FFC700577717 /* MyChurch_ver2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				E820FB0324B2FFC700577717 /* MyChurch_ver2UITests.swift */,
+				E820FB0524B2FFC700577717 /* Info.plist */,
+			);
+			path = MyChurch_ver2UITests;
+			sourceTree = "<group>";
+		};
 		E8467386245ED74500256D01 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +175,7 @@
 			children = (
 				E84966C2245DC19100BBD851 /* MyChurch_ver2 */,
 				E84966D9245DC19300BBD851 /* MyChurch_ver2Tests */,
+				E820FB0224B2FFC700577717 /* MyChurch_ver2UITests */,
 				E84966C1245DC19100BBD851 /* Products */,
 				AF8CC306361A1E9438B914B1 /* Pods */,
 				80D1AEF563D940C9266406DF /* Frameworks */,
@@ -159,6 +187,7 @@
 			children = (
 				E84966C0245DC19100BBD851 /* MyChurch_ver2.app */,
 				E84966D6245DC19300BBD851 /* MyChurch_ver2Tests.xctest */,
+				E820FB0124B2FFC700577717 /* MyChurch_ver2UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,6 +243,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E820FB0024B2FFC700577717 /* MyChurch_ver2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E820FB0A24B2FFC700577717 /* Build configuration list for PBXNativeTarget "MyChurch_ver2UITests" */;
+			buildPhases = (
+				E820FAFD24B2FFC700577717 /* Sources */,
+				E820FAFE24B2FFC700577717 /* Frameworks */,
+				E820FAFF24B2FFC700577717 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E820FB0724B2FFC700577717 /* PBXTargetDependency */,
+			);
+			name = MyChurch_ver2UITests;
+			productName = MyChurch_ver2UITests;
+			productReference = E820FB0124B2FFC700577717 /* MyChurch_ver2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E84966BF245DC19100BBD851 /* MyChurch_ver2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E84966DF245DC19300BBD851 /* Build configuration list for PBXNativeTarget "MyChurch_ver2" */;
@@ -258,10 +305,14 @@
 		E84966B8245DC19100BBD851 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "백승화";
 				TargetAttributes = {
+					E820FB0024B2FFC700577717 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = E84966BF245DC19100BBD851;
+					};
 					E84966BF245DC19100BBD851 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -286,11 +337,19 @@
 			targets = (
 				E84966BF245DC19100BBD851 /* MyChurch_ver2 */,
 				E84966D5245DC19300BBD851 /* MyChurch_ver2Tests */,
+				E820FB0024B2FFC700577717 /* MyChurch_ver2UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E820FAFF24B2FFC700577717 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E84966BE245DC19100BBD851 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +437,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E820FAFD24B2FFC700577717 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E820FB0424B2FFC700577717 /* MyChurch_ver2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E84966BC245DC19100BBD851 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,6 +479,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E820FB0724B2FFC700577717 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E84966BF245DC19100BBD851 /* MyChurch_ver2 */;
+			targetProxy = E820FB0624B2FFC700577717 /* PBXContainerItemProxy */;
+		};
 		E84966D8245DC19300BBD851 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E84966BF245DC19100BBD851 /* MyChurch_ver2 */;
@@ -439,6 +511,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E820FB0824B2FFC700577717 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WC7956454Y;
+				INFOPLIST_FILE = MyChurch_ver2UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "peach.MyChurch-ver2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyChurch_ver2;
+			};
+			name = Debug;
+		};
+		E820FB0924B2FFC700577717 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WC7956454Y;
+				INFOPLIST_FILE = MyChurch_ver2UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "peach.MyChurch-ver2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyChurch_ver2;
+			};
+			name = Release;
+		};
 		E84966DD245DC19300BBD851 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -644,6 +756,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E820FB0A24B2FFC700577717 /* Build configuration list for PBXNativeTarget "MyChurch_ver2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E820FB0824B2FFC700577717 /* Debug */,
+				E820FB0924B2FFC700577717 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E84966BB245DC19100BBD851 /* Build configuration list for PBXProject "MyChurch_ver2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

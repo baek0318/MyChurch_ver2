@@ -13,7 +13,6 @@ class MainViewController : UIViewController{
     
     @IBOutlet var calanderText: UILabel!
     @IBOutlet var sermonKind: UILabel!
-    @IBOutlet weak var sermonImage: UIImageView!
     
     @IBOutlet var todaySermonView: UIView!
     var sermonTap : UIGestureRecognizer!
@@ -33,7 +32,6 @@ class MainViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNotification()
-        sermonImage.layer.cornerRadius = 10
         todayColumn.layer.cornerRadius = 10
         todaySermonView.layer.cornerRadius = 10
         todayNewsView.layer.cornerRadius = 10

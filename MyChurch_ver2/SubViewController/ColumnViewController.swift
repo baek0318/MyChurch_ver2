@@ -13,6 +13,7 @@ class ColumnViewController : UIViewController {
     
     @IBOutlet var columnTitle: UILabel!
     @IBOutlet var textView: UITextView!
+    @IBOutlet weak var noData: UIView!
     
     var docRef : DocumentReference!
     
@@ -24,6 +25,10 @@ class ColumnViewController : UIViewController {
     
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(textView.text)
     }
 }
 //MARK:- FireStore Data read

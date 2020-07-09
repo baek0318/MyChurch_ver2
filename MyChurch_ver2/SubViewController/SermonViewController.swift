@@ -45,12 +45,6 @@ class SermonViewController : UIViewController {
         sermonKind.text = kind
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("call table")
-        //createSequence()
-        //createTable()
-    }
-    
     @objc func segmentedAction(_ respond : UISegmentedControl) {
         if self.segment.selectedSegmentIndex == 0 {
             scrollView.contentOffset.x = 0

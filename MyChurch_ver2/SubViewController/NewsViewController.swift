@@ -15,20 +15,17 @@ class NewsViewController : UIViewController {
     
     var docRef : DocumentReference?
     var newArr = [Dictionary<String, String>]()
+    @IBOutlet weak var noData: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createTable()
         getData()
     }
     
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        createTable()
-    }
-    
 }
 
 //MARK:-UITableView Delegate, Data
@@ -81,6 +78,7 @@ extension NewsViewController {
                     _self.newArr.append(data["\(i)"] ?? ["":""])
                 }
             }
+            _self.tableView.reloadData()
         })
     }
 }
