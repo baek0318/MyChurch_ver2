@@ -14,6 +14,9 @@ class MoreViewController : UIViewController {
     var data : [String] = ["차량운행","목장안내","선교현황","교회위치"]
     var saveData : String?
     
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configTalbeView()

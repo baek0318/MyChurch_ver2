@@ -32,7 +32,7 @@
 		E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */; };
 		E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */; };
 		E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */; };
-		E8E05F442463DA7B00F6FB2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8E05F432463DA7B00F6FB2B /* GoogleService-Info.plist */; };
+		E8E521DC24B82BC000E6370E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8E521DB24B82BC000E6370E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,7 @@
 		E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		E8E05F39246396F700F6FB2B /* SermonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonTableViewCell.swift; sourceTree = "<group>"; };
 		E8E05F3A246396F700F6FB2B /* SermonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonTableViewCell.xib; sourceTree = "<group>"; };
-		E8E05F432463DA7B00F6FB2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E8E521DB24B82BC000E6370E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +203,7 @@
 				E84966C9245DC19100BBD851 /* Main.storyboard */,
 				E84966CC245DC19300BBD851 /* Assets.xcassets */,
 				E84966CE245DC19300BBD851 /* LaunchScreen.storyboard */,
-				E8E05F432463DA7B00F6FB2B /* GoogleService-Info.plist */,
+				E8E521DB24B82BC000E6370E /* GoogleService-Info.plist */,
 				E84966D1245DC19300BBD851 /* Info.plist */,
 			);
 			path = MyChurch_ver2;
@@ -359,7 +359,7 @@
 				E84966CD245DC19300BBD851 /* Assets.xcassets in Resources */,
 				E84966CB245DC19100BBD851 /* Main.storyboard in Resources */,
 				E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */,
-				E8E05F442463DA7B00F6FB2B /* GoogleService-Info.plist in Resources */,
+				E8E521DC24B82BC000E6370E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +675,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC7956454Y;
 				INFOPLIST_FILE = MyChurch_ver2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -695,7 +695,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC7956454Y;
 				INFOPLIST_FILE = MyChurch_ver2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

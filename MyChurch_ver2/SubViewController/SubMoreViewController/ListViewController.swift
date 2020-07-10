@@ -18,4 +18,7 @@ class ListViewController : UIViewController {
         self.titleName.text = saveTitle
         super.viewDidLoad()
     }
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }

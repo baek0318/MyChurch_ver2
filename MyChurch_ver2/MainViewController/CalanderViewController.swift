@@ -28,6 +28,7 @@ class CalanderViewController : UIViewController {
         super.viewDidLoad()
         setTitleNDate()
         makeCalendar()
+        performSegue(withIdentifier: "DatePick", sender: nil)
     }
     
     func makeNotification() {
@@ -83,6 +84,7 @@ extension CalanderViewController {
         for i in (day[1]-1)...(day[2]-1+day[1]-1){
             number+=1
             if number == today?.day {
+                self.day = "\(today?.day ?? 0)"
                 arr[i].text = String(number)
                 arr[i].textColor = UIColor(named: "calendarText")
                 arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))

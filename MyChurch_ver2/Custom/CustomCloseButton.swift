@@ -20,9 +20,10 @@ class CustomCloseButton: UIButton {
     */
     
     override func draw(_ rect: CGRect) {
+        
         let path = UIBezierPath(ovalIn: rect)
         UIColor.lightGray.setFill()
-        path.fill()
+        path.fill(with: .color, alpha: 0.5)
         
         let closePath = UIBezierPath()
         closePath.lineWidth = 2.0

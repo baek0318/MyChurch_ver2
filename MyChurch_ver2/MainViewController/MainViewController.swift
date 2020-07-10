@@ -57,6 +57,9 @@ class MainViewController : UIViewController{
         inputDay()
     }
     
+    @IBAction func logoClick(_ sender: Any) {
+        
+    }
     
     func inputDay() {
         let dateFormat = DateFormatter() // 출력할 데이트의 형식을 지정해주는 클래스
