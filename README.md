@@ -3,6 +3,16 @@
 --------------------------------------------------------------------
 ## 앱의 목적
 
-<pre>
-sdfsdf
-</pre>
+<pre id="code_1595328689925" class="swift" data-ke-language="swift" data-ke-type="codeblock"><code>struct SmallRectangle {
+    @TwelveOrLess var height : Int
+    @TwelveOrLess var width : Int
+}
+
+var smallRectangle = SmallRectangle()
+
+print(smallRectangle.height, smallRectangle.width) //출력 : 0 0
+
+smallRectangle.height = 10
+smallRectangle.width = 13
+
+print(smallRectangle.height, smallRectangle.width) //출력 : 10 12</code></pre>
