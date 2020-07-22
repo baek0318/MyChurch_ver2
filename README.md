@@ -4,7 +4,5 @@
 ## 앱의 목적
 
 <pre>
-<code>
-dkfsdfs
-</code>
+
 </pre>
