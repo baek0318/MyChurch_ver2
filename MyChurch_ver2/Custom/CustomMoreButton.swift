@@ -22,7 +22,7 @@ class CustomMoreButton: UIButton {
     override func draw(_ rect: CGRect) {
         
         let path = UIBezierPath(rect: rect)
-        if let color = UIColor(named: "moreBotton") {
+        if let color = UIColor(named: "more") {
             color.setFill()
             path.fill()
         }else {

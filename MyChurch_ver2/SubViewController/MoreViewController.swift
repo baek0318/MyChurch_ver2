@@ -12,6 +12,7 @@ class MoreViewController : UIViewController {
     
     @IBOutlet var tableView: UITableView!
     var data : [String] = ["차량운행","목장안내","선교현황","교회위치"]
+    var icon : [UIImage] = [UIImage(named: "car")!, UIImage(named: "fence")!,UIImage(named: "international")!, UIImage(named: "location")!]
     var saveData : String?
     
     @IBAction func close(_ sender: Any) {
@@ -51,15 +52,17 @@ extension MoreViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let row = data[indexPath.row]
+        let image = icon[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        cell.title.text = row
+        cell.iconImage.image = image
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(100)
+        return CGFloat(80)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

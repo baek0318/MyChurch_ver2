@@ -14,6 +14,7 @@ class SermonViewController : UIViewController {
 
     @IBOutlet var sermonKind: UILabel!
     @IBOutlet var sermonTitle: UILabel!
+    @IBOutlet weak var BarView: UIView!
     
     @IBOutlet var webView: WKWebView!
     @IBOutlet var webButton: UIButton!
@@ -75,7 +76,7 @@ class SermonViewController : UIViewController {
                         self.webLoading.isHidden = true
                     }
                     self.webView.frame.size = CGSize(width: self.view.frame.width, height: 253)
-                    self.sermonView.frame.origin.y = 368
+                    self.sermonView.frame.origin.y = 36
                     self.sermonView.frame.size.height = self.view.frame.height
                     self.scrollView.frame.size.height = self.view.frame.height
                     self.tableView.frame.size.height = self.view.frame.height
@@ -121,7 +122,7 @@ class SermonViewController : UIViewController {
           switch UIScreen.main.nativeBounds.height {
             case 1136:
             //"iPhone se"
-            self.sermonView.frame.origin.y = 95
+            self.sermonView.frame.origin.y = 9
             case 1334:
             //"iPhone 6/6S/7/8"
             self.sermonView.frame.origin.y = 95
@@ -153,19 +154,12 @@ extension SermonViewController : WKNavigationDelegate{
         if #available(iOS 13.0, *) {
             webLoading.style = .medium
         }else {
-            webLoading.style = .whiteLarge
+            webLoading.style = .gray
         }
         
         webLoading.isHidden = false
-        
-        let webConfig = WKWebViewConfiguration()
-        webConfig.allowsInlineMediaPlayback = true
-        webConfig.mediaTypesRequiringUserActionForPlayback = []
-        
-        if let videoURL = URL(string: "https://www.youtube.com/embed/live_stream?channel=UC5PmuQM7rLMw5WwYDNCfWXw") {
-             let request:URLRequest = URLRequest(url: videoURL)
-             self.webView.load(request)
-        }
+
+        self.webView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/live_stream?channel=UC5PmuQM7rLMw5WwYDNCfWXw"))
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
@@ -317,7 +311,6 @@ extension SermonViewController {
     }
     
     func getdata() {
-        print("run")
         docRef.getDocument { [weak self](snapshot, error) in
             guard let _self = self else {return}
             if let error = error {
