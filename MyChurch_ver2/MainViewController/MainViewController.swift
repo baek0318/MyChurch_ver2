@@ -53,7 +53,7 @@ class MainViewController : UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         if identifier == "Sermon" {
-            let sc = segue.destination as! SermonViewController
+            let sc = segue.destination as! SermonViewControllerSub
             sc.kind = kindLabel.text
         }
     }
@@ -91,9 +91,9 @@ class MainViewController : UIViewController {
             let addView = self.setMoreButton()
             self.rootStackView.addArrangedSubview(addView)
             
-            UIView.animate(withDuration: 0.35) {
+            UIView.animate(withDuration: 0.35, animations: {
                 addView.isHidden = false
-            } completion: { [weak self] (_) in
+            }) { [weak self](_) in
                 guard let self = self else {return}
                 self.toggleGesture()
             }

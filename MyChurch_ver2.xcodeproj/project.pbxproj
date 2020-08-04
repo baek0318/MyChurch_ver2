@@ -15,6 +15,7 @@
 		E811ACF124C2ED51003E61B3 /* FIreStoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811ACF024C2ED51003E61B3 /* FIreStoreData.swift */; };
 		E820FB0424B2FFC700577717 /* MyChurch_ver2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820FB0324B2FFC700577717 /* MyChurch_ver2UITests.swift */; };
 		E826491524A663BE00FDC160 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826491424A663BE00FDC160 /* DayViewController.swift */; };
+		E840DE8A24D871940095DB6D /* SermonViewControllerSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840DE8924D871940095DB6D /* SermonViewControllerSub.swift */; };
 		E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8467387245ED77400256D01 /* CustomMoreButton.swift */; };
 		E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E846738B245EDAC800256D01 /* CustomCloseButton.swift */; };
 		E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966C3245DC19100BBD851 /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		E820FB0324B2FFC700577717 /* MyChurch_ver2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChurch_ver2UITests.swift; sourceTree = "<group>"; };
 		E820FB0524B2FFC700577717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E826491424A663BE00FDC160 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		E840DE8924D871940095DB6D /* SermonViewControllerSub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonViewControllerSub.swift; sourceTree = "<group>"; };
 		E8467387245ED77400256D01 /* CustomMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMoreButton.swift; sourceTree = "<group>"; };
 		E846738B245EDAC800256D01 /* CustomCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCloseButton.swift; sourceTree = "<group>"; };
 		E84966C0245DC19100BBD851 /* MyChurch_ver2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChurch_ver2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				E84966EB245DD44400BBD851 /* SermonViewController.swift */,
+				E840DE8924D871940095DB6D /* SermonViewControllerSub.swift */,
 				E84966ED245DD45500BBD851 /* NewsViewController.swift */,
 				E84966EF245DD47100BBD851 /* ColumnViewController.swift */,
 				E84966F1245DD47F00BBD851 /* MoreViewController.swift */,
@@ -511,6 +514,7 @@
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,
 				E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */,
 				E84966C6245DC19100BBD851 /* SceneDelegate.swift in Sources */,
+				E840DE8A24D871940095DB6D /* SermonViewControllerSub.swift in Sources */,
 				E826491524A663BE00FDC160 /* DayViewController.swift in Sources */,
 				E89D89AF24BA0B5E00594B83 /* OldDataViewController.swift in Sources */,
 			);
