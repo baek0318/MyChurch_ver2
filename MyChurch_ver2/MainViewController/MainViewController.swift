@@ -303,7 +303,7 @@ class MainViewController : UIViewController {
         self.dateLabel.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
         self.dateLabel.font = UIFont.boldSystemFont(ofSize: self.dateFontSize)
         
-        self.kindLabel.text = "종류"
+        self.kindLabel.text = "환영합니다"
         self.kindLabel.font = UIFont.boldSystemFont(ofSize: self.kindFontSize)
         
         titleKindLabelStackView.addArrangedSubview(dateLabel)

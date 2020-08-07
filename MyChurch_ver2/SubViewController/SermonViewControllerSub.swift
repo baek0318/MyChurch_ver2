@@ -30,6 +30,8 @@ class SermonViewControllerSub: UIViewController {
     
     var titleLabel : UILabel!
     
+    var segmentedController : UISegmentedControl!
+    
     var docRef : DocumentReference!
     var kind : String?
     var sermonArr = [Dictionary<String, String>]()
@@ -224,7 +226,7 @@ class SermonViewControllerSub: UIViewController {
     func setControlView() -> UIView {
         let containerView = UIView()
 
-        let segmentedController = UISegmentedControl(items: ["텍스트 설교","예배 순서"])
+        self.segmentedController = UISegmentedControl(items: ["텍스트 설교","예배 순서"])
         segmentedController.selectedSegmentIndex = 0
         segmentedController.addTarget(self, action: #selector(self.setSermonNSequenceView(sender:)), for: .valueChanged)
         if #available(iOS 13, *) {
@@ -311,12 +313,38 @@ class SermonViewControllerSub: UIViewController {
         self.sequenceTableView.delegate = self
         self.sequenceTableView.dataSource = self
         
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.leftSwipeGesture(recognizer:)))
+        leftSwipe.direction = .left
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.rightSwipeGesture(recognizer:)))
+        rightSwipe.direction = .right
+        
+        self.sermonTableView.addGestureRecognizer(leftSwipe)
+        self.sequenceTableView.addGestureRecognizer(rightSwipe)
+        
         self.sermonTableView.separatorStyle = .none
         self.sermonTableView.rowHeight = UITableView.automaticDimension
         self.sermonTableView.estimatedRowHeight = 600
         
         self.sequenceTableView.rowHeight = UITableView.automaticDimension
         self.sequenceTableView.estimatedRowHeight = 300
+    }
+    
+    @objc func leftSwipeGesture(recognizer : UIGestureRecognizer) {
+        self.segmentedController.selectedSegmentIndex = 1
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let self = self else {return}
+            self.sermonTableView.isHidden = true
+        }
+        self.sequenceTableView.isHidden = false
+    }
+    
+    @objc func rightSwipeGesture(recognizer : UIGestureRecognizer) {
+        self.segmentedController.selectedSegmentIndex = 0
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let self = self else {return}
+            self.sequenceTableView.isHidden = true
+        }
+        self.sermonTableView.isHidden = false
     }
 }
 

@@ -29,7 +29,6 @@
 		E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966ED245DD45500BBD851 /* NewsViewController.swift */; };
 		E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966EF245DD47100BBD851 /* ColumnViewController.swift */; };
 		E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* MoreViewController.swift */; };
-		E85BEC2F24DCFCE200F48A85 /* DeviceAdjustSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BEC2E24DCFCE200F48A85 /* DeviceAdjustSize.swift */; };
 		E8899C9624C450D0009490C6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8899C9524C450D0009490C6 /* WebKit.framework */; };
 		E89D89AF24BA0B5E00594B83 /* OldDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */; };
 		E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D89B424BDEFE300594B83 /* TableViewCell.swift */; };
@@ -94,7 +93,6 @@
 		E84966ED245DD45500BBD851 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E84966EF245DD47100BBD851 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		E84966F1245DD47F00BBD851 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
-		E85BEC2E24DCFCE200F48A85 /* DeviceAdjustSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAdjustSize.swift; sourceTree = "<group>"; };
 		E8899C9524C450D0009490C6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldDataViewController.swift; sourceTree = "<group>"; };
 		E89D89B424BDEFE300594B83 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 			children = (
 				E8FAE48D24D257980043CA62 /* ViewConstraints.swift */,
 				E8FAE48F24D257BB0043CA62 /* TranslateAutoResizing.swift */,
-				E85BEC2E24DCFCE200F48A85 /* DeviceAdjustSize.swift */,
 			);
 			path = Constraint;
 			sourceTree = "<group>";
@@ -508,7 +505,6 @@
 				E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */,
 				E811ACEF24C2E0F3003E61B3 /* WebLiveGet.swift in Sources */,
 				E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */,
-				E85BEC2F24DCFCE200F48A85 /* DeviceAdjustSize.swift in Sources */,
 				E8FAE48B24D257500043CA62 /* MainViewController.swift in Sources */,
 				E8FAE48E24D257980043CA62 /* ViewConstraints.swift in Sources */,
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,

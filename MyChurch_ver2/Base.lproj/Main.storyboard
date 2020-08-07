@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--홈-->
         <scene sceneID="NcO-Lt-jn1">
             <objects>
                 <viewController id="MBM-la-2W5" customClass="MainViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="On8-jz-LpV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="home" id="Fu6-uC-BRU"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="home" id="Fu6-uC-BRU"/>
                     <connections>
                         <segue destination="X7U-DI-iZy" kind="presentation" identifier="News" modalPresentationStyle="fullScreen" id="JoP-Ba-xUT"/>
                         <segue destination="TTo-oD-kWX" kind="presentation" identifier="Column" modalPresentationStyle="fullScreen" id="qj7-ct-ruA"/>
@@ -624,126 +624,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b45-WD-qyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-15" y="-597"/>
-        </scene>
-        <!--Sermon View Controller-->
-        <scene sceneID="DYF-Rc-kug">
-            <objects>
-                <viewController storyboardIdentifier="Sermon" id="VOZ-qk-o37" customClass="SermonViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lZ7-5F-eZO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" restorationIdentifier="TitleVIew" translatesAutoresizingMaskIntoConstraints="NO" id="2NE-RR-LGV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교 제목" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9px-cy-nUv">
-                                        <rect key="frame" x="8" y="81" width="73.666666666666671" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZR-57-w4L">
-                                        <rect key="frame" x="8.0000000000000018" y="54.000000000000007" width="29.666666666666671" height="20.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ago-zN-qDk" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                        <rect key="frame" x="333" y="44" width="34" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="ago-zN-qDk" secondAttribute="height" multiplier="1:1" id="xbb-if-Yyl"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="closeAction:" destination="VOZ-qk-o37" eventType="touchUpInside" id="E51-Q1-Iz4"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" name="moreButton"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ago-zN-qDk" secondAttribute="trailing" constant="8" id="3GC-4s-ajP"/>
-                                    <constraint firstAttribute="bottom" secondItem="9px-cy-nUv" secondAttribute="bottom" constant="8" id="9QP-GH-Wjl"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="aZR-57-w4L" secondAttribute="trailing" constant="337.33333333333331" id="IBa-YY-rub"/>
-                                    <constraint firstItem="aZR-57-w4L" firstAttribute="leading" secondItem="2NE-RR-LGV" secondAttribute="leading" constant="8" id="LXU-bd-V3o"/>
-                                    <constraint firstItem="9px-cy-nUv" firstAttribute="leading" secondItem="2NE-RR-LGV" secondAttribute="leading" constant="8" id="TnJ-Mr-Dav"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="9px-cy-nUv" secondAttribute="trailing" constant="293.33333333333331" id="XRw-fV-Xbg"/>
-                                    <constraint firstAttribute="bottom" secondItem="ago-zN-qDk" secondAttribute="bottom" constant="35" id="Y1R-4m-ggY"/>
-                                    <constraint firstItem="9px-cy-nUv" firstAttribute="top" secondItem="aZR-57-w4L" secondAttribute="bottom" constant="6.6666666666666714" id="pIH-mF-utD"/>
-                                </constraints>
-                            </view>
-                            <wkWebView contentMode="scaleToFill" restorationIdentifier="webView" translatesAutoresizingMaskIntoConstraints="NO" id="ad8-q5-ddm">
-                                <rect key="frame" x="0.0" y="113" width="375" height="211"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ad8-q5-ddm" secondAttribute="height" multiplier="16:9" id="pVY-Wi-LzI"/>
-                                </constraints>
-                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                            <view contentMode="scaleToFill" restorationIdentifier="SermonView" translatesAutoresizingMaskIntoConstraints="NO" id="qJk-gI-dKg">
-                                <rect key="frame" x="0.0" y="332" width="375" height="480"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-Ez-8B3">
-                                        <rect key="frame" x="337" y="7" width="30" height="30"/>
-                                        <state key="normal" title="닫기"/>
-                                        <connections>
-                                            <action selector="closeVideo:" destination="VOZ-qk-o37" eventType="touchUpInside" id="ogB-Nb-yIM"/>
-                                        </connections>
-                                    </button>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Tr-u3-8nY">
-                                        <rect key="frame" x="99" y="3" width="176" height="32"/>
-                                        <segments>
-                                            <segment title="텍스트"/>
-                                            <segment title="순서"/>
-                                        </segments>
-                                    </segmentedControl>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Chd-Ez-8B3" firstAttribute="top" secondItem="qJk-gI-dKg" secondAttribute="top" constant="7" id="3r6-Sn-mWa"/>
-                                    <constraint firstItem="Chd-Ez-8B3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4Tr-u3-8nY" secondAttribute="trailing" constant="8" symbolic="YES" id="92p-Tn-u5m"/>
-                                    <constraint firstAttribute="trailing" secondItem="Chd-Ez-8B3" secondAttribute="trailing" constant="8" id="9Vs-5b-VmN"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Tr-u3-8nY" secondAttribute="trailing" constant="100" id="M1W-MX-8jw"/>
-                                    <constraint firstItem="4Tr-u3-8nY" firstAttribute="top" secondItem="qJk-gI-dKg" secondAttribute="top" constant="3" id="UVz-eq-ah7"/>
-                                    <constraint firstItem="4Tr-u3-8nY" firstAttribute="leading" secondItem="qJk-gI-dKg" secondAttribute="leading" constant="99" id="n3Z-Bm-ofc"/>
-                                </constraints>
-                            </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TPK-6G-xxP">
-                                <rect key="frame" x="169" y="200" width="37" height="37"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qJk-gI-dKg" firstAttribute="leading" secondItem="2NE-RR-LGV" secondAttribute="leading" id="BeF-dO-HY4"/>
-                            <constraint firstItem="9DE-6h-x7v" firstAttribute="trailing" secondItem="2NE-RR-LGV" secondAttribute="trailing" id="CQI-tB-BpY"/>
-                            <constraint firstItem="ad8-q5-ddm" firstAttribute="top" secondItem="2NE-RR-LGV" secondAttribute="bottom" id="I9G-Or-2Jq"/>
-                            <constraint firstItem="qJk-gI-dKg" firstAttribute="leading" secondItem="ad8-q5-ddm" secondAttribute="leading" id="IWD-XB-FD1"/>
-                            <constraint firstItem="qJk-gI-dKg" firstAttribute="trailing" secondItem="ad8-q5-ddm" secondAttribute="trailing" id="Jm9-iL-mJy"/>
-                            <constraint firstItem="TPK-6G-xxP" firstAttribute="centerY" secondItem="ad8-q5-ddm" secondAttribute="centerY" id="Leh-fP-6N9"/>
-                            <constraint firstItem="2NE-RR-LGV" firstAttribute="top" secondItem="9DE-6h-x7v" secondAttribute="top" constant="-44" id="PEf-I6-mYr"/>
-                            <constraint firstItem="qJk-gI-dKg" firstAttribute="top" secondItem="ad8-q5-ddm" secondAttribute="bottom" constant="8" id="WlK-Yv-zyd"/>
-                            <constraint firstItem="TPK-6G-xxP" firstAttribute="centerX" secondItem="ad8-q5-ddm" secondAttribute="centerX" id="YRi-gJ-zIx"/>
-                            <constraint firstItem="TPK-6G-xxP" firstAttribute="top" secondItem="lZ7-5F-eZO" secondAttribute="top" constant="200" id="Z8H-wM-T7o"/>
-                            <constraint firstAttribute="bottom" secondItem="qJk-gI-dKg" secondAttribute="bottom" id="cFu-bn-Hrv"/>
-                            <constraint firstItem="2NE-RR-LGV" firstAttribute="leading" secondItem="9DE-6h-x7v" secondAttribute="leading" id="mPM-mJ-JmO"/>
-                            <constraint firstItem="9DE-6h-x7v" firstAttribute="trailing" secondItem="ad8-q5-ddm" secondAttribute="trailing" id="n5Y-ko-1dZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9DE-6h-x7v"/>
-                    </view>
-                    <connections>
-                        <outlet property="BarView" destination="2NE-RR-LGV" id="ynd-zS-nNI"/>
-                        <outlet property="segment" destination="4Tr-u3-8nY" id="bgp-eE-9th"/>
-                        <outlet property="sermonKind" destination="aZR-57-w4L" id="bTv-ci-LRR"/>
-                        <outlet property="sermonTitle" destination="9px-cy-nUv" id="Ls2-OU-h0y"/>
-                        <outlet property="sermonView" destination="qJk-gI-dKg" id="pZa-cE-doe"/>
-                        <outlet property="webButton" destination="Chd-Ez-8B3" id="yGa-xB-ANz"/>
-                        <outlet property="webLoading" destination="TPK-6G-xxP" id="aH6-dt-JEx"/>
-                        <outlet property="webView" destination="ad8-q5-ddm" id="dr6-eK-nJR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lMn-XW-v9r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1514" y="-617"/>
         </scene>
         <!--0월-->
         <scene sceneID="QX5-z1-gbB">
