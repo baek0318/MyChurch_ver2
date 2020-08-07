@@ -40,6 +40,7 @@ class SermonViewControllerSub: UIViewController {
         setTableView()
         setSuperView()
         makeFirestore()
+        getdata()
     }
     
     ///setup SuperView UI
@@ -367,6 +368,10 @@ extension SermonViewControllerSub : WKNavigationDelegate {
         self.indicator.startAnimating()
         self.indicator.isHidden = false
     }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("fail")
+    }
 }
 
 //MARK:- FireStore
@@ -379,19 +384,24 @@ extension SermonViewControllerSub {
         let component = calendar.dateComponents([.month, .day], from: date)
 
         let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
-
         if kind == "오후 예배"{
+            print("run1")
             docRef = Firestore.firestore().document("sermon/\(date_path)/kind/evening")
         }else if kind == "오전1부 예배" || kind == "오전2부 예배"{
+            print("run2")
             docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
         }else if kind == "수요예배"{
+            print("run3")
             docRef = Firestore.firestore().document("sermon/\(date_path)/kind/wednesday")
         }else if kind == "금요예배"{
+            print("run4")
             docRef = Firestore.firestore().document("sermon/\(date_path)/kind/friday")
         }else {
+            print("run5")
             //아무것도 아닌경우 지정해주기
             docRef = Firestore.firestore().document("sermon/5_31/kind/morning")
         }
+        
     }
     
     func getdata() {
@@ -403,6 +413,7 @@ extension SermonViewControllerSub {
                 guard let snapshot = snapshot, snapshot.exists else {print("there is no data");return}
                 if let data = snapshot.data() {
                     _self.titleLabel.text = data["title"] as? String
+                    
                     for i in 1..<data.count {
                         let num = data["\(i)"] as? Dictionary<String,String>
                         _self.sermonArr.append(num ?? ["" : ""])

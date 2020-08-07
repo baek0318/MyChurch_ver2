@@ -42,12 +42,23 @@ class MainViewController : UIViewController {
     @UserAutoLayout
     var rootStackView = UIStackView()
     
+    var logoSizeHeight : CGFloat!
+    var logoSizeWidth : CGFloat!
+    var rectSize : CGFloat!
+    var kindFontSize : CGFloat!
+    var dateFontSize : CGFloat!
+    var viewLabelFontSize : CGFloat!
+    var sermonFontSize : CGFloat!
+    
     var gestureToggle : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deviceCheck()
         setSuperView()
         setRootStackView()
+        setUpDateKind()
+        inputDay()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,6 +80,75 @@ class MainViewController : UIViewController {
     @objc func foregroundNotification() {
         setUpDateKind()
         inputDay()
+    }
+    
+    func deviceCheck() {
+        if UIDevice().userInterfaceIdiom == .phone {
+          switch UIScreen.main.nativeBounds.height {
+            case 1136:
+            //"iPhone se"
+                self.logoSizeHeight = 46
+                self.logoSizeWidth = 42
+                self.rectSize = 92
+                self.kindFontSize = 17
+                self.dateFontSize = 15
+                self.viewLabelFontSize = 20
+                self.sermonFontSize = 25
+            break
+            case 1334:
+            //"iPhone 6/6S/7/8"
+                self.logoSizeHeight = 56
+                self.logoSizeWidth = 52
+                self.rectSize = 112
+                self.kindFontSize = 21
+                self.dateFontSize = 19
+                self.viewLabelFontSize = 25
+                self.sermonFontSize = 35
+            break
+            case 2208:
+            //"iPhone 6+/6S+/7+/8+"
+                self.logoSizeHeight = 56
+                self.logoSizeWidth = 52
+                self.rectSize = 132
+                self.kindFontSize = 23
+                self.dateFontSize = 21
+                self.viewLabelFontSize = 30
+                self.sermonFontSize = 40
+            break
+            case 2436:
+            //"iPhone X"
+                self.logoSizeHeight = 56
+                self.logoSizeWidth = 52
+                self.rectSize = 122
+                self.kindFontSize = 23
+                self.dateFontSize = 21
+                self.viewLabelFontSize = 25
+                self.sermonFontSize = 35
+            break
+            case 2688:
+            //"iPhone 11pro Max"
+                self.logoSizeHeight = 66
+                self.logoSizeWidth = 62
+                self.rectSize = 144
+                self.kindFontSize = 25
+                self.dateFontSize = 23
+                self.viewLabelFontSize = 30
+                self.sermonFontSize = 40
+            break
+            case 1792:
+            //"iPhone 11/Xr"
+                self.logoSizeHeight = 66
+                self.logoSizeWidth = 62
+                self.rectSize = 144
+                self.kindFontSize = 25
+                self.dateFontSize = 23
+                self.viewLabelFontSize = 30
+                self.sermonFontSize = 40
+            break
+            default:
+            print("unknown")
+          }
+        }
     }
     
     //MARK: - superView
@@ -192,8 +272,8 @@ class MainViewController : UIViewController {
         titleKindLabelView.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         
         self.logoButton.setImage(UIImage(named: "church_logo"), for: .normal)
-        self.logoButton.widthAnchor.constraint(equalToConstant: 52).isActive = true
-        self.logoButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        self.logoButton.widthAnchor.constraint(equalToConstant: self.logoSizeWidth).isActive = true
+        self.logoButton.heightAnchor.constraint(equalToConstant: self.logoSizeHeight).isActive = true
         self.logoButton.setContentHuggingPriority(UILayoutPriority(48), for: .horizontal)
         self.logoButton.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh-1.0, for: .horizontal)
         self.logoButton.addTarget(self, action: #selector(self.touchLogoButton(sender:)), for: .touchUpInside)
@@ -217,14 +297,14 @@ class MainViewController : UIViewController {
         titleKindLabelStackView.axis = .vertical
         titleKindLabelStackView.spacing = 8
         
-        self.dateLabel.text = "7월 29일"
+        self.dateLabel.text = "날짜"
         self.dateLabel.textColor = .gray
         self.dateLabel.setContentCompressionResistancePriority(UILayoutPriority(749), for: .vertical)
         self.dateLabel.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
-        self.dateLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        self.dateLabel.font = UIFont.boldSystemFont(ofSize: self.dateFontSize)
         
-        self.kindLabel.text = "오전2부 예배"
-        self.kindLabel.font = UIFont.boldSystemFont(ofSize: 19)
+        self.kindLabel.text = "종류"
+        self.kindLabel.font = UIFont.boldSystemFont(ofSize: self.kindFontSize)
         
         titleKindLabelStackView.addArrangedSubview(dateLabel)
         titleKindLabelStackView.addArrangedSubview(kindLabel)
@@ -259,7 +339,7 @@ class MainViewController : UIViewController {
         
         let todaySermonLabel = UILabel()
         todaySermonLabel.text = "오늘의 설교"
-        todaySermonLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        todaySermonLabel.font = UIFont.boldSystemFont(ofSize: self.sermonFontSize)
         todaySermonLabel.translatesAutoresizingMaskIntoConstraints = false
         self.sermonView.addSubview(todaySermonLabel)
         todaySermonLabel.leadingAnchor.constraint(equalTo: self.sermonView.leadingAnchor, constant: 10).isActive = true
@@ -288,7 +368,7 @@ class MainViewController : UIViewController {
         
         let newsLabel = UILabel()
         newsLabel.text = "소식"
-        newsLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        newsLabel.font = UIFont.boldSystemFont(ofSize: self.viewLabelFontSize)
         newsLabel.translatesAutoresizingMaskIntoConstraints = false
         self.newsView.addSubview(newsLabel)
         newsLabel.leadingAnchor.constraint(equalTo: self.newsView.leadingAnchor, constant: 10).isActive = true
@@ -301,7 +381,7 @@ class MainViewController : UIViewController {
         
         let columnLabel = UILabel()
         columnLabel.text = "칼럼"
-        columnLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        columnLabel.font = UIFont.boldSystemFont(ofSize: self.viewLabelFontSize)
         columnLabel.translatesAutoresizingMaskIntoConstraints = false
         self.columnView.addSubview(columnLabel)
         columnLabel.leadingAnchor.constraint(equalTo: self.columnView.leadingAnchor, constant: 10).isActive = true
@@ -310,8 +390,8 @@ class MainViewController : UIViewController {
         newsColumnView.addArrangedSubview(self.newsView)
         newsColumnView.addArrangedSubview(self.columnView)
     
-        self.columnView.heightAnchor.constraint(equalToConstant: 122).isActive = true
-        self.columnView.widthAnchor.constraint(equalToConstant: 122).isActive = true
+        self.columnView.heightAnchor.constraint(equalToConstant: self.rectSize).isActive = true
+        self.columnView.widthAnchor.constraint(equalToConstant: self.rectSize).isActive = true
         
         return newsColumnView
     }
