@@ -63,9 +63,12 @@ extension NewsViewController {
     func getData() {
         let date = Date(timeIntervalSinceNow: 0)
         let calendar = Calendar(identifier: .gregorian)
-        let component = calendar.dateComponents([.month, .day], from: date)
+        let component = calendar.dateComponents([.month, .day, .weekday], from: date)
         
-        let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+        var date_path = "8_9"
+        if component.weekday == 1 {
+            date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+        }
         docRef = Firestore.firestore().document("news/\(date_path)")
         
         docRef?.getDocument(completion: {[weak self] (docSnapshot, error) in
@@ -79,6 +82,11 @@ extension NewsViewController {
                 }
             }
             _self.tableView.reloadData()
+            if _self.newArr.count != 0 {
+                _self.noData.isHidden = true
+            }else {
+                _self.noData.isHidden = false
+            }
         })
     }
 }

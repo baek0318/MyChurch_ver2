@@ -37,6 +37,9 @@ class MainViewController : UIViewController {
     var moreButton = UIButton()
     
     @UserAutoLayout
+    var settingButton = UIButton()
+    
+    @UserAutoLayout
     var adView = UIView()
     
     @UserAutoLayout
@@ -177,6 +180,15 @@ class MainViewController : UIViewController {
             print("unknown")
           }
         }
+        else {
+            self.logoSizeHeight = 76
+            self.logoSizeWidth = 72
+            self.rectSize = 184
+            self.kindFontSize = 30
+            self.dateFontSize = 28
+            self.viewLabelFontSize = 40
+            self.sermonFontSize = 50
+        }
     }
     
     //MARK: - superView
@@ -310,11 +322,11 @@ class MainViewController : UIViewController {
         self.moreButton.layer.cornerRadius = 10
         self.moreButton.isHidden = true
         self.moreButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        self.moreButton.setTitle("더 보기", for: .normal)
+        self.moreButton.setTitle("교회 안내", for: .normal)
         self.moreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         self.moreButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.moreButton.titleLabel?.adjustsFontForContentSizeCategory = true
-        self.moreButton.setTitleColor(.black, for: .normal)
+        self.moreButton.setTitleColor(UIColor(named: "DefaultColor"), for: .normal)
         self.moreButton.addTarget(self, action: #selector(self.touchMoreButton(sender:)), for: .touchUpInside)
         
         return self.moreButton

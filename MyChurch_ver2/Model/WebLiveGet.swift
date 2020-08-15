@@ -10,7 +10,8 @@ import Foundation
 import WebKit
 
 struct WebLiveGet {
-
+    
+    
     static func loadVideo(url : String) -> URLRequest {
         let videoURL = URL(string: url)!
         let request = URLRequest(url: videoURL)

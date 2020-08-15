@@ -14,9 +14,8 @@ class SermonViewControllerSub: UIViewController {
     
     @UserAutoLayout
     var superStackView = UIStackView()
-    
-    @UserAutoLayout
-    var liveView = WKWebView()
+
+    var liveView : WKWebView!
     
     var topView = UIView()
     
@@ -70,19 +69,24 @@ class SermonViewControllerSub: UIViewController {
         topView.setContentHuggingPriority(UILayoutPriority(251), for: .vertical)
         topView.setContentCompressionResistancePriority(UILayoutPriority(751), for: .vertical)
         
+        let webConfig = WKWebViewConfiguration()
+        webConfig.allowsInlineMediaPlayback = true
+        
+        self.liveView = WKWebView(frame: CGRect(), configuration: webConfig)
         self.liveView.navigationDelegate = self
         self.liveView.backgroundColor = .lightGray
+        self.liveView.translatesAutoresizingMaskIntoConstraints = false
         self.liveView.heightAnchor.constraint(equalTo: self.liveView.widthAnchor, multiplier: 0.56).isActive = true
-        self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/live_stream?channel=UC5PmuQM7rLMw5WwYDNCfWXw"))
+        self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/ep5yPs7prvQ?playsinline=1"))
         
         if #available(iOS 13, *) {
-            self.indicator = UIActivityIndicatorView(style: .large)
+            self.indicator = UIActivityIndicatorView(style: .medium)
             self.liveView.addSubview(indicator)
             indicator.translatesAutoresizingMaskIntoConstraints = false
             indicator.centerYAnchor.constraint(equalTo: self.liveView.centerYAnchor).isActive = true
             indicator.centerXAnchor.constraint(equalTo: self.liveView.centerXAnchor).isActive = true
         }else {
-            self.indicator = UIActivityIndicatorView(style: .whiteLarge)
+            self.indicator = UIActivityIndicatorView(style: .gray)
             self.liveView.addSubview(indicator)
             indicator.translatesAutoresizingMaskIntoConstraints = false
             indicator.centerYAnchor.constraint(equalTo: self.liveView.centerYAnchor).isActive = true
@@ -181,7 +185,7 @@ class SermonViewControllerSub: UIViewController {
         kindLabel.setContentCompressionResistancePriority(UILayoutPriority(749), for: .vertical)
         
         self.titleLabel = UILabel()
-        titleLabel.text = "대흥교회 오전2부 예배 제목은 매우 길다"
+        titleLabel.text = "제목"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.numberOfLines = 0
         
@@ -427,7 +431,7 @@ extension SermonViewControllerSub {
         }else {
             print("run5")
             //아무것도 아닌경우 지정해주기
-            docRef = Firestore.firestore().document("sermon/5_31/kind/morning")
+            docRef = Firestore.firestore().document("sermon/8_9/kind/morning")
         }
         
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreViewController : UIViewController {
+class ChurchInfoViewController : UIViewController {
     
     @IBOutlet var tableView: UITableView!
     var data : [String] = ["차량운행","목장안내","선교현황","교회위치"]
@@ -37,7 +37,7 @@ class MoreViewController : UIViewController {
 
 //MARK:- TableView Delegate & DataSource
 
-extension MoreViewController : UITableViewDelegate, UITableViewDataSource {
+extension ChurchInfoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func configTalbeView() {
         self.tableView.delegate = self

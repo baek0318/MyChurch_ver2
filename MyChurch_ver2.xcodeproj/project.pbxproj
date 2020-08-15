@@ -25,10 +25,12 @@
 		E84966CD245DC19300BBD851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E84966CC245DC19300BBD851 /* Assets.xcassets */; };
 		E84966D0245DC19300BBD851 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84966CE245DC19300BBD851 /* LaunchScreen.storyboard */; };
 		E84966DB245DC19300BBD851 /* MyChurch_ver2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966DA245DC19300BBD851 /* MyChurch_ver2Tests.swift */; };
-		E84966E9245DC5EB00BBD851 /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966E8245DC5EB00BBD851 /* CalanderViewController.swift */; };
 		E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966ED245DD45500BBD851 /* NewsViewController.swift */; };
 		E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966EF245DD47100BBD851 /* ColumnViewController.swift */; };
-		E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* MoreViewController.swift */; };
+		E84966F2245DD47F00BBD851 /* ChurchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */; };
+		E85BECAB24E642FE00F48A85 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAA24E642FE00F48A85 /* MoreViewController.swift */; };
+		E85BECAD24E6432500F48A85 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAC24E6432500F48A85 /* TabBarViewController.swift */; };
+		E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAE24E6659400F48A85 /* CalendarView.swift */; };
 		E8899C9624C450D0009490C6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8899C9524C450D0009490C6 /* WebKit.framework */; };
 		E89D89AF24BA0B5E00594B83 /* OldDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */; };
 		E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D89B424BDEFE300594B83 /* TableViewCell.swift */; };
@@ -89,10 +91,12 @@
 		E84966D6245DC19300BBD851 /* MyChurch_ver2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyChurch_ver2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84966DA245DC19300BBD851 /* MyChurch_ver2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChurch_ver2Tests.swift; sourceTree = "<group>"; };
 		E84966DC245DC19300BBD851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E84966E8245DC5EB00BBD851 /* CalanderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanderViewController.swift; sourceTree = "<group>"; };
 		E84966ED245DD45500BBD851 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E84966EF245DD47100BBD851 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
-		E84966F1245DD47F00BBD851 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchInfoViewController.swift; sourceTree = "<group>"; };
+		E85BECAA24E642FE00F48A85 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		E85BECAC24E6432500F48A85 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E85BECAE24E6659400F48A85 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		E8899C9524C450D0009490C6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldDataViewController.swift; sourceTree = "<group>"; };
 		E89D89B424BDEFE300594B83 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				E800AEFE2483E72300E69836 /* SermonListTableView.swift */,
 				E800AEFF2483E72300E69836 /* SermonListTableView.xib */,
 				E89D89B424BDEFE300594B83 /* TableViewCell.swift */,
+				E85BECAC24E6432500F48A85 /* TabBarViewController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -252,7 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				E8FAE48A24D257500043CA62 /* MainViewController.swift */,
-				E84966E8245DC5EB00BBD851 /* CalanderViewController.swift */,
+				E85BECAA24E642FE00F48A85 /* MoreViewController.swift */,
+				E85BECAE24E6659400F48A85 /* CalendarView.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -263,7 +269,7 @@
 				E840DE8924D871940095DB6D /* SermonViewControllerSub.swift */,
 				E84966ED245DD45500BBD851 /* NewsViewController.swift */,
 				E84966EF245DD47100BBD851 /* ColumnViewController.swift */,
-				E84966F1245DD47F00BBD851 /* MoreViewController.swift */,
+				E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */,
 				E826491424A663BE00FDC160 /* DayViewController.swift */,
 				E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */,
 				E8B7663524BECADC0050B394 /* OldSermonViewController.swift */,
@@ -493,10 +499,10 @@
 				E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */,
 				E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */,
 				E8B7663624BECADC0050B394 /* OldSermonViewController.swift in Sources */,
-				E84966E9245DC5EB00BBD851 /* CalanderViewController.swift in Sources */,
 				E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */,
 				E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */,
 				E811ACF124C2ED51003E61B3 /* FIreStoreData.swift in Sources */,
+				E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */,
 				E8FAE49024D257BB0043CA62 /* TranslateAutoResizing.swift in Sources */,
 				E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */,
 				E8C73343248897C2006AF284 /* LocationViewController.swift in Sources */,
@@ -504,13 +510,15 @@
 				E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */,
 				E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */,
 				E811ACEF24C2E0F3003E61B3 /* WebLiveGet.swift in Sources */,
-				E84966F2245DD47F00BBD851 /* MoreViewController.swift in Sources */,
+				E85BECAD24E6432500F48A85 /* TabBarViewController.swift in Sources */,
+				E84966F2245DD47F00BBD851 /* ChurchInfoViewController.swift in Sources */,
 				E8FAE48B24D257500043CA62 /* MainViewController.swift in Sources */,
 				E8FAE48E24D257980043CA62 /* ViewConstraints.swift in Sources */,
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,
 				E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */,
 				E84966C6245DC19100BBD851 /* SceneDelegate.swift in Sources */,
 				E840DE8A24D871940095DB6D /* SermonViewControllerSub.swift in Sources */,
+				E85BECAB24E642FE00F48A85 /* MoreViewController.swift in Sources */,
 				E826491524A663BE00FDC160 /* DayViewController.swift in Sources */,
 				E89D89AF24BA0B5E00594B83 /* OldDataViewController.swift in Sources */,
 			);
@@ -731,7 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "peach.MyChurch-ver2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -751,7 +759,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "peach.MyChurch-ver2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
