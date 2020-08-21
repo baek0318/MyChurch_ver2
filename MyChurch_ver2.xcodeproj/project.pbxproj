@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B607990BD2123E8043170F5 /* Pods_MyChurch_ver2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */; };
-		CECAFB9D341AE43AB8993F61 /* Pods_MyChurch_ver2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA5EF949C6F7B486632036D /* Pods_MyChurch_ver2Tests.framework */; };
+		0F581717B62879F1A5DD4CDA /* Pods_MyChurch_ver2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA6DFCF75B551B1528024F /* Pods_MyChurch_ver2Tests.framework */; };
+		8EDC939070C186DA96E29BCB /* Pods_MyChurch_ver2_MyChurch_ver2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0D4DC03609756B8D273E6E /* Pods_MyChurch_ver2_MyChurch_ver2UITests.framework */; };
+		AF5AC8280D9F191B76F6F366 /* Pods_MyChurch_ver2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B872E2ACA2E0FA3F261948 /* Pods_MyChurch_ver2.framework */; };
 		E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AEFE2483E72300E69836 /* SermonListTableView.swift */; };
 		E800AF012483E72300E69836 /* SermonListTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E800AEFF2483E72300E69836 /* SermonListTableView.xib */; };
 		E811ACEF24C2E0F3003E61B3 /* WebLiveGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E811ACEE24C2E0F3003E61B3 /* WebLiveGet.swift */; };
@@ -31,9 +32,19 @@
 		E85BECAB24E642FE00F48A85 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAA24E642FE00F48A85 /* MoreViewController.swift */; };
 		E85BECAD24E6432500F48A85 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAC24E6432500F48A85 /* TabBarViewController.swift */; };
 		E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAE24E6659400F48A85 /* CalendarView.swift */; };
+		E85BECB224E83E6E00F48A85 /* OfferingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECB124E83E6E00F48A85 /* OfferingView.swift */; };
+		E85BECB424E83E9500F48A85 /* ChurchVolunteerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECB324E83E9500F48A85 /* ChurchVolunteerView.swift */; };
+		E85BECB724E942F100F48A85 /* OfferingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECB524E942F100F48A85 /* OfferingTableViewCell.swift */; };
+		E85BECB824E942F100F48A85 /* OfferingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85BECB624E942F100F48A85 /* OfferingTableViewCell.xib */; };
+		E85BECDC24E9615200F48A85 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECDB24E9615200F48A85 /* LoadingView.swift */; };
+		E85BECDF24E9617100F48A85 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = E85BECDE24E9617100F48A85 /* loading.json */; };
+		E85BECE224EA3E5000F48A85 /* CalendarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECE124EA3E5000F48A85 /* CalendarTableView.swift */; };
+		E85BECE824EADBBA00F48A85 /* loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = E85BECE724EADBBA00F48A85 /* loading2.json */; };
 		E8899C9624C450D0009490C6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8899C9524C450D0009490C6 /* WebKit.framework */; };
 		E89D89AF24BA0B5E00594B83 /* OldDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */; };
 		E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D89B424BDEFE300594B83 /* TableViewCell.swift */; };
+		E8ACCA8724EE091300C72D17 /* CustomVerticalSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACCA8624EE091300C72D17 /* CustomVerticalSegue.swift */; };
+		E8ACCA8924EE096800C72D17 /* CalendarSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACCA8824EE096700C72D17 /* CalendarSubViewController.swift */; };
 		E8B7663624BECADC0050B394 /* OldSermonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B7663524BECADC0050B394 /* OldSermonViewController.swift */; };
 		E8C73343248897C2006AF284 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73342248897C2006AF284 /* LocationViewController.swift */; };
 		E8C73345248898AE006AF284 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73344248898AE006AF284 /* ListViewController.swift */; };
@@ -63,12 +74,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2BA5EF949C6F7B486632036D /* Pods_MyChurch_ver2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FD61183A9A00B9D4410BFA3 /* Pods-MyChurch_ver2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2Tests.release.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2Tests/Pods-MyChurch_ver2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		6065CC5CE79B77604AFE3FCB /* Pods-MyChurch_ver2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2.debug.xcconfig"; sourceTree = "<group>"; };
-		662B937A288669B42F1228EF /* Pods-MyChurch_ver2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2.release.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2.release.xcconfig"; sourceTree = "<group>"; };
-		7F7DB00EDF3B052FB69FFB87 /* Pods-MyChurch_ver2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2Tests/Pods-MyChurch_ver2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02D9615607107F7F62603B84 /* Pods-MyChurch_ver2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2Tests/Pods-MyChurch_ver2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		67565CF499DC5C4EC0E7C6F7 /* Pods-MyChurch_ver2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2Tests.release.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2Tests/Pods-MyChurch_ver2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		88B872E2ACA2E0FA3F261948 /* Pods_MyChurch_ver2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A471C2CB757C7C61FF8D657 /* Pods-MyChurch_ver2-MyChurch_ver2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2-MyChurch_ver2UITests.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2-MyChurch_ver2UITests/Pods-MyChurch_ver2-MyChurch_ver2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B0D4DC03609756B8D273E6E /* Pods_MyChurch_ver2_MyChurch_ver2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2_MyChurch_ver2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9687D9BADEC49060DC54B492 /* Pods-MyChurch_ver2-MyChurch_ver2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2-MyChurch_ver2UITests.release.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2-MyChurch_ver2UITests/Pods-MyChurch_ver2-MyChurch_ver2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		BA8F0A1F75CD660502F899A5 /* Pods-MyChurch_ver2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2.release.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2.release.xcconfig"; sourceTree = "<group>"; };
+		BBDA6DFCF75B551B1528024F /* Pods_MyChurch_ver2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChurch_ver2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37A830B4743FD8F73EC18E3 /* Pods-MyChurch_ver2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChurch_ver2.debug.xcconfig"; path = "Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2.debug.xcconfig"; sourceTree = "<group>"; };
 		E800AEFE2483E72300E69836 /* SermonListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SermonListTableView.swift; sourceTree = "<group>"; };
 		E800AEFF2483E72300E69836 /* SermonListTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SermonListTableView.xib; sourceTree = "<group>"; };
 		E811ACEE24C2E0F3003E61B3 /* WebLiveGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLiveGet.swift; sourceTree = "<group>"; };
@@ -97,9 +111,19 @@
 		E85BECAA24E642FE00F48A85 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		E85BECAC24E6432500F48A85 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E85BECAE24E6659400F48A85 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		E85BECB124E83E6E00F48A85 /* OfferingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingView.swift; sourceTree = "<group>"; };
+		E85BECB324E83E9500F48A85 /* ChurchVolunteerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchVolunteerView.swift; sourceTree = "<group>"; };
+		E85BECB524E942F100F48A85 /* OfferingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferingTableViewCell.swift; sourceTree = "<group>"; };
+		E85BECB624E942F100F48A85 /* OfferingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferingTableViewCell.xib; sourceTree = "<group>"; };
+		E85BECDB24E9615200F48A85 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E85BECDE24E9617100F48A85 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		E85BECE124EA3E5000F48A85 /* CalendarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableView.swift; sourceTree = "<group>"; };
+		E85BECE724EADBBA00F48A85 /* loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading2.json; sourceTree = "<group>"; };
 		E8899C9524C450D0009490C6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldDataViewController.swift; sourceTree = "<group>"; };
 		E89D89B424BDEFE300594B83 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		E8ACCA8624EE091300C72D17 /* CustomVerticalSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVerticalSegue.swift; sourceTree = "<group>"; };
+		E8ACCA8824EE096700C72D17 /* CalendarSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSubViewController.swift; sourceTree = "<group>"; };
 		E8B7663524BECADC0050B394 /* OldSermonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSermonViewController.swift; sourceTree = "<group>"; };
 		E8C73342248897C2006AF284 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		E8C73344248898AE006AF284 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EDC939070C186DA96E29BCB /* Pods_MyChurch_ver2_MyChurch_ver2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8899C9624C450D0009490C6 /* WebKit.framework in Frameworks */,
-				7B607990BD2123E8043170F5 /* Pods_MyChurch_ver2.framework in Frameworks */,
+				AF5AC8280D9F191B76F6F366 /* Pods_MyChurch_ver2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECAFB9D341AE43AB8993F61 /* Pods_MyChurch_ver2Tests.framework in Frameworks */,
+				0F581717B62879F1A5DD4CDA /* Pods_MyChurch_ver2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				E8899C9524C450D0009490C6 /* WebKit.framework */,
-				D9813A3037145FEB6ADC829C /* Pods_MyChurch_ver2.framework */,
-				2BA5EF949C6F7B486632036D /* Pods_MyChurch_ver2Tests.framework */,
+				88B872E2ACA2E0FA3F261948 /* Pods_MyChurch_ver2.framework */,
+				8B0D4DC03609756B8D273E6E /* Pods_MyChurch_ver2_MyChurch_ver2UITests.framework */,
+				BBDA6DFCF75B551B1528024F /* Pods_MyChurch_ver2Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,10 +178,12 @@
 		AF8CC306361A1E9438B914B1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6065CC5CE79B77604AFE3FCB /* Pods-MyChurch_ver2.debug.xcconfig */,
-				662B937A288669B42F1228EF /* Pods-MyChurch_ver2.release.xcconfig */,
-				7F7DB00EDF3B052FB69FFB87 /* Pods-MyChurch_ver2Tests.debug.xcconfig */,
-				5FD61183A9A00B9D4410BFA3 /* Pods-MyChurch_ver2Tests.release.xcconfig */,
+				C37A830B4743FD8F73EC18E3 /* Pods-MyChurch_ver2.debug.xcconfig */,
+				BA8F0A1F75CD660502F899A5 /* Pods-MyChurch_ver2.release.xcconfig */,
+				8A471C2CB757C7C61FF8D657 /* Pods-MyChurch_ver2-MyChurch_ver2UITests.debug.xcconfig */,
+				9687D9BADEC49060DC54B492 /* Pods-MyChurch_ver2-MyChurch_ver2UITests.release.xcconfig */,
+				02D9615607107F7F62603B84 /* Pods-MyChurch_ver2Tests.debug.xcconfig */,
+				67565CF499DC5C4EC0E7C6F7 /* Pods-MyChurch_ver2Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -199,6 +227,10 @@
 				E800AEFF2483E72300E69836 /* SermonListTableView.xib */,
 				E89D89B424BDEFE300594B83 /* TableViewCell.swift */,
 				E85BECAC24E6432500F48A85 /* TabBarViewController.swift */,
+				E85BECB524E942F100F48A85 /* OfferingTableViewCell.swift */,
+				E85BECB624E942F100F48A85 /* OfferingTableViewCell.xib */,
+				E85BECDB24E9615200F48A85 /* LoadingView.swift */,
+				E8ACCA8624EE091300C72D17 /* CustomVerticalSegue.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -228,6 +260,7 @@
 		E84966C2245DC19100BBD851 /* MyChurch_ver2 */ = {
 			isa = PBXGroup;
 			children = (
+				E85BECDD24E9616200F48A85 /* animation */,
 				E8FAE48C24D2577F0043CA62 /* Constraint */,
 				E811ACED24C2E0D8003E61B3 /* Model */,
 				E8467386245ED74500256D01 /* Custom */,
@@ -256,9 +289,9 @@
 		E84966E5245DC5BF00BBD851 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E85BECB024E83E1B00F48A85 /* SubMoreViewController */,
 				E8FAE48A24D257500043CA62 /* MainViewController.swift */,
 				E85BECAA24E642FE00F48A85 /* MoreViewController.swift */,
-				E85BECAE24E6659400F48A85 /* CalendarView.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -278,6 +311,35 @@
 			path = SubViewController;
 			sourceTree = "<group>";
 		};
+		E85BECB024E83E1B00F48A85 /* SubMoreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E85BECE024EA3DAB00F48A85 /* ClaendarSubView */,
+				E85BECAE24E6659400F48A85 /* CalendarView.swift */,
+				E85BECB124E83E6E00F48A85 /* OfferingView.swift */,
+				E85BECB324E83E9500F48A85 /* ChurchVolunteerView.swift */,
+			);
+			path = SubMoreViewController;
+			sourceTree = "<group>";
+		};
+		E85BECDD24E9616200F48A85 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				E85BECE724EADBBA00F48A85 /* loading2.json */,
+				E85BECDE24E9617100F48A85 /* loading.json */,
+			);
+			path = animation;
+			sourceTree = "<group>";
+		};
+		E85BECE024EA3DAB00F48A85 /* ClaendarSubView */ = {
+			isa = PBXGroup;
+			children = (
+				E85BECE124EA3E5000F48A85 /* CalendarTableView.swift */,
+				E8ACCA8824EE096700C72D17 /* CalendarSubViewController.swift */,
+			);
+			path = ClaendarSubView;
+			sourceTree = "<group>";
+		};
 		E8FAE48C24D2577F0043CA62 /* Constraint */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,9 +356,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E820FB0A24B2FFC700577717 /* Build configuration list for PBXNativeTarget "MyChurch_ver2UITests" */;
 			buildPhases = (
+				F7B21A833EB8D1883DC1DC6C /* [CP] Check Pods Manifest.lock */,
 				E820FAFD24B2FFC700577717 /* Sources */,
 				E820FAFE24B2FFC700577717 /* Frameworks */,
 				E820FAFF24B2FFC700577717 /* Resources */,
+				1B565FE30EACFB8CEB16FE30 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,11 +376,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E84966DF245DC19300BBD851 /* Build configuration list for PBXNativeTarget "MyChurch_ver2" */;
 			buildPhases = (
-				B88F0ADAFB10B54C04FF33DE /* [CP] Check Pods Manifest.lock */,
+				B362BEE5220324724CB1F112 /* [CP] Check Pods Manifest.lock */,
 				E84966BC245DC19100BBD851 /* Sources */,
 				E84966BD245DC19100BBD851 /* Frameworks */,
 				E84966BE245DC19100BBD851 /* Resources */,
-				A916FFDA4B03C6CB31526116 /* [CP] Embed Pods Frameworks */,
+				C5840FEEC44DC0E643F50C05 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,7 +395,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E84966E2245DC19300BBD851 /* Build configuration list for PBXNativeTarget "MyChurch_ver2Tests" */;
 			buildPhases = (
-				CD0204C69D3A70442D3A8AC1 /* [CP] Check Pods Manifest.lock */,
+				45F975CCAEE00B4F6D09731D /* [CP] Check Pods Manifest.lock */,
 				E84966D2245DC19300BBD851 /* Sources */,
 				E84966D3245DC19300BBD851 /* Frameworks */,
 				E84966D4245DC19300BBD851 /* Resources */,
@@ -401,9 +465,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E85BECB824E942F100F48A85 /* OfferingTableViewCell.xib in Resources */,
 				E84966D0245DC19300BBD851 /* LaunchScreen.storyboard in Resources */,
+				E85BECDF24E9617100F48A85 /* loading.json in Resources */,
 				E800AF012483E72300E69836 /* SermonListTableView.xib in Resources */,
 				E84966CD245DC19300BBD851 /* Assets.xcassets in Resources */,
+				E85BECE824EADBBA00F48A85 /* loading2.json in Resources */,
 				E84966CB245DC19100BBD851 /* Main.storyboard in Resources */,
 				E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */,
 				E840DE8C24D903E40095DB6D /* GoogleService-Info.plist in Resources */,
@@ -420,24 +487,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A916FFDA4B03C6CB31526116 /* [CP] Embed Pods Frameworks */ = {
+		1B565FE30EACFB8CEB16FE30 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2-MyChurch_ver2UITests/Pods-MyChurch_ver2-MyChurch_ver2UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2-MyChurch_ver2UITests/Pods-MyChurch_ver2-MyChurch_ver2UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2-MyChurch_ver2UITests/Pods-MyChurch_ver2-MyChurch_ver2UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B88F0ADAFB10B54C04FF33DE /* [CP] Check Pods Manifest.lock */ = {
+		45F975CCAEE00B4F6D09731D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyChurch_ver2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B362BEE5220324724CB1F112 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -459,7 +548,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD0204C69D3A70442D3A8AC1 /* [CP] Check Pods Manifest.lock */ = {
+		C5840FEEC44DC0E643F50C05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyChurch_ver2/Pods-MyChurch_ver2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7B21A833EB8D1883DC1DC6C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -474,7 +580,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyChurch_ver2Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MyChurch_ver2-MyChurch_ver2UITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -498,26 +604,33 @@
 			files = (
 				E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */,
 				E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */,
+				E8ACCA8724EE091300C72D17 /* CustomVerticalSegue.swift in Sources */,
 				E8B7663624BECADC0050B394 /* OldSermonViewController.swift in Sources */,
 				E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */,
 				E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */,
 				E811ACF124C2ED51003E61B3 /* FIreStoreData.swift in Sources */,
 				E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */,
 				E8FAE49024D257BB0043CA62 /* TranslateAutoResizing.swift in Sources */,
+				E85BECB224E83E6E00F48A85 /* OfferingView.swift in Sources */,
 				E846738C245EDAC800256D01 /* CustomCloseButton.swift in Sources */,
 				E8C73343248897C2006AF284 /* LocationViewController.swift in Sources */,
 				E8C73345248898AE006AF284 /* ListViewController.swift in Sources */,
 				E800AF002483E72300E69836 /* SermonListTableView.swift in Sources */,
 				E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */,
+				E85BECB424E83E9500F48A85 /* ChurchVolunteerView.swift in Sources */,
 				E811ACEF24C2E0F3003E61B3 /* WebLiveGet.swift in Sources */,
 				E85BECAD24E6432500F48A85 /* TabBarViewController.swift in Sources */,
+				E85BECE224EA3E5000F48A85 /* CalendarTableView.swift in Sources */,
 				E84966F2245DD47F00BBD851 /* ChurchInfoViewController.swift in Sources */,
 				E8FAE48B24D257500043CA62 /* MainViewController.swift in Sources */,
 				E8FAE48E24D257980043CA62 /* ViewConstraints.swift in Sources */,
 				E84966C4245DC19100BBD851 /* AppDelegate.swift in Sources */,
+				E8ACCA8924EE096800C72D17 /* CalendarSubViewController.swift in Sources */,
+				E85BECB724E942F100F48A85 /* OfferingTableViewCell.swift in Sources */,
 				E8467388245ED77400256D01 /* CustomMoreButton.swift in Sources */,
 				E84966C6245DC19100BBD851 /* SceneDelegate.swift in Sources */,
 				E840DE8A24D871940095DB6D /* SermonViewControllerSub.swift in Sources */,
+				E85BECDC24E9615200F48A85 /* LoadingView.swift in Sources */,
 				E85BECAB24E642FE00F48A85 /* MoreViewController.swift in Sources */,
 				E826491524A663BE00FDC160 /* DayViewController.swift in Sources */,
 				E89D89AF24BA0B5E00594B83 /* OldDataViewController.swift in Sources */,
@@ -569,6 +682,7 @@
 /* Begin XCBuildConfiguration section */
 		E820FB0824B2FFC700577717 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A471C2CB757C7C61FF8D657 /* Pods-MyChurch_ver2-MyChurch_ver2UITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC7956454Y;
@@ -589,6 +703,7 @@
 		};
 		E820FB0924B2FFC700577717 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9687D9BADEC49060DC54B492 /* Pods-MyChurch_ver2-MyChurch_ver2UITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC7956454Y;
@@ -725,7 +840,7 @@
 		};
 		E84966E0245DC19300BBD851 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6065CC5CE79B77604AFE3FCB /* Pods-MyChurch_ver2.debug.xcconfig */;
+			baseConfigurationReference = C37A830B4743FD8F73EC18E3 /* Pods-MyChurch_ver2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -745,7 +860,7 @@
 		};
 		E84966E1245DC19300BBD851 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 662B937A288669B42F1228EF /* Pods-MyChurch_ver2.release.xcconfig */;
+			baseConfigurationReference = BA8F0A1F75CD660502F899A5 /* Pods-MyChurch_ver2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -765,7 +880,7 @@
 		};
 		E84966E3245DC19300BBD851 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F7DB00EDF3B052FB69FFB87 /* Pods-MyChurch_ver2Tests.debug.xcconfig */;
+			baseConfigurationReference = 02D9615607107F7F62603B84 /* Pods-MyChurch_ver2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -788,7 +903,7 @@
 		};
 		E84966E4245DC19300BBD851 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FD61183A9A00B9D4410BFA3 /* Pods-MyChurch_ver2Tests.release.xcconfig */;
+			baseConfigurationReference = 67565CF499DC5C4EC0E7C6F7 /* Pods-MyChurch_ver2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -8,35 +8,57 @@
 
 import UIKit
 
+@objc protocol CalendarViewDelegate : AnyObject {
+    @objc optional func actionSegue()
+    
+    @objc optional func postDay(data : Int)
+}
+
 class CalendarView : UIView {
     
     @UserAutoLayout
-    var superScrollView = UIScrollView()
+    private var superScrollView = UIScrollView()
     
     @UserAutoLayout
-    var topView = UIView()
+    private var topView = UIView()
     
     @UserAutoLayout
-    var superStackView = UIStackView()
+    private var superStackView = UIStackView()
     
     @UserAutoLayout
-    var calenderStackView = UIStackView()
+    private var calenderStackView = UIStackView()
     
     @UserAutoLayout
-    var monthLabel = UILabel()
+    private var monthLabel = UILabel()
     
-    var calendar = Calendar(identifier: .gregorian)
+    private var calendarTableView : CalendarTableView?
     
-    let date = Date()
+    private var calendar = Calendar(identifier: .gregorian)
     
-    var day : String?
+    private let date = Date()
     
-    var month : Int?
+    private var day : String?
+    
+    private var month : Int?
+    
+    private var today : DateComponents?
+    
+    private var impactFeedbackGenerator : UIImpactFeedbackGenerator?
+    
+    weak var delegate : CalendarViewDelegate?
+    
+    //달력에서 전에 pick한 날짜를 저장하는 공간
+    private var beforeDay = UILabel()
+    
+    //오늘 날짜 UILabel을 저장하는 공간
+    private var todayLabel : UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.today = calendar.dateComponents([.day], from: date)
         self.setSuperView()
         self.setTitleNDate()
+        self.makeNotification()
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +67,7 @@ class CalendarView : UIView {
     
     
     
-    func makeNotification() {
+    private func makeNotification() {
         if #available(iOS 13.0, *){
             NotificationCenter.default.addObserver(self, selector: #selector(foregroundNotification), name: UIScene.willEnterForegroundNotification, object: nil)
         }else {
@@ -57,24 +79,17 @@ class CalendarView : UIView {
         setTitleNDate()
         //setSuperView()
     }
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //
-        guard let dv = segue.destination as? DayViewController else {return}
-        dv.dateTitle = "\(month ?? 0)월 \(day ?? "0")일"
-    }
-    */
-    func setTitleNDate() {
+    
+    private func setTitleNDate() {
         calendar.locale = Locale(identifier: "ko")
         let comp = calendar.dateComponents([.month], from: date)
         month = comp.month ?? 0
         monthLabel.text = "\(month ?? 0)월"
-        //self.navigationController?.navigationBar.topItem?.title = "\(comp.month ?? 0)월"
     }
     
     //MARK:- setSuperView
     
-    func setSuperView() {
+    private func setSuperView() {
         addSubview(superScrollView)
         let constraint = superScrollView.fullConstraintsForAnchorsTo(view: self)
         NSLayoutConstraint.activate(constraint)
@@ -89,8 +104,8 @@ class CalendarView : UIView {
         self.superStackView.widthAnchor.constraint(equalTo: self.superScrollView.widthAnchor).isActive = true
         
         monthLabel.text = "0월"
-        monthLabel.textColor = .gray
-        monthLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        monthLabel.textColor = UIColor(named: "calendarText")
+        monthLabel.font = UIFont.boldSystemFont(ofSize: 25)
         monthLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.topView.addSubview(monthLabel)
@@ -101,19 +116,13 @@ class CalendarView : UIView {
         let calenderView = setCalenderView()
         calenderView.heightAnchor.constraint(equalToConstant: 350).isActive = true
         
-        let otherView = setOtherView()
-        otherView.translatesAutoresizingMaskIntoConstraints = false
-        otherView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        
-        
         self.superStackView.addArrangedSubview(topView)
         self.superStackView.addArrangedSubview(calenderView)
-        self.superStackView.addArrangedSubview(otherView)
     }
     
     //MARK:- setCalenderView
     
-    func setCalenderView() -> UIView {
+    private func setCalenderView() -> UIView {
         self.calenderStackView.axis = .vertical
         self.calenderStackView.alignment = .fill
         self.calenderStackView.distribution = .fillEqually
@@ -141,7 +150,7 @@ class CalendarView : UIView {
         return self.calenderStackView
     }
     
-    func setDayToStackView(sView : UIStackView) {
+    private func setDayToStackView(sView : UIStackView) {
         let dayLabels = sView.arrangedSubviews as! [UILabel]
         let days = ["일","월", "화", "수", "목", "금", "토"]
         for i in 0...6 {
@@ -150,7 +159,7 @@ class CalendarView : UIView {
         }
     }
     
-    func setDayToLabel(one : UIStackView, two : UIStackView, three : UIStackView, four : UIStackView, five : UIStackView, six : UIStackView) {
+    private func setDayToLabel(one : UIStackView, two : UIStackView, three : UIStackView, four : UIStackView, five : UIStackView, six : UIStackView) {
         guard let first = one.arrangedSubviews as? [UILabel] else {return}
         guard let second = two.arrangedSubviews as? [UILabel] else {return}
         guard let third = three.arrangedSubviews as? [UILabel] else {return}
@@ -159,16 +168,20 @@ class CalendarView : UIView {
         guard let sixth = six.arrangedSubviews as? [UILabel] else {return}
         let arr = [first, second, third, fourth, fifth, sixth].flatMap { $0 }
         let day = setFirstNLastDay()
-        let today = calendar.dateComponents([.day], from: date)
         var number = 0
         
         for i in (day[1]-1)...(day[2]-1+day[1]-1){
             number+=1
-            if number == today.day {
-                self.day = "\(today.day ?? 0)"
+            if number == today?.day {
+                self.day = "\(today?.day ?? 0)"
+                self.beforeDay = arr[i]
+                self.todayLabel = arr[i]
                 arr[i].isUserInteractionEnabled = true
+                arr[i].layer.cornerRadius = 20
+                arr[i].backgroundColor = UIColor(named: "calendarBack")
+                arr[i].layer.masksToBounds = true
                 arr[i].text = String(number)
-                arr[i].textColor = UIColor(named: "calendarText")
+                arr[i].textColor = UIColor(named: "BackGround")
                 arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
             }else {
                 arr[i].isUserInteractionEnabled = true
@@ -181,13 +194,58 @@ class CalendarView : UIView {
     }
     
     @objc func tapDay(recognizer : UIGestureRecognizer) {
+        
+        impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        
+        switch recognizer.state {
+        case .began:
+            impactFeedbackGenerator?.prepare()
+        case .ended:
+            impactFeedbackGenerator?.impactOccurred()
+            impactFeedbackGenerator = nil
+        default:
+            break
+        }
         let label = recognizer.view as? UILabel
-        day = label?.text
-        print("run")
-        //performSegue(withIdentifier: "DatePick", sender: nil)
+        guard let presentDay = label else {fatalError("present Label is nil");}
+        
+        day = presentDay.text
+ 
+        if let _day = day {
+            delegate?.postDay?(data: Int(_day)!)
+        }else {
+            print("error")
+        }
+        
+        delegate?.actionSegue?()
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.beforeDay.layer.cornerRadius = 0
+            self.beforeDay.layer.masksToBounds = true
+            self.beforeDay.backgroundColor = UIColor.clear
+            self.beforeDay.textColor = UIColor(named: "DefaultColor")
+            if Int(presentDay.text!) != self.today!.day! {
+                self.todayLabel?.textColor = UIColor(named: "calendarBack")
+            }
+        })
+        self.beforeDay = presentDay
+        UIView.animate(withDuration: 0.2) {
+            if Int(presentDay.text!) == self.today!.day! {
+                presentDay.layer.cornerRadius = 20
+                presentDay.layer.masksToBounds = true
+                presentDay.backgroundColor = UIColor(named: "calendarBack")
+                presentDay.textColor = UIColor(named: "BackGround")
+            }
+            else {
+                presentDay.layer.cornerRadius = 20
+                presentDay.layer.masksToBounds = true
+                presentDay.backgroundColor = UIColor(named: "DefaultColor")
+                presentDay.textColor = UIColor(named: "BackGround")
+            }
+        }
     }
     
-    func setFirstNLastDay() -> [Int] {
+    private func setFirstNLastDay() -> [Int] {
         //여기에 기입하지 않은 날짜는 1로 초기화가 된다
         let components = calendar.dateComponents([.year, .month], from: date)
         //day를 기입하지 않아서 현재 달의 첫번쨰 날짜가 나오게 된다
@@ -205,7 +263,7 @@ class CalendarView : UIView {
         return arr
     }
     
-    func setSubCalenderView() -> UIView {
+    private func setSubCalenderView() -> UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .fill
@@ -223,28 +281,10 @@ class CalendarView : UIView {
         return stackView
     }
     
-    func setDayView() -> UIView {
+    private func setDayView() -> UIView {
         let day = UILabel()
         day.textAlignment = .center
-        
+    
         return day
     }
-    
-    //MARK:- setOtherView
-    
-    func setOtherView() -> UIView {
-        let otherView = UIView()
-        otherView.backgroundColor = .gray
-        
-        let label = UILabel()
-        label.text = "peachberry"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        otherView.addSubview(label)
-        otherView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 5).isActive = true
-        label.centerXAnchor.constraint(equalTo: otherView.centerXAnchor).isActive = true
-        
-        return otherView
-    }
-    
 }

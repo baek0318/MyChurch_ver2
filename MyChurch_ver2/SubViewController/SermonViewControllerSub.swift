@@ -31,6 +31,11 @@ class SermonViewControllerSub: UIViewController {
     
     var segmentedController : UISegmentedControl!
     
+    @UserAutoLayout
+    var mainScrollView = UIScrollView()
+    
+    var loadingView : LoadingView!
+    
     var docRef : DocumentReference!
     var kind : String?
     var sermonArr = [Dictionary<String, String>]()
@@ -48,6 +53,7 @@ class SermonViewControllerSub: UIViewController {
     func setSuperView() {
         self.view.backgroundColor = UIColor(named: "moreButton")
         self.setSuperStackView()
+        setLoadingView()
     }
     
     //MARK:- SuperStackView
@@ -79,21 +85,6 @@ class SermonViewControllerSub: UIViewController {
         self.liveView.heightAnchor.constraint(equalTo: self.liveView.widthAnchor, multiplier: 0.56).isActive = true
         self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/ep5yPs7prvQ?playsinline=1"))
         
-        if #available(iOS 13, *) {
-            self.indicator = UIActivityIndicatorView(style: .medium)
-            self.liveView.addSubview(indicator)
-            indicator.translatesAutoresizingMaskIntoConstraints = false
-            indicator.centerYAnchor.constraint(equalTo: self.liveView.centerYAnchor).isActive = true
-            indicator.centerXAnchor.constraint(equalTo: self.liveView.centerXAnchor).isActive = true
-        }else {
-            self.indicator = UIActivityIndicatorView(style: .gray)
-            self.liveView.addSubview(indicator)
-            indicator.translatesAutoresizingMaskIntoConstraints = false
-            indicator.centerYAnchor.constraint(equalTo: self.liveView.centerYAnchor).isActive = true
-            indicator.centerXAnchor.constraint(equalTo: self.liveView.centerXAnchor).isActive = true
-        }
-        
-        
         let sermonView = setSermonStackView()
         sermonView.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
         sermonView.setContentCompressionResistancePriority(UILayoutPriority(749), for: .vertical)
@@ -101,6 +92,14 @@ class SermonViewControllerSub: UIViewController {
         self.superStackView.addArrangedSubview(topView)
         self.superStackView.addArrangedSubview(self.liveView)
         self.superStackView.addArrangedSubview(sermonView)
+    }
+    
+    func setLoadingView() {
+        self.loadingView = LoadingView()
+        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
+        self.liveView.addSubview(loadingView)
+        let constraints = self.loadingView.fullConstraintsForAnchorsTo(view: self.liveView)
+        NSLayoutConstraint.activate(constraints)
     }
     
     //MARK:- TopView
@@ -209,6 +208,8 @@ class SermonViewControllerSub: UIViewController {
         controlView.translatesAutoresizingMaskIntoConstraints = false
         controlView.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
+        //self.mainScrollView.contentSize.width = self.view.frame.width*2
+        
         let tableViews = UIView()
         tableViews.addSubview(self.sequenceTableView)
         tableViews.addSubview(self.sermonTableView)
@@ -255,9 +256,11 @@ class SermonViewControllerSub: UIViewController {
         
         segmentedController.translatesAutoresizingMaskIntoConstraints = false
         segmentedController.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        segmentedController.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         
         webClolseButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.trailingAnchor.constraint(equalTo: webClolseButton.trailingAnchor, constant: 4).isActive = true
+        webClolseButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         
         return containerView
     }
@@ -268,7 +271,7 @@ class SermonViewControllerSub: UIViewController {
             sender.setTitle("열기", for: .normal)
             
             UIView.animate(withDuration: 0.25, animations: {
-                self.indicator.isHidden = true
+                self.loadingView.isHidden = true
                 self.liveView.alpha = 0
                 self.liveView.isHidden = true
             }) { [weak self] (_) in
@@ -284,7 +287,7 @@ class SermonViewControllerSub: UIViewController {
             UIView.animate(withDuration: 0.25) { [weak self] in
                 guard let self = self else {return}
                 if self.liveView.isLoading == true {
-                    self.indicator.isHidden = false
+                    self.loadingView.isHidden = false
                 }
                 self.liveView.isHidden = false
                 self.liveView.alpha = 1
@@ -392,13 +395,13 @@ extension SermonViewControllerSub : UITableViewDelegate, UITableViewDataSource {
 
 extension SermonViewControllerSub : WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.indicator.stopAnimating()
-        self.indicator.isHidden = true
+        self.loadingView.stopLoading()
+        self.loadingView.isHidden = true
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        self.indicator.startAnimating()
-        self.indicator.isHidden = false
+        self.loadingView.startLoading()
+        self.loadingView.isHidden = false
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -413,27 +416,29 @@ extension SermonViewControllerSub {
         guard let kind = kind else {return}
         let date = Date(timeIntervalSinceNow: 0)
         let calendar = Calendar(identifier: .gregorian)
-        let component = calendar.dateComponents([.month, .day], from: date)
+        let component = calendar.dateComponents([.month, .day, .weekday], from: date)
 
-        let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
-        if kind == "오후 예배"{
-            print("run1")
-            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/evening")
-        }else if kind == "오전1부 예배" || kind == "오전2부 예배"{
-            print("run2")
-            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
-        }else if kind == "수요예배"{
-            print("run3")
-            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/wednesday")
-        }else if kind == "금요예배"{
-            print("run4")
-            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/friday")
-        }else {
-            print("run5")
-            //아무것도 아닌경우 지정해주기
-            docRef = Firestore.firestore().document("sermon/8_9/kind/morning")
+        var date_path = ""
+        
+        if component.weekday! == 1 || component.weekday! == 4 {
+            date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+        }
+        else {
+            date_path = "\(String(describing: component.month!))_\(String(describing: (component.day! - (component.weekday!-1))))"
         }
         
+        if kind == "오후 예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/evening")
+        }else if kind == "오전1부 예배" || kind == "오전2부 예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+        }else if kind == "수요예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/wednesday")
+        }else if kind == "금요예배"{
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/friday")
+        }else {
+            //아무것도 아닌경우 지정해주기
+            docRef = Firestore.firestore().document("sermon/\(date_path)/kind/morning")
+        }
     }
     
     func getdata() {

@@ -75,7 +75,7 @@ class TabBarViewControl : UIView {
             button.setTitle(buttonTitle, for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
             button.addTarget(self, action: #selector(TabBarViewControl.buttonAction(sender:)), for: .touchUpInside)
-            button.setTitleColor(.gray, for: .normal)
+            button.setTitleColor(UIColor(named: "tabText"), for: .normal)
             buttons.append(button)
         }
         buttons[self.selectedIndex].setTitleColor(selectorTextColor, for: .normal)
@@ -84,7 +84,7 @@ class TabBarViewControl : UIView {
     //button의 액션을 정의해 주는 곳
     @objc func buttonAction(sender:UIButton) {
         for (buttonIndex, btn) in buttons.enumerated() {
-            btn.setTitleColor(.gray, for: .normal)
+            btn.setTitleColor(UIColor(named: "tabText"), for: .normal)
             if btn == sender  {
                 selectedIndex = buttonIndex
                 delegate?.pageChange(index: selectedIndex)
@@ -92,7 +92,7 @@ class TabBarViewControl : UIView {
                 if buttonIndex == buttons.count-1 {
                     selectorPosition = btn.intrinsicContentSize.width*(CGFloat(buttonIndex-1))
                 }
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.1) {
                     if buttonIndex == 1 {
                         self.selectorView.frame.origin.x = selectorPosition+10
                         self.selectorView.frame.size.width = btn.intrinsicContentSize.width
@@ -108,14 +108,14 @@ class TabBarViewControl : UIView {
     
     func selectorAction(index : Int) {
         for (buttonIndex, btn) in buttons.enumerated() {
-            btn.setTitleColor(.gray, for: .normal)
+            btn.setTitleColor(UIColor(named: "tabText"), for: .normal)
             if buttonIndex == index  {
                 selectedIndex = buttonIndex
                 var selectorPosition = btn.intrinsicContentSize.width*(CGFloat(buttonIndex))
                 if buttonIndex == buttons.count-1 {
                     selectorPosition = btn.intrinsicContentSize.width*(CGFloat(buttonIndex-1))
                 }
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.1) {
                     if buttonIndex == 1 {
                         self.selectorView.frame.origin.x = selectorPosition+10
                         self.selectorView.frame.size.width = btn.intrinsicContentSize.width

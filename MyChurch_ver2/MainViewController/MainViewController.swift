@@ -63,6 +63,8 @@ class MainViewController : UIViewController {
     
     var timer : Timer?
     
+    var impactFeedbackGenerator : UIImpactFeedbackGenerator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceCheck()
@@ -276,38 +278,11 @@ class MainViewController : UIViewController {
         let view1 = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width-20, height: 60))
         view1.backgroundColor = .black
         
-        let label1 = UILabel()
-        label1.text = "광고1"
-        label1.textColor = .white
-        label1.font = UIFont.preferredFont(forTextStyle: .headline)
-        label1.translatesAutoresizingMaskIntoConstraints = false
-        view1.addSubview(label1)
-        label1.leadingAnchor.constraint(equalTo: view1.leadingAnchor, constant: 3).isActive = true
-        label1.centerYAnchor.constraint(equalTo: view1.centerYAnchor).isActive = true
-        
         let view2 = UIView(frame: CGRect(x: self.view.frame.size.width-20, y: 0, width: self.view.frame.size.width-20, height: 60))
-        view2.backgroundColor = .orange
-        
-        let label2 = UILabel()
-        label2.text = "광고2"
-        label2.textColor = .white
-        label2.font = UIFont.preferredFont(forTextStyle: .headline)
-        label2.translatesAutoresizingMaskIntoConstraints = false
-        view2.addSubview(label2)
-        label2.leadingAnchor.constraint(equalTo: view2.leadingAnchor, constant: 3).isActive = true
-        label2.centerYAnchor.constraint(equalTo: view2.centerYAnchor).isActive = true
+        view2.backgroundColor = .systemGray
         
         let view3 = UIView(frame: CGRect(x: (self.view.frame.size.width-20)*2, y: 0, width: self.view.frame.size.width-20, height: 60))
-        view3.backgroundColor = .brown
-        
-        let label3 = UILabel()
-        label3.text = "광고3"
-        label3.textColor = .white
-        label3.font = UIFont.preferredFont(forTextStyle: .headline)
-        label3.translatesAutoresizingMaskIntoConstraints = false
-        view3.addSubview(label3)
-        label3.leadingAnchor.constraint(equalTo: view3.leadingAnchor, constant: 3).isActive = true
-        label3.centerYAnchor.constraint(equalTo: view3.centerYAnchor).isActive = true
+        view3.backgroundColor = .darkGray
         
         adScrollView.addSubview(view1)
         adScrollView.addSubview(view2)
@@ -392,6 +367,17 @@ class MainViewController : UIViewController {
     
     ///로고버튼의 액션을 취하는 메서드
     @objc func touchLogoButton(sender: UIButton) {
+        print(sender.state)
+        impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        switch sender.state {
+        case .highlighted:
+            print("selected")
+            impactFeedbackGenerator?.prepare()
+            impactFeedbackGenerator?.impactOccurred()
+            impactFeedbackGenerator = nil
+        default:
+            break
+        }
         performSegue(withIdentifier: "AllData", sender: nil)
     }
     

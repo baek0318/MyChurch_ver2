@@ -1,27 +1,31 @@
 //
-//  SermonTableViewCell.swift
+//  OfferingTableViewCell.swift
 //  MyChurch_ver2
 //
-//  Created by 백승화 on 2020/05/07.
+//  Created by 백승화 on 2020/08/16.
 //  Copyright © 2020 백승화. All rights reserved.
 //
 
 import UIKit
 
-class SermonTableViewCell: UITableViewCell {
+class OfferingTableViewCell: UITableViewCell {
 
-    @IBOutlet var title: UILabel!
+    @IBOutlet weak var offeringKind: UILabel!
     
-    @IBOutlet var sermonText: UILabel!
+    @IBOutlet weak var offeredName: UILabel!
+    
+    @IBOutlet weak var tableBackgroundView: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
+        tableBackgroundView.layer.cornerRadius = 15
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
         // Configure the view for the selected state
     }
     

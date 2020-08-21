@@ -65,10 +65,15 @@ extension NewsViewController {
         let calendar = Calendar(identifier: .gregorian)
         let component = calendar.dateComponents([.month, .day, .weekday], from: date)
         
-        var date_path = "8_9"
-        if component.weekday == 1 {
+        var date_path = ""
+        
+        if component.weekday! == 1 {
             date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
         }
+        else {
+            date_path = "\(String(describing: component.month!))_\(String(describing: (component.day! - (component.weekday!-1))))"
+        }
+        
         docRef = Firestore.firestore().document("news/\(date_path)")
         
         docRef?.getDocument(completion: {[weak self] (docSnapshot, error) in

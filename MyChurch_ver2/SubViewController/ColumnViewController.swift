@@ -33,9 +33,17 @@ extension ColumnViewController {
     func getData() {
         let date = Date(timeIntervalSinceNow: 0)
         let calendar = Calendar(identifier: .gregorian)
-        let component = calendar.dateComponents([.month, .day], from: date)
+        let component = calendar.dateComponents([.month, .day, .weekday], from: date)
         
-        let date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+        var date_path = ""
+        
+        if component.weekday! == 1 {
+            date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
+        }
+        else {
+            date_path = "\(String(describing: component.month!))_\(String(describing: (component.day! - (component.weekday!-1))))"
+        }
+        
         docRef = Firestore.firestore().document("columns/\(date_path)")
         
         docRef?.getDocument(completion: {[weak self] (docSnapshot, error) in
@@ -46,8 +54,16 @@ extension ColumnViewController {
                 if let data = docSnapshot?.data() as? Dictionary<String,String> {
                     _self.columnTitle.text = data["title"]?.replacingOccurrences(of: "\\n", with: "\n")
                     _self.textView.text = data["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+                    if _self.columnTitle.text == "칼럼" {
+                        _self.noData.isHidden = false
+                    }else{
+                        _self.noData.isHidden = true
+                    }
+                }else{
+                    _self.noData.isHidden = false
                 }
             }
+            
         })
     }
 }

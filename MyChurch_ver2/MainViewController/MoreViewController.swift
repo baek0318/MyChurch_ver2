@@ -23,11 +23,20 @@ class MoreViewController : UIViewController {
     
     var height : CGFloat?
     
+    var today : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setSuperStackView()
         deviceCheck()
-        setSubView()
+        setCalendarView()
+        setOfferingView()
+        setChurchVolunteerView()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let desti = segue.destination as? CalendarSubViewController
+        desti?.today = self.today
     }
     
     func deviceCheck() {
@@ -62,7 +71,7 @@ class MoreViewController : UIViewController {
           }
         }
         else {
-            
+            self.height = self.mainView.frame.height-70
         }
     }
     
@@ -119,19 +128,35 @@ class MoreViewController : UIViewController {
     
     func setMainView() -> UIView {
         self.mainView.contentSize.width = self.view.frame.width*3
+        self.mainView.showsHorizontalScrollIndicator = false
         self.mainView.isPagingEnabled = true
         self.mainView.delegate = self
         
         return self.mainView
     }
     
-    func setSubView() {
-        let width = (self.mainView.contentSize.width-30)/3
+    func setCalendarView() {
+        let width = (self.mainView.contentSize.width - 30)/3
         let view = CalendarView(frame: CGRect(x: 0, y: 0, width: width, height: height!))
+        view.delegate = self
         
         self.mainView.addSubview(view)
     }
     
+    
+    func setOfferingView() {
+        let width = (self.mainView.contentSize.width - 30)/3
+        let view = OfferingView(frame: CGRect(x: width, y: 0, width: width, height: height!))
+        
+        self.mainView.addSubview(view)
+    }
+    
+    func setChurchVolunteerView() {
+        let width = (self.mainView.contentSize.width - 30)/3
+        let view = ChurchVolunteerView(frame: CGRect(x: width*2, y: 0, width: width, height: height!))
+        
+        self.mainView.addSubview(view)
+    }
 }
 
 //MARK:- ScrollViewDelegate
@@ -149,6 +174,16 @@ extension MoreViewController : UIScrollViewDelegate {
 
 extension MoreViewController : TabBarViewControlDelegate {
     func pageChange(index: Int) {
-        self.mainView.contentOffset.x = self.view.frame.width*CGFloat(index)
+        self.mainView.contentOffset.x = (self.view.frame.width-10)*CGFloat(index)
+    }
+}
+
+extension MoreViewController : CalendarViewDelegate {
+    func actionSegue() {
+        performSegue(withIdentifier: "Vertical", sender: nil)
+    }
+    
+    func postDay(data: Int) {
+        self.today = data
     }
 }
