@@ -13,43 +13,37 @@ import UIKit
 class MainViewController : UIViewController {
     
     @UserAutoLayout
-    var dateLabel = UILabel()
+    private var dateLabel = UILabel()
     
     @UserAutoLayout
-    var kindLabel = UILabel()
+    private var kindLabel = UILabel()
     
     @UserAutoLayout
-    var logoButton = UIButton()
+    private var logoButton = UIButton()
     
     @UserAutoLayout
-    var sermonView = UIView()
-    var sermonTap : UIGestureRecognizer!
+    private var sermonView = UIView()
+    private var sermonTap : UIGestureRecognizer!
     
     @UserAutoLayout
-    var newsView = UIView()
-    var newsTap : UIGestureRecognizer!
+    private var newsView = UIView()
+    private var newsTap : UIGestureRecognizer!
     
     @UserAutoLayout
-    var columnView = UIView()
-    var columnTap : UIGestureRecognizer!
+    private var columnView = UIView()
+    private var columnTap : UIGestureRecognizer!
     
     @UserAutoLayout
-    var moreButton = UIButton()
+    private var moreButton = UIButton()
     
     @UserAutoLayout
-    var settingButton = UIButton()
+    private var settingButton = UIButton()
     
     @UserAutoLayout
-    var adView = UIView()
+    private var adView = UIView()
     
     @UserAutoLayout
-    var rootStackView = UIStackView()
-    
-    @UserAutoLayout
-    var pageControl = UIPageControl()
-    
-    @UserAutoLayout
-    var adScrollView = UIScrollView()
+    private var rootStackView = UIStackView()
     
     var logoSizeHeight : CGFloat!
     var logoSizeWidth : CGFloat!
@@ -65,6 +59,11 @@ class MainViewController : UIViewController {
     
     var impactFeedbackGenerator : UIImpactFeedbackGenerator?
     
+    var pageVC : UIPageViewController!
+    var pageAds : Array<String>!
+    var chooseIdx : Int = 0
+    var currentIdx : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         deviceCheck()
@@ -72,26 +71,6 @@ class MainViewController : UIViewController {
         setRootStackView()
         setUpDateKind()
         inputDay()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if pageControl.numberOfPages != 1 {
-            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.setPageControlAction), userInfo: nil, repeats: true)
-        }
-    }
-    
-    @objc func setPageControlAction() {
-        let page = self.pageControl.numberOfPages
-        let current = (pageControl.currentPage+1)%page
-        pageControl.currentPage = current
-        adScrollView.contentOffset.x = CGFloat(current)*(self.view.frame.size.width-20)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        if pageControl.numberOfPages != 1 {
-            timer?.invalidate()
-            timer = nil
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -243,53 +222,6 @@ class MainViewController : UIViewController {
         }
     }
     
-    ///광고 뷰를 만드는 메서드
-    func setAdView() -> UIView {
-        self.adView.backgroundColor = UIColor(named: "more")
-        self.adView.layer.cornerRadius = 10
-        self.adView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
-        pageControl.numberOfPages = 3
-        pageControl.size(forNumberOfPages: pageControl.numberOfPages)
-        
-        let scrollView = setAdScollView()
-        
-        self.adView.addSubview(scrollView)
-        self.adView.addSubview(pageControl)
-        
-        self.adView.bottomAnchor.constraint(equalTo: pageControl.bottomAnchor).isActive = true
-        pageControl.centerXAnchor.constraint(equalTo: self.adView.centerXAnchor).isActive = true
-        
-        let constraints = adScrollView.fullConstraintsForAnchorsTo(view: self.adView)
-        NSLayoutConstraint.activate(constraints)
-        
-        return self.adView
-    }
-    
-    ///adView안에 들어가는 scrollView를 생성하는 메서드
-    func setAdScollView() -> UIView {
-        adScrollView.contentSize.width = (self.view.frame.size.width-20)*CGFloat(pageControl.numberOfPages)
-        adScrollView.isPagingEnabled = true
-        adScrollView.showsHorizontalScrollIndicator = false
-        adScrollView.layer.cornerRadius = 10
-        
-        
-        
-        let view1 = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width-20, height: 60))
-        view1.backgroundColor = .black
-        
-        let view2 = UIView(frame: CGRect(x: self.view.frame.size.width-20, y: 0, width: self.view.frame.size.width-20, height: 60))
-        view2.backgroundColor = .systemGray
-        
-        let view3 = UIView(frame: CGRect(x: (self.view.frame.size.width-20)*2, y: 0, width: self.view.frame.size.width-20, height: 60))
-        view3.backgroundColor = .darkGray
-        
-        adScrollView.addSubview(view1)
-        adScrollView.addSubview(view2)
-        adScrollView.addSubview(view3)
-        
-        return adScrollView
-    }
     
     ///더보기 버튼을 만드는 메서드
     func setMoreButton() -> UIView {
@@ -324,17 +256,18 @@ class MainViewController : UIViewController {
         self.view.addSubview(self.rootStackView)
         let constraint = self.rootStackView.eachSafeAreaConstraintsForAnchorsTo(view : self.view, top: 30, leading: 10, bottom: 10, trailing: 10)
         NSLayoutConstraint.activate(constraint)
+        
         let topView = setTopView()
         
-        let adView = setAdView()
-        adView.isHidden = false
+        let adMainView = setAdView()
+        adMainView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         let mainView = setMainView()
         mainView.setContentCompressionResistancePriority(UILayoutPriority(749), for: .vertical)
         mainView.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
         
         self.rootStackView.addArrangedSubview(topView)
-        self.rootStackView.addArrangedSubview(adView)
+        self.rootStackView.addArrangedSubview(adMainView)
         self.rootStackView.addArrangedSubview(mainView)
     }
     
@@ -402,6 +335,64 @@ class MainViewController : UIViewController {
         titleKindLabelStackView.addArrangedSubview(kindLabel)
         
         return titleKindLabelStackView
+    }
+    
+    //MARK: - setAdView
+    
+    var indexNum = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.autoSwipe), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc func autoSwipe() {
+        if indexNum < pageAds.count-1 {
+            indexNum += 1
+            pageVC.setViewControllers([setViewControllers(index: indexNum)], direction: .forward, animated: true)
+        }else {
+            indexNum = 0
+            pageVC.setViewControllers([setViewControllers(index: indexNum)], direction: .forward, animated: true)
+        }
+    }
+    
+    ///광고부분을 정의하는 메인 메서드
+    func setAdView() -> UIView {
+        self.adView.layer.cornerRadius = 10
+        self.adView.layer.masksToBounds = true
+        
+        self.pageAds = ["ad3","ad1","ad2"]
+        
+        self.pageVC = self.storyboard?.instantiateViewController(withIdentifier: "AdMainViewController") as! AdMainViewController
+        pageVC.dataSource = self
+        pageVC.delegate = self
+        pageVC.isDoubleSided = true
+        
+        let startVC = self.setViewControllers(index: chooseIdx)
+        let viewControllers = [startVC]
+        
+        self.pageVC.setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
+        self.addChild(pageVC)
+        self.adView.addSubview(pageVC.view)
+        
+        self.pageVC.view.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = self.pageVC.view.fullConstraintsForAnchorsTo(view: self.adView)
+        NSLayoutConstraint.activate(constraints)
+        
+        return self.adView
+    }
+    
+    ///광고부분에 들어갈 AdContentViewController를 정의하는 메서드
+    func setViewControllers(index : Int) -> AdContentViewController {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AdContentViewController") as! AdContentViewController
+        vc.idx = index
+        vc.imgStr = pageAds[index]
+        
+        return vc
     }
     
     //MARK: - setMainView

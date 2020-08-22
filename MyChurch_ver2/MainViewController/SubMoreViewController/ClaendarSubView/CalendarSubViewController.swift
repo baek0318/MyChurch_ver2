@@ -16,6 +16,7 @@ class CalendarSubViewController : UIViewController {
     private var endP : CGFloat = 0
     var today : Int?
     private var originPos : CGFloat?
+    private var tapGesture : UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,12 @@ class CalendarSubViewController : UIViewController {
     }
     
     func setSuperView() {
+        let tapView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        tapView.backgroundColor = UIColor(white: 0, alpha: 0)
+        view.addSubview(tapView)
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapClose(recognizer:)))
+        tapView.addGestureRecognizer(tapGesture!)
+        
         let frame = CGRect(x: 0, y: 70, width: self.view.frame.width, height: self.view.frame.height-70)
         self.subView = CalendarTableView(frame: frame,day: today ?? 0)
         subView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +57,16 @@ class CalendarSubViewController : UIViewController {
     }
     
     @objc func close(sender : UIButton ) {
+        UIView.animate(withDuration: 0.25 , animations: {
+            self.subView.transform = CGAffineTransform(translationX: 0, y: 600)
+            self.view.alpha = 0
+        }) { (_) in
+            self.dismiss(animated: false )
+        }
+    }
+    
+    @objc func tapClose(recognizer : UIGestureRecognizer) {
+        
         UIView.animate(withDuration: 0.25 , animations: {
             self.subView.transform = CGAffineTransform(translationX: 0, y: 600)
             self.view.alpha = 0
@@ -86,6 +103,6 @@ class CalendarSubViewController : UIViewController {
     
 }
 
-extension UIPanGestureRecognizer {
+extension UITapGestureRecognizer {
     
 }

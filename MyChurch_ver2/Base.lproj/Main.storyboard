@@ -77,6 +77,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pAT-ti-tVY" firstAttribute="top" secondItem="uDd-WU-4aO" secondAttribute="bottom" constant="8" id="0j4-Rx-BGK"/>
+                                                <constraint firstItem="t4Z-ud-HS2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uDd-WU-4aO" secondAttribute="trailing" constant="8" symbolic="YES" id="2TP-fi-WIv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="pAT-ti-tVY" secondAttribute="trailing" constant="7" id="3WR-GP-Abk"/>
                                                 <constraint firstAttribute="trailing" secondItem="t4Z-ud-HS2" secondAttribute="trailing" constant="14.999999999999943" id="9nJ-FL-cnn"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="pAT-ti-tVY" secondAttribute="bottom" id="F6A-Xy-tyb"/>
@@ -678,6 +679,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ei7-DF-Lhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1532" y="-597"/>
+        </scene>
+        <!--Ad Main View Controller-->
+        <scene sceneID="9Xa-q1-eEF">
+            <objects>
+                <pageViewController storyboardIdentifier="AdMainViewController" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zWx-qf-lwg" customClass="AdMainViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KwK-ew-hud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3097" y="-602"/>
+        </scene>
+        <!--Ad Content View Controller-->
+        <scene sceneID="26j-Bd-TvC">
+            <objects>
+                <viewController storyboardIdentifier="AdContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k82-3e-Htr" customClass="AdContentViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3ya-pV-UmW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="tSP-Vo-hMt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xL-o3-pOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3916" y="-597"/>
         </scene>
     </scenes>
     <resources>

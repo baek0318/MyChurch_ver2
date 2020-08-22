@@ -186,6 +186,7 @@ class CalendarView : UIView {
             }else {
                 arr[i].isUserInteractionEnabled = true
                 arr[i].text = String(number)
+                arr[i].textColor = .lightGray
                 arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
             }
         }
@@ -223,7 +224,7 @@ class CalendarView : UIView {
             self.beforeDay.layer.cornerRadius = 0
             self.beforeDay.layer.masksToBounds = true
             self.beforeDay.backgroundColor = UIColor.clear
-            self.beforeDay.textColor = UIColor(named: "DefaultColor")
+            self.beforeDay.textColor = .lightGray
             if Int(presentDay.text!) != self.today!.day! {
                 self.todayLabel?.textColor = UIColor(named: "calendarBack")
             }
