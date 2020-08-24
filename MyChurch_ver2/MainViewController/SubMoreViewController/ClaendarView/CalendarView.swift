@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @objc protocol CalendarViewDelegate : AnyObject {
     @objc optional func actionSegue()
@@ -45,6 +46,12 @@ class CalendarView : UIView {
     
     private var impactFeedbackGenerator : UIImpactFeedbackGenerator?
     
+    private var scheduledData = [Int]()
+    
+    private var dayLabels : [UILabel]!
+    
+    private var loadingView : LoadingView!
+    
     weak var delegate : CalendarViewDelegate?
     
     //달력에서 전에 pick한 날짜를 저장하는 공간
@@ -55,6 +62,7 @@ class CalendarView : UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.getScheduleData()
         self.today = calendar.dateComponents([.day], from: date)
         self.setSuperView()
         self.setTitleNDate()
@@ -64,8 +72,6 @@ class CalendarView : UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
     private func makeNotification() {
         if #available(iOS 13.0, *){
@@ -77,7 +83,6 @@ class CalendarView : UIView {
     
     @objc func foregroundNotification() {
         setTitleNDate()
-        //setSuperView()
     }
     
     private func setTitleNDate() {
@@ -115,6 +120,16 @@ class CalendarView : UIView {
         
         let calenderView = setCalenderView()
         calenderView.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        self.loadingView = LoadingView(name: "loading2")
+        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        calenderView.addSubview(loadingView)
+        loadingView.centerYAnchor.constraint(equalTo: calenderView.centerYAnchor).isActive = true
+        loadingView.centerXAnchor.constraint(equalTo: calenderView.centerXAnchor).isActive = true
+        loadingView.heightAnchor.constraint(equalTo: loadingView.widthAnchor).isActive = true
+        loadingView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        loadingView.startLoading()
         
         self.superStackView.addArrangedSubview(topView)
         self.superStackView.addArrangedSubview(calenderView)
@@ -159,6 +174,31 @@ class CalendarView : UIView {
         }
     }
     
+    private func setSubCalenderView() -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        
+        stackView.addArrangedSubview(setDayView())
+        stackView.addArrangedSubview(setDayView())
+        stackView.addArrangedSubview(setDayView())
+        stackView.addArrangedSubview(setDayView())
+        stackView.addArrangedSubview(setDayView())
+        stackView.addArrangedSubview(setDayView())
+        stackView.addArrangedSubview(setDayView())
+        
+        return stackView
+    }
+    
+    private func setDayView() -> UIView {
+        let day = UILabel()
+        day.textAlignment = .center
+    
+        return day
+    }
+    
     private func setDayToLabel(one : UIStackView, two : UIStackView, three : UIStackView, four : UIStackView, five : UIStackView, six : UIStackView) {
         guard let first = one.arrangedSubviews as? [UILabel] else {return}
         guard let second = two.arrangedSubviews as? [UILabel] else {return}
@@ -166,7 +206,10 @@ class CalendarView : UIView {
         guard let fourth = four.arrangedSubviews as? [UILabel] else {return}
         guard let fifth = five.arrangedSubviews as? [UILabel] else {return}
         guard let sixth = six.arrangedSubviews as? [UILabel] else {return}
-        let arr = [first, second, third, fourth, fifth, sixth].flatMap { $0 }
+        dayLabels = [first, second, third, fourth, fifth, sixth].flatMap { $0 }
+    }
+    
+    private func setDay(dayLabels : [UILabel], scheduledData : [Int]) {
         let day = setFirstNLastDay()
         var number = 0
         
@@ -174,24 +217,28 @@ class CalendarView : UIView {
             number+=1
             if number == today?.day {
                 self.day = "\(today?.day ?? 0)"
-                self.beforeDay = arr[i]
-                self.todayLabel = arr[i]
-                arr[i].isUserInteractionEnabled = true
-                arr[i].layer.cornerRadius = 20
-                arr[i].backgroundColor = UIColor(named: "calendarBack")
-                arr[i].layer.masksToBounds = true
-                arr[i].text = String(number)
-                arr[i].textColor = UIColor(named: "BackGround")
-                arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
+                self.beforeDay = dayLabels[i]
+                self.todayLabel = dayLabels[i]
+                dayLabels[i].isUserInteractionEnabled = true
+                dayLabels[i].layer.cornerRadius = 20
+                dayLabels[i].backgroundColor = UIColor(named: "calendarBack")
+                dayLabels[i].layer.masksToBounds = true
+                dayLabels[i].text = String(number)
+                dayLabels[i].textColor = UIColor(named: "BackGround")
+                dayLabels[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
             }else {
-                arr[i].isUserInteractionEnabled = true
-                arr[i].text = String(number)
-                arr[i].textColor = .lightGray
-                arr[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
+                dayLabels[i].isUserInteractionEnabled = true
+                dayLabels[i].text = String(number)
+                if scheduledData.contains(number) {
+                    dayLabels[i].textColor = UIColor(named: "DefaultColor")
+                }
+                else {
+                    dayLabels[i].textColor = .lightGray
+                }
+                dayLabels[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDay(recognizer:))))
             }
         }
         number = 0
-        
     }
     
     @objc func tapDay(recognizer : UIGestureRecognizer) {
@@ -224,7 +271,11 @@ class CalendarView : UIView {
             self.beforeDay.layer.cornerRadius = 0
             self.beforeDay.layer.masksToBounds = true
             self.beforeDay.backgroundColor = UIColor.clear
-            self.beforeDay.textColor = .lightGray
+            if self.scheduledData.contains(Int(self.beforeDay.text!)!) {
+                self.beforeDay.textColor = UIColor(named: "DefaultColor")
+            }else {
+                self.beforeDay.textColor = .lightGray
+            }
             if Int(presentDay.text!) != self.today!.day! {
                 self.todayLabel?.textColor = UIColor(named: "calendarBack")
             }
@@ -264,28 +315,38 @@ class CalendarView : UIView {
         return arr
     }
     
-    private func setSubCalenderView() -> UIView {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 0
+    private func setMonthNDay() -> DateComponents {
+        let calednar = Calendar(identifier: .gregorian)
+        let date = Date()
+        let components = calednar.dateComponents([.month, .day,.weekday], from: date)
         
-        stackView.addArrangedSubview(setDayView())
-        stackView.addArrangedSubview(setDayView())
-        stackView.addArrangedSubview(setDayView())
-        stackView.addArrangedSubview(setDayView())
-        stackView.addArrangedSubview(setDayView())
-        stackView.addArrangedSubview(setDayView())
-        stackView.addArrangedSubview(setDayView())
-        
-        return stackView
+        return components
     }
-    
-    private func setDayView() -> UIView {
-        let day = UILabel()
-        day.textAlignment = .center
-    
-        return day
+}
+
+//MARK:- getScheduleData
+
+extension CalendarView {
+    func getScheduleData() {
+        let month = setMonthNDay().month!
+        let db = Firestore.firestore()
+        for i in 1...31 {
+            db.document("schedule/\(month)/schedules/\(i)").addSnapshotListener { [weak self] (snapshot, error) in
+                guard let _self = self else {return}
+                if let _error = error {
+                    fatalError(_error.localizedDescription)
+                }else {
+                    guard let snapshot = snapshot else {return}
+                    if snapshot.exists {
+                        _self.scheduledData.append(i)
+                    }
+                }
+                if i == 31 {
+                    _self.loadingView.stopLoading()
+                    _self.loadingView.isHidden = true
+                    _self.setDay(dayLabels: _self.dayLabels, scheduledData: _self.scheduledData)
+                }
+            }
+        }
     }
 }

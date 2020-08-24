@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseFirestore
+import Firebase
 
 class CalendarTableView: UIView {
     
@@ -20,15 +20,12 @@ class CalendarTableView: UIView {
     
     private var switchTap : Bool?
     
-    var docRef : DocumentReference!
-    
-    
+    var scheduledData = [Dictionary<String, String>]()
     
     convenience init(frame : CGRect, day : Int) {
         self.init(frame: frame)
         self.today = day
         setCalendarTableView()
-        
     }
     
     override func layoutSubviews() {
@@ -80,16 +77,21 @@ class CalendarTableView: UIView {
 extension CalendarTableView : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return scheduledData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = calendarTable?.dequeueReusableCell(withIdentifier: "CalendarCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "CalendarCell")
+     
+        let data = scheduledData[indexPath.row]
         
-        cell.textLabel?.text = "예꿈예닮 수련회"
-        cell.detailTextLabel?.text = "오후1시 - 6시"
+        let cell = calendarTable?.dequeueReusableCell(withIdentifier: "CalendarCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "CalendarCell")
+            
+        cell.textLabel?.text = data["title"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.detailTextLabel?.text = data["time"]?.replacingOccurrences(of: "\\n", with: "\n")
         cell.detailTextLabel?.textColor = .gray
+            
         return cell
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -120,32 +122,3 @@ extension UIView {
     }
 }
 
-/*
-extension CalendarTableView {
-    func getData() {
-        let date = Date(timeIntervalSinceNow: 0)
-        let calendar = Calendar(identifier: .gregorian)
-        let component = calendar.dateComponents([.month, .day, .weekday], from: date)
-        
-        var date_path = ""
-        
-        if component.weekday! == 1 {
-            date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
-        }
-        else {
-            date_path = "\(String(describing: component.month!))_\(String(describing: (component.day! - (component.weekday!-1))))"
-        }
-        
-        docRef = Firestore.firestore().document("news/\(date_path)")
-        
-        docRef?.getDocument(completion: {[weak self] (docSnapshot, error) in
-            guard let _self = self else {return}
-            if let error = error {
-                print(error.localizedDescription)
-            }else {
-                
-            }
-        })
-    }
-}
-*/

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MoreViewController : UIViewController {
     
@@ -19,11 +20,19 @@ class MoreViewController : UIViewController {
     @UserAutoLayout
     var mainView = UIScrollView()
     
+    var offeringView : OfferingView!
+    
+    var calendarView : CalendarView!
+    
+    var churchVolunteer : ChurchVolunteerView!
+    
     var tabBar : TabBarViewControl!
     
     var height : CGFloat?
     
     var today : Int?
+    
+    var docRef : DocumentReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +44,10 @@ class MoreViewController : UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let desti = segue.destination as? CalendarSubViewController
-        desti?.today = self.today
+        if segue.identifier == "Vertical" {
+            let desti = segue.destination as? CalendarSubViewController
+            desti?.today = self.today
+        }
     }
     
     func deviceCheck() {
@@ -137,25 +148,37 @@ class MoreViewController : UIViewController {
     
     func setCalendarView() {
         let width = (self.mainView.contentSize.width - 30)/3
-        let view = CalendarView(frame: CGRect(x: 0, y: 0, width: width, height: height!))
-        view.delegate = self
+        self.calendarView = CalendarView(frame: CGRect(x: 0, y: 0, width: width, height: height!))
+        self.calendarView.delegate = self
         
-        self.mainView.addSubview(view)
+        self.mainView.addSubview(self.calendarView)
     }
     
     
     func setOfferingView() {
         let width = (self.mainView.contentSize.width - 30)/3
-        let view = OfferingView(frame: CGRect(x: width, y: 0, width: width, height: height!))
+        self.offeringView = OfferingView(frame: CGRect(x: width, y: 0, width: width, height: height!))
         
-        self.mainView.addSubview(view)
+        self.mainView.addSubview(self.offeringView)
+        
+        getOfferingData()
     }
     
     func setChurchVolunteerView() {
         let width = (self.mainView.contentSize.width - 30)/3
-        let view = ChurchVolunteerView(frame: CGRect(x: width*2, y: 0, width: width, height: height!))
+        self.churchVolunteer = ChurchVolunteerView(frame: CGRect(x: width*2, y: 0, width: width, height: height!))
         
-        self.mainView.addSubview(view)
+        self.mainView.addSubview(self.churchVolunteer)
+        
+        getChurchVolunteerData()
+    }
+    
+    func setMonthNDay() -> DateComponents {
+        let calednar = Calendar(identifier: .gregorian)
+        let date = Date()
+        let components = calednar.dateComponents([.month, .day,.weekday], from: date)
+        
+        return components
     }
 }
 
@@ -185,5 +208,79 @@ extension MoreViewController : CalendarViewDelegate {
     
     func postDay(data: Int) {
         self.today = data
+    }
+}
+
+//MARK:- getOfferingData
+
+extension MoreViewController {
+    func getOfferingData() {
+        let db = Firestore.firestore()
+        let month = setMonthNDay().month!
+        let day = setMonthNDay().day!
+        let weekday = setMonthNDay().weekday!
+        
+        var date_path = ""
+        
+        if weekday == 1 || weekday == 4 {
+            date_path = "\(month)_\(day)"
+        }
+        else {
+            date_path = "\(month)_\((day - (weekday-1)))"
+        }
+        
+        db.document("offering/\(date_path)").getDocument { [weak self] (snapshot, error) in
+            guard let _self = self else {return}
+            if let _error = error {
+                fatalError(_error.localizedDescription)
+            }else {
+                guard let snapshot = snapshot, snapshot.exists else {print("there is no data");return}
+                if let data = snapshot.data() as? Dictionary<String, Dictionary<String, String>> {
+                    for i in 1..<data.count {
+                        if let num = data["\(i)"] {
+                            _self.offeringView.offeredData.append(num)
+                        }
+                    }
+                }
+            }
+            _self.offeringView.getOfferingTableView().reloadData()
+        }
+    }
+}
+
+//MARK:- getChurchVolunteerData
+
+extension MoreViewController {
+    func getChurchVolunteerData() {
+        let db = Firestore.firestore()
+        let month = setMonthNDay().month!
+        let day = setMonthNDay().day!
+        let weekday = setMonthNDay().weekday!
+        
+        var date_path = ""
+        
+        if weekday == 1 || weekday == 4 {
+            date_path = "\(month)_\(day)"
+        }
+        else {
+            date_path = "\(month)_\((day - (weekday-1)))"
+        }
+        
+        db.document("volunteer/\(date_path)").getDocument { [weak self] (snapshot, error) in
+            guard let _self = self else {return}
+            if let _error = error {
+                fatalError(_error.localizedDescription)
+            }else {
+                guard let snapshot = snapshot, snapshot.exists else {print("there is no data");return}
+                if let data = snapshot.data() as? Dictionary<String, Dictionary<String, String>> {
+                    for i in 1...data.count {
+                        if let num = data["\(i)"] {
+                            _self.churchVolunteer.churchVolunteeredData.append(num)
+                        }
+                    }
+                }
+            }
+            _self.churchVolunteer.getChurchVolunteerTable().reloadData()
+        }
     }
 }

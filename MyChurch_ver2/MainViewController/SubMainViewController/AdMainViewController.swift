@@ -15,6 +15,4 @@ class AdMainViewController: UIPageViewController {
         self.view.backgroundColor = .gray
         // Do any additional setup after loading the view.
     }
-
-   
 }

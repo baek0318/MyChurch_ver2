@@ -8,8 +8,6 @@
 
 import UIKit
 
-import UIKit
-
 class MainViewController : UIViewController {
     
     @UserAutoLayout
@@ -52,6 +50,7 @@ class MainViewController : UIViewController {
     var dateFontSize : CGFloat!
     var viewLabelFontSize : CGFloat!
     var sermonFontSize : CGFloat!
+    var moreNadHeight : CGFloat!
     
     var gestureToggle : Bool = true
     
@@ -106,6 +105,7 @@ class MainViewController : UIViewController {
                 self.dateFontSize = 15
                 self.viewLabelFontSize = 20
                 self.sermonFontSize = 25
+                self.moreNadHeight = 50
             break
             case 1334:
             //"iPhone 6/6S/7/8"
@@ -116,6 +116,7 @@ class MainViewController : UIViewController {
                 self.dateFontSize = 19
                 self.viewLabelFontSize = 25
                 self.sermonFontSize = 35
+                self.moreNadHeight = 60
             break
             case 2208:
             //"iPhone 6+/6S+/7+/8+"
@@ -126,6 +127,7 @@ class MainViewController : UIViewController {
                 self.dateFontSize = 21
                 self.viewLabelFontSize = 30
                 self.sermonFontSize = 40
+                self.moreNadHeight = 60
             break
             case 2436:
             //"iPhone X"
@@ -136,6 +138,7 @@ class MainViewController : UIViewController {
                 self.dateFontSize = 21
                 self.viewLabelFontSize = 25
                 self.sermonFontSize = 35
+                self.moreNadHeight = 60
             break
             case 2688:
             //"iPhone 11pro Max"
@@ -146,6 +149,7 @@ class MainViewController : UIViewController {
                 self.dateFontSize = 23
                 self.viewLabelFontSize = 30
                 self.sermonFontSize = 40
+                self.moreNadHeight = 60
             break
             case 1792:
             //"iPhone 11/Xr"
@@ -156,6 +160,7 @@ class MainViewController : UIViewController {
                 self.dateFontSize = 23
                 self.viewLabelFontSize = 30
                 self.sermonFontSize = 40
+                self.moreNadHeight = 60
             break
             default:
             print("unknown")
@@ -169,6 +174,7 @@ class MainViewController : UIViewController {
             self.dateFontSize = 28
             self.viewLabelFontSize = 40
             self.sermonFontSize = 50
+            self.moreNadHeight = 60
         }
     }
     
@@ -228,7 +234,7 @@ class MainViewController : UIViewController {
         self.moreButton.backgroundColor = UIColor(named: "more")
         self.moreButton.layer.cornerRadius = 10
         self.moreButton.isHidden = true
-        self.moreButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        self.moreButton.heightAnchor.constraint(equalToConstant: self.moreNadHeight).isActive = true
         self.moreButton.setTitle("교회 안내", for: .normal)
         self.moreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         self.moreButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -260,7 +266,7 @@ class MainViewController : UIViewController {
         let topView = setTopView()
         
         let adMainView = setAdView()
-        adMainView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        adMainView.heightAnchor.constraint(equalToConstant: self.moreNadHeight).isActive = true
         
         let mainView = setMainView()
         mainView.setContentCompressionResistancePriority(UILayoutPriority(749), for: .vertical)
@@ -339,8 +345,6 @@ class MainViewController : UIViewController {
     
     //MARK: - setAdView
     
-    var indexNum = 0
-    
     override func viewWillAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.autoSwipe), userInfo: nil, repeats: true)
     }
@@ -351,12 +355,12 @@ class MainViewController : UIViewController {
     }
     
     @objc func autoSwipe() {
-        if indexNum < pageAds.count-1 {
-            indexNum += 1
-            pageVC.setViewControllers([setViewControllers(index: indexNum)], direction: .forward, animated: true)
+        if currentIdx < pageAds.count-1 {
+            currentIdx += 1
+            pageVC.setViewControllers([setViewControllers(index: currentIdx)], direction: .forward, animated: true)
         }else {
-            indexNum = 0
-            pageVC.setViewControllers([setViewControllers(index: indexNum)], direction: .forward, animated: true)
+            currentIdx = 0
+            pageVC.setViewControllers([setViewControllers(index: currentIdx)], direction: .forward, animated: true)
         }
     }
     

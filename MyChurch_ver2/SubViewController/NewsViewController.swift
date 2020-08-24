@@ -81,17 +81,16 @@ extension NewsViewController {
             if let error = error {
                 print(error.localizedDescription)
             }else {
-                let data = docSnapshot?.data() as? Dictionary<String, Dictionary<String, String>> ?? ["":["":""]]
-                for i in 1...data.count {
-                    _self.newArr.append(data["\(i)"] ?? ["":""])
+                guard let docSnapshot = docSnapshot, docSnapshot.exists else {_self.noData.isHidden = false ;return}
+                if let data = docSnapshot.data() as? Dictionary<String, Dictionary<String, String>> {
+                    for i in 1...data.count {
+                        if let newData = data["\(i)"] {
+                            _self.newArr.append(newData)
+                        }
+                    }
                 }
             }
             _self.tableView.reloadData()
-            if _self.newArr.count != 0 {
-                _self.noData.isHidden = true
-            }else {
-                _self.noData.isHidden = false
-            }
         })
     }
 }

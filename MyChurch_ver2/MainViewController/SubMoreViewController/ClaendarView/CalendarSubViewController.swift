@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CalendarSubViewController : UIViewController {
     
@@ -21,6 +22,7 @@ class CalendarSubViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSuperView()
+        getScheduleData()
     }
     
     func setSuperView() {
@@ -97,12 +99,38 @@ class CalendarSubViewController : UIViewController {
         }
     }
     
-    func getSubView() -> UIView {
+    func getSubView() -> CalendarTableView {
         return self.subView
     }
     
+    func setMonthNDay() -> DateComponents {
+        let calednar = Calendar(identifier: .gregorian)
+        let date = Date()
+        let components = calednar.dateComponents([.month, .day,.weekday], from: date)
+        
+        return components
+    }
 }
 
-extension UITapGestureRecognizer {
-    
+extension CalendarSubViewController {
+    func getScheduleData() {
+        let month = setMonthNDay().month!
+        let db = Firestore.firestore()
+        db.document("schedule/\(month)/schedules/\(today!)").getDocument { [weak self] (snapshot, error) in
+            guard let _self = self else {return}
+            if let _error = error {
+                fatalError(_error.localizedDescription)
+            }else {
+                guard let snapshot = snapshot, snapshot.exists else {return}
+                if let data = snapshot.data() as? Dictionary<String, Dictionary<String, String>> {
+                    for i in 1...data.count {
+                        if let num = data["\(i)"] {
+                            _self.getSubView().scheduledData.append(num)
+                        }
+                    }
+                }
+            }
+            _self.getSubView().getTableView().reloadData()
+        }
+    }
 }

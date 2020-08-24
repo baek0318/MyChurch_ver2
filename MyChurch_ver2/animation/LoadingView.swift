@@ -11,20 +11,14 @@ import Lottie
 
 class LoadingView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
     var animationView : AnimationView?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 0.12, green: 0.58, blue: 0.95, alpha: 1.00)
-        animationView = .init(name: "loading")
+    convenience init(name : String) {
+        self.init()
+        if name == "loading" {
+            self.backgroundColor = UIColor(red: 0.12, green: 0.58, blue: 0.95, alpha: 1.00)
+        }
+        animationView = .init(name: name)
         animationView?.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(animationView!)
@@ -33,7 +27,11 @@ class LoadingView: UIView {
         
         animationView!.contentMode = .scaleAspectFit
         animationView!.loopMode = .loop
-        animationView!.animationSpeed = 1.0
+        animationView!.animationSpeed = 1.5
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {

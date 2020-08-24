@@ -83,7 +83,7 @@ class SermonViewControllerSub: UIViewController {
         self.liveView.backgroundColor = .lightGray
         self.liveView.translatesAutoresizingMaskIntoConstraints = false
         self.liveView.heightAnchor.constraint(equalTo: self.liveView.widthAnchor, multiplier: 0.56).isActive = true
-        self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/ep5yPs7prvQ?playsinline=1"))
+        self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/live_stream?channel=UC5PmuQM7rLMw5WwYDNCfWXw?playsinline=1"))
         
         let sermonView = setSermonStackView()
         sermonView.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
@@ -95,7 +95,7 @@ class SermonViewControllerSub: UIViewController {
     }
     
     func setLoadingView() {
-        self.loadingView = LoadingView()
+        self.loadingView = LoadingView(name: "loading")
         self.loadingView.translatesAutoresizingMaskIntoConstraints = false
         self.liveView.addSubview(loadingView)
         let constraints = self.loadingView.fullConstraintsForAnchorsTo(view: self.liveView)
