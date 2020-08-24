@@ -33,24 +33,11 @@ class CalendarSubViewController : UIViewController {
         tapView.addGestureRecognizer(tapGesture!)
         
         let frame = CGRect(x: 0, y: 70, width: self.view.frame.width, height: self.view.frame.height-70)
-        self.subView = CalendarTableView(frame: frame,day: today ?? 0)
+        self.subView = CalendarTableView(frame: frame, day: today ?? 0)
         subView.translatesAutoresizingMaskIntoConstraints = false
         subView.layer.masksToBounds = true
         subView.getTableView().isUserInteractionEnabled = false
         view.addSubview(subView)
-        
-        var tableHeight = subView.getTableView().contentSize.height+200
-        
-        if self.view.frame.height-80 < tableHeight {
-            tableHeight = self.view.frame.height-80
-            subView.getTableView().isUserInteractionEnabled = true
-        }
-        originPos = self.view.frame.height - tableHeight
-        
-        subView.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
-        subView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.view.trailingAnchor.constraint(equalTo: subView.trailingAnchor).isActive = true
-        self.view.bottomAnchor.constraint(equalTo: subView.bottomAnchor).isActive = true
         
         subView.transform = CGAffineTransform(translationX: 0, y: 500)
         let downGesture = UIPanGestureRecognizer(target: self, action: #selector(self.updownGesture(recognizer:)))
@@ -113,6 +100,21 @@ class CalendarSubViewController : UIViewController {
 }
 
 extension CalendarSubViewController {
+    func setCalendarTableConstraint(tableHeight : CGFloat) {
+        var tableHeight = tableHeight
+        
+        if self.view.frame.height-80 < tableHeight {
+            tableHeight = self.view.frame.height-80
+            self.subView.getTableView().isUserInteractionEnabled = true
+        }
+        self.originPos = self.view.frame.height - tableHeight
+        
+        self.subView.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
+        self.subView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        self.view.trailingAnchor.constraint(equalTo: self.subView.trailingAnchor).isActive = true
+        self.view.bottomAnchor.constraint(equalTo: self.subView.bottomAnchor).isActive = true
+    }
+    
     func getScheduleData() {
         let month = setMonthNDay().month!
         let db = Firestore.firestore()
@@ -121,7 +123,7 @@ extension CalendarSubViewController {
             if let _error = error {
                 fatalError(_error.localizedDescription)
             }else {
-                guard let snapshot = snapshot, snapshot.exists else {return}
+                guard let snapshot = snapshot, snapshot.exists else {_self.setCalendarTableConstraint(tableHeight: 180);return}
                 if let data = snapshot.data() as? Dictionary<String, Dictionary<String, String>> {
                     for i in 1...data.count {
                         if let num = data["\(i)"] {
@@ -131,6 +133,9 @@ extension CalendarSubViewController {
                 }
             }
             _self.getSubView().getTableView().reloadData()
+            
+            let tableHeight = _self.subView.getTableView().contentSize.height+150
+            _self.setCalendarTableConstraint(tableHeight: tableHeight)
         }
     }
 }

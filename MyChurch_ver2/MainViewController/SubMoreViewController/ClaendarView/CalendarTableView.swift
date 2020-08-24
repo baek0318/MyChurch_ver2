@@ -77,6 +77,7 @@ class CalendarTableView: UIView {
 extension CalendarTableView : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return scheduledData.count
     }
     
@@ -87,7 +88,9 @@ extension CalendarTableView : UITableViewDataSource, UITableViewDelegate {
         let cell = calendarTable?.dequeueReusableCell(withIdentifier: "CalendarCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "CalendarCell")
             
         cell.textLabel?.text = data["title"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
         cell.detailTextLabel?.text = data["time"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = .gray
             
         return cell
