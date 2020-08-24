@@ -134,8 +134,8 @@ class MainViewController : UIViewController {
                 self.logoSizeHeight = 56
                 self.logoSizeWidth = 52
                 self.rectSize = 122
-                self.kindFontSize = 23
-                self.dateFontSize = 21
+                self.kindFontSize = 21
+                self.dateFontSize = 19
                 self.viewLabelFontSize = 25
                 self.sermonFontSize = 35
                 self.moreNadHeight = 60
@@ -145,8 +145,8 @@ class MainViewController : UIViewController {
                 self.logoSizeHeight = 66
                 self.logoSizeWidth = 62
                 self.rectSize = 144
-                self.kindFontSize = 25
-                self.dateFontSize = 23
+                self.kindFontSize = 23
+                self.dateFontSize = 21
                 self.viewLabelFontSize = 30
                 self.sermonFontSize = 40
                 self.moreNadHeight = 60
@@ -156,8 +156,8 @@ class MainViewController : UIViewController {
                 self.logoSizeHeight = 66
                 self.logoSizeWidth = 62
                 self.rectSize = 144
-                self.kindFontSize = 25
-                self.dateFontSize = 23
+                self.kindFontSize = 23
+                self.dateFontSize = 21
                 self.viewLabelFontSize = 30
                 self.sermonFontSize = 40
                 self.moreNadHeight = 60
@@ -260,7 +260,7 @@ class MainViewController : UIViewController {
         self.rootStackView.spacing = 15
         
         self.view.addSubview(self.rootStackView)
-        let constraint = self.rootStackView.eachSafeAreaConstraintsForAnchorsTo(view : self.view, top: 30, leading: 10, bottom: 10, trailing: 10)
+        let constraint = self.rootStackView.eachSafeAreaConstraintsForAnchorsTo(view : self.view, top: 10, leading: 10, bottom: 10, trailing: 10)
         NSLayoutConstraint.activate(constraint)
         
         let topView = setTopView()

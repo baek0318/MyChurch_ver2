@@ -43,6 +43,7 @@ extension ChurchInfoViewController : UITableViewDelegate, UITableViewDataSource 
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.isScrollEnabled = false
+        self.tableView.separatorStyle = .none
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
