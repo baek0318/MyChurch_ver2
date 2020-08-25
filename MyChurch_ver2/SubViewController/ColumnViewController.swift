@@ -14,13 +14,24 @@ class ColumnViewController : UIViewController {
     @IBOutlet var columnTitle: UILabel!
     @IBOutlet var textView: UITextView!
     @IBOutlet weak var noData: UIView!
-    
+    var fontSize : CGFloat?
     var docRef : DocumentReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFontSize()
         getData()
         textView.isEditable = false
+    }
+    
+    ///setFontSize
+    func setFontSize() {
+        let userDefault = UserDefaults.standard
+        if userDefault.float(forKey: "fontSetting") != 0 {
+            fontSize = CGFloat(userDefault.float(forKey: "fontSetting"))
+        }else {
+            fontSize = 0
+        }
     }
     
     @IBAction func closeAction(_ sender: Any) {
@@ -52,6 +63,9 @@ extension ColumnViewController {
                 print(error.localizedDescription)
             }else {
                 if let data = docSnapshot?.data() as? Dictionary<String,String> {
+                    if _self.fontSize != 0 {
+                        _self.textView.font = UIFont.systemFont(ofSize: _self.fontSize!, weight: UIFont.Weight(0.2))
+                    }
                     _self.columnTitle.text = data["title"]?.replacingOccurrences(of: "\\n", with: "\n")
                     _self.textView.text = data["content"]?.replacingOccurrences(of: "\\n", with: "\n")
                     if _self.columnTitle.text == "칼럼" {

@@ -27,6 +27,7 @@
 		E84966EE245DD45500BBD851 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966ED245DD45500BBD851 /* NewsViewController.swift */; };
 		E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966EF245DD47100BBD851 /* ColumnViewController.swift */; };
 		E84966F2245DD47F00BBD851 /* ChurchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */; };
+		E855078E24F49E2800CCC302 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855078D24F49E2800CCC302 /* SettingViewController.swift */; };
 		E85BECAB24E642FE00F48A85 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAA24E642FE00F48A85 /* MoreViewController.swift */; };
 		E85BECAD24E6432500F48A85 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAC24E6432500F48A85 /* TabBarViewController.swift */; };
 		E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAE24E6659400F48A85 /* CalendarView.swift */; };
@@ -106,6 +107,7 @@
 		E84966ED245DD45500BBD851 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E84966EF245DD47100BBD851 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchInfoViewController.swift; sourceTree = "<group>"; };
+		E855078D24F49E2800CCC302 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		E85BECAA24E642FE00F48A85 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		E85BECAC24E6432500F48A85 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E85BECAE24E6659400F48A85 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				E85BECE024EA3DAB00F48A85 /* ClaendarView */,
 				E85BECB124E83E6E00F48A85 /* OfferingView.swift */,
 				E85BECB324E83E9500F48A85 /* ChurchVolunteerView.swift */,
+				E855078D24F49E2800CCC302 /* SettingViewController.swift */,
 			);
 			path = SubMoreViewController;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				E8ACCA8724EE091300C72D17 /* CustomVerticalSegue.swift in Sources */,
 				E8B7663624BECADC0050B394 /* OldSermonViewController.swift in Sources */,
 				E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */,
+				E855078E24F49E2800CCC302 /* SettingViewController.swift in Sources */,
 				E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */,
 				E811ACF124C2ED51003E61B3 /* FIreStoreData.swift in Sources */,
 				E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */,

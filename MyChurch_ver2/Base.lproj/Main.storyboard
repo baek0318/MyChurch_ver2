@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUC-8j-Esk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="136"/>
+            <point key="canvasLocation" x="1005.6" y="135.96059113300493"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="V8U-gO-8Ng">
@@ -610,6 +610,7 @@
                     <navigationItem key="navigationItem" id="w42-c5-M4E"/>
                     <connections>
                         <segue destination="OLT-8M-hxL" kind="custom" identifier="Vertical" customClass="CustomVerticalSegue" customModule="MyChurch_ver2" customModuleProvider="target" id="fR6-EK-SdT"/>
+                        <segue destination="1TC-Bl-6gh" kind="presentation" identifier="Setting" id="L1p-SW-vZn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoG-je-bZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -630,6 +631,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Nh-Pz-6MH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3118" y="136"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="UBT-Ex-Pct">
+            <objects>
+                <viewController id="1TC-Bl-6gh" customClass="SettingViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Dt-02-kZb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-OP-E3M">
+                                <rect key="frame" x="16" y="20" width="61" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Nj-7U-evX" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
+                                <rect key="frame" x="324" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="3f8-6I-lcn"/>
+                                    <constraint firstAttribute="width" secondItem="3Nj-7U-evX" secondAttribute="height" multiplier="1:1" id="iIp-KD-gou"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="close:" destination="1TC-Bl-6gh" eventType="touchUpInside" id="30J-jT-D2d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제자되어 제자삼는 건강한 교회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsI-wg-Hs1">
+                                <rect key="frame" x="85" y="151" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" minimumValueImage="smallFont" maximumValueImage="bigFont" translatesAutoresizingMaskIntoConstraints="NO" id="f0Q-rw-u9x">
+                                <rect key="frame" x="14" y="347" width="347" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="f0Q-rw-u9x" firstAttribute="centerY" secondItem="jal-15-fii" secondAttribute="centerY" id="HQN-lG-OGa"/>
+                            <constraint firstItem="3Nj-7U-evX" firstAttribute="top" secondItem="jal-15-fii" secondAttribute="top" constant="20" id="JOt-uX-Th2"/>
+                            <constraint firstItem="f0Q-rw-u9x" firstAttribute="top" relation="lessThanOrEqual" secondItem="YsI-wg-Hs1" secondAttribute="bottom" constant="175" id="SMc-V9-uWF"/>
+                            <constraint firstItem="jal-15-fii" firstAttribute="trailing" secondItem="f0Q-rw-u9x" secondAttribute="trailing" constant="16" id="Spp-QJ-Iae"/>
+                            <constraint firstItem="YsI-wg-Hs1" firstAttribute="top" secondItem="BuF-OP-E3M" secondAttribute="bottom" constant="89" id="Z9U-Ga-STl"/>
+                            <constraint firstItem="BuF-OP-E3M" firstAttribute="leading" secondItem="jal-15-fii" secondAttribute="leading" constant="16" id="agk-XB-uDu"/>
+                            <constraint firstItem="BuF-OP-E3M" firstAttribute="top" secondItem="jal-15-fii" secondAttribute="top" constant="20" id="bN5-on-Bts"/>
+                            <constraint firstItem="YsI-wg-Hs1" firstAttribute="centerX" secondItem="jal-15-fii" secondAttribute="centerX" id="c4M-Ik-Ew6"/>
+                            <constraint firstItem="jal-15-fii" firstAttribute="trailing" secondItem="3Nj-7U-evX" secondAttribute="trailing" constant="16" id="ieG-W8-0WA"/>
+                            <constraint firstItem="f0Q-rw-u9x" firstAttribute="leading" secondItem="jal-15-fii" secondAttribute="leading" constant="16" id="sY7-fc-bUl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jal-15-fii"/>
+                    </view>
+                    <connections>
+                        <outlet property="fontChangeSlider" destination="f0Q-rw-u9x" id="KxE-kB-QPS"/>
+                        <outlet property="sizeLabel" destination="YsI-wg-Hs1" id="EUN-mO-Mto"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iga-aI-I0W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3117.5999999999999" y="-597.04433497536945"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lgS-So-2UB">
@@ -657,7 +716,7 @@
                 <pageViewController storyboardIdentifier="AdMainViewController" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zWx-qf-lwg" customClass="AdMainViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KwK-ew-hud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="-602"/>
+            <point key="canvasLocation" x="1532" y="-1343"/>
         </scene>
         <!--Ad Content View Controller-->
         <scene sceneID="26j-Bd-TvC">
@@ -672,13 +731,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xL-o3-pOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3916" y="-597"/>
+            <point key="canvasLocation" x="2498" y="-1343"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bigFont" width="24" height="24"/>
         <image name="bin.xmark" catalog="system" width="128" height="93"/>
         <image name="homeTab" width="21.333333969116211" height="21.333333969116211"/>
         <image name="moreTab" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="smallFont" width="16" height="16"/>
         <namedColor name="DefaultColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

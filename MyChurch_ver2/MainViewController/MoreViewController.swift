@@ -122,17 +122,38 @@ class MoreViewController : UIViewController {
         
         let spacingView = UIView()
         
-        let settingButton = UIButton()
-        settingButton.setImage(UIImage(named: "setting"), for: .normal)
-        settingButton.translatesAutoresizingMaskIntoConstraints = false
-        settingButton.heightAnchor.constraint(equalTo: settingButton.widthAnchor).isActive = true
-        settingButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 2
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapSetting(recognizer:)))
+        stackView.addGestureRecognizer(tapGesture)
+        
+        let settingImage = UIImageView()
+        settingImage.image = UIImage(named: "setting")
+        settingImage.translatesAutoresizingMaskIntoConstraints = false
+        settingImage.heightAnchor.constraint(equalTo: settingImage.widthAnchor).isActive = true
+        settingImage.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        settingImage.setContentHuggingPriority(UILayoutPriority(249), for: .horizontal)
+        settingImage.setContentCompressionResistancePriority(UILayoutPriority(749), for: .horizontal)
+        
+        let settingLabel = UILabel()
+        settingLabel.text = "설정"
+        
+        stackView.addArrangedSubview(settingImage)
+        stackView.addArrangedSubview(settingLabel)
         
         topBarStackView.addArrangedSubview(self.tabBar)
         topBarStackView.addArrangedSubview(spacingView)
-        topBarStackView.addArrangedSubview(settingButton)
+        topBarStackView.addArrangedSubview(stackView)
         
         return self.topBarStackView
+    }
+    
+    @objc func tapSetting(recognizer : UITapGestureRecognizer) {
+        performSegue(withIdentifier: "Setting", sender: nil)
     }
     
     //MARK:- MainView

@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "settingBlack.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,6 +12,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "settingWhite.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

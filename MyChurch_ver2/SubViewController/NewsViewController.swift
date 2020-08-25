@@ -15,12 +15,24 @@ class NewsViewController : UIViewController {
     
     var docRef : DocumentReference?
     var newArr = [Dictionary<String, String>]()
+    var fontSize : CGFloat?
     @IBOutlet weak var noData: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFontSize()
         createTable()
         getData()
+    }
+    
+    ///setFontSize
+    func setFontSize() {
+        let userDefault = UserDefaults.standard
+        if userDefault.float(forKey: "fontSetting") != 0 {
+            fontSize = CGFloat(userDefault.float(forKey: "fontSetting"))
+        }else {
+            fontSize = 0
+        }
     }
     
     @IBAction func closeAction(_ sender: Any) {
@@ -48,6 +60,12 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
         let index = newArr[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsTableViewCell
+        
+        if fontSize != 0 {
+            cell.newsKind.font = UIFont.systemFont(ofSize: fontSize!, weight: UIFont.Weight(rawValue: 0.3))
+            cell.newsTitle.font = UIFont.boldSystemFont(ofSize: fontSize!+3)
+            cell.newsText.font = UIFont.systemFont(ofSize: fontSize!)
+        }
         
         cell.newsKind.text = index["kind"]?.replacingOccurrences(of: "\\n", with: "\n")
         cell.newsTitle.text = index["title"]?.replacingOccurrences(of: "\\n", with: "\n")

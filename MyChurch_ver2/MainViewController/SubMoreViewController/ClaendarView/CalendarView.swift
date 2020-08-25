@@ -230,7 +230,7 @@ class CalendarView : UIView {
                 dayLabels[i].isUserInteractionEnabled = true
                 dayLabels[i].text = String(number)
                 if scheduledData.contains(number) {
-                    dayLabels[i].textColor = UIColor(named: "DefaultColor")
+                    dayLabels[i].textColor = .darkGray
                 }
                 else {
                     dayLabels[i].textColor = .lightGray
@@ -272,7 +272,7 @@ class CalendarView : UIView {
             self.beforeDay.layer.masksToBounds = true
             self.beforeDay.backgroundColor = UIColor.clear
             if self.scheduledData.contains(Int(self.beforeDay.text!)!) {
-                self.beforeDay.textColor = UIColor(named: "DefaultColor")
+                self.beforeDay.textColor = .darkGray
             }else {
                 self.beforeDay.textColor = .lightGray
             }

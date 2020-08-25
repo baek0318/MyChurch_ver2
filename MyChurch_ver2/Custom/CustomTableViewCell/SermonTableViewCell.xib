@@ -17,18 +17,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jM1-GX-F7s">
-                        <rect key="frame" x="8" y="35.5" width="304" height="159.5"/>
+                        <rect key="frame" x="8" y="35" width="304" height="160"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="0FI-nC-XRm"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="0FI-nC-XRm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhi-ac-vCv">
-                        <rect key="frame" x="8" y="10" width="31" height="20.5"/>
+                        <rect key="frame" x="8" y="5" width="304" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="41" id="jBq-PZ-Ofv"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="jBq-PZ-Ofv"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <nil key="textColor"/>
@@ -36,7 +36,8 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Uhi-ac-vCv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="K4T-O6-UV2"/>
+                    <constraint firstAttribute="trailing" secondItem="Uhi-ac-vCv" secondAttribute="trailing" constant="8" id="JkO-zf-0eo"/>
+                    <constraint firstItem="Uhi-ac-vCv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="K4T-O6-UV2"/>
                     <constraint firstItem="jM1-GX-F7s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="L0L-yq-oM6"/>
                     <constraint firstAttribute="bottom" secondItem="jM1-GX-F7s" secondAttribute="bottom" constant="5" id="YpP-qG-2hw"/>
                     <constraint firstItem="Uhi-ac-vCv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="cf0-IQ-hXk"/>

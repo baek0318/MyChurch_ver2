@@ -40,9 +40,11 @@ class SermonViewControllerSub: UIViewController {
     var kind : String?
     var sermonArr = [Dictionary<String, String>]()
     var sequenceArr = [Dictionary<String, String>]()
+    var fontSize : CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFontSize()
         setTableView()
         setSuperView()
         makeFirestore()
@@ -54,6 +56,16 @@ class SermonViewControllerSub: UIViewController {
         self.view.backgroundColor = UIColor(named: "moreButton")
         self.setSuperStackView()
         setLoadingView()
+    }
+    
+    ///setFontSize
+    func setFontSize() {
+        let userDefault = UserDefaults.standard
+        if userDefault.float(forKey: "fontSetting") != 0 {
+            fontSize = CGFloat(userDefault.float(forKey: "fontSetting"))
+        }else {
+            fontSize = 0
+        }
     }
     
     //MARK:- SuperStackView
@@ -373,6 +385,11 @@ extension SermonViewControllerSub : UITableViewDelegate, UITableViewDataSource {
             let index = sermonArr[indexPath.row]
             let cell = self.sermonTableView.dequeueReusableCell(withIdentifier: "SermonCell", for: indexPath) as! SermonTableViewCell
             
+            if fontSize != 0 {
+                cell.title.font = UIFont.boldSystemFont(ofSize: fontSize!)
+                cell.sermonText.font = UIFont.systemFont(ofSize: fontSize!)
+            }
+            
             cell.title.text = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
             cell.sermonText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
             
@@ -381,6 +398,11 @@ extension SermonViewControllerSub : UITableViewDelegate, UITableViewDataSource {
             let index = sequenceArr[indexPath.row]
             
             let cell = self.sequenceTableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! SermonListTableView
+            
+            if fontSize != 0 {
+                cell.title.font = UIFont.boldSystemFont(ofSize: fontSize!+1)
+                cell.content.font = UIFont.boldSystemFont(ofSize: fontSize!+3)
+            }
             
             cell.title.text = index["title"]
             cell.content.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
