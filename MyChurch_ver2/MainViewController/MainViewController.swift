@@ -236,7 +236,7 @@ class MainViewController : UIViewController {
         self.moreButton.isHidden = true
         self.moreButton.heightAnchor.constraint(equalToConstant: self.moreNadHeight).isActive = true
         self.moreButton.setTitle("교회 안내", for: .normal)
-        self.moreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        self.moreButton.titleLabel?.font = UIFont(name: "NanumSquareB", size: 20)//UIFont.boldSystemFont(ofSize: 20)
         self.moreButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.moreButton.titleLabel?.adjustsFontForContentSizeCategory = true
         self.moreButton.setTitleColor(UIColor(named: "DefaultColor"), for: .normal)
@@ -426,7 +426,7 @@ class MainViewController : UIViewController {
         
         let todaySermonLabel = UILabel()
         todaySermonLabel.text = "오늘의 설교"
-        todaySermonLabel.font = UIFont.boldSystemFont(ofSize: self.sermonFontSize)
+        todaySermonLabel.font = UIFont(name: "NanumSquareB", size: self.sermonFontSize)
         todaySermonLabel.translatesAutoresizingMaskIntoConstraints = false
         self.sermonView.addSubview(todaySermonLabel)
         todaySermonLabel.leadingAnchor.constraint(equalTo: self.sermonView.leadingAnchor, constant: 10).isActive = true
@@ -455,7 +455,7 @@ class MainViewController : UIViewController {
         
         let newsLabel = UILabel()
         newsLabel.text = "소식"
-        newsLabel.font = UIFont.boldSystemFont(ofSize: self.viewLabelFontSize)
+        newsLabel.font = UIFont(name: "NanumSquareB", size: self.viewLabelFontSize)
         newsLabel.translatesAutoresizingMaskIntoConstraints = false
         self.newsView.addSubview(newsLabel)
         newsLabel.leadingAnchor.constraint(equalTo: self.newsView.leadingAnchor, constant: 10).isActive = true
@@ -468,7 +468,7 @@ class MainViewController : UIViewController {
         
         let columnLabel = UILabel()
         columnLabel.text = "칼럼"
-        columnLabel.font = UIFont.boldSystemFont(ofSize: self.viewLabelFontSize)
+        columnLabel.font = UIFont(name: "NanumSquareB", size: self.viewLabelFontSize)
         columnLabel.translatesAutoresizingMaskIntoConstraints = false
         self.columnView.addSubview(columnLabel)
         columnLabel.leadingAnchor.constraint(equalTo: self.columnView.leadingAnchor, constant: 10).isActive = true

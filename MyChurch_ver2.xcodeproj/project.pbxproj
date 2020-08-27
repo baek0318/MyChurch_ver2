@@ -28,6 +28,10 @@
 		E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966EF245DD47100BBD851 /* ColumnViewController.swift */; };
 		E84966F2245DD47F00BBD851 /* ChurchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */; };
 		E855078E24F49E2800CCC302 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855078D24F49E2800CCC302 /* SettingViewController.swift */; };
+		E85507B424F5DCF800CCC302 /* NanumSquareBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E85507B324F5DCF000CCC302 /* NanumSquareBold.ttf */; };
+		E85507B524F5DCFD00CCC302 /* NanumSquareExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E85507B224F5DCF000CCC302 /* NanumSquareExtraBold.ttf */; };
+		E85507B624F5DD0100CCC302 /* NanumSquareLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E85507B124F5DCF000CCC302 /* NanumSquareLight.ttf */; };
+		E85507B724F5DD0500CCC302 /* NanumSquareRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E85507B024F5DCF000CCC302 /* NanumSquareRegular.ttf */; };
 		E85BECAB24E642FE00F48A85 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAA24E642FE00F48A85 /* MoreViewController.swift */; };
 		E85BECAD24E6432500F48A85 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAC24E6432500F48A85 /* TabBarViewController.swift */; };
 		E85BECAF24E6659400F48A85 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85BECAE24E6659400F48A85 /* CalendarView.swift */; };
@@ -48,7 +52,6 @@
 		E8ACCA9524EF732D00C72D17 /* AdMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACCA9424EF732D00C72D17 /* AdMainViewController.swift */; };
 		E8ACCA9724EFC24900C72D17 /* AdContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACCA9624EFC24900C72D17 /* AdContentViewController.swift */; };
 		E8ACCA9924EFC9DF00C72D17 /* ExAdMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ACCA9824EFC9DF00C72D17 /* ExAdMainViewController.swift */; };
-		E8B7663624BECADC0050B394 /* OldSermonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B7663524BECADC0050B394 /* OldSermonViewController.swift */; };
 		E8C73343248897C2006AF284 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73342248897C2006AF284 /* LocationViewController.swift */; };
 		E8C73345248898AE006AF284 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73344248898AE006AF284 /* ListViewController.swift */; };
 		E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */; };
@@ -108,6 +111,10 @@
 		E84966EF245DD47100BBD851 /* ColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		E84966F1245DD47F00BBD851 /* ChurchInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChurchInfoViewController.swift; sourceTree = "<group>"; };
 		E855078D24F49E2800CCC302 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		E85507B024F5DCF000CCC302 /* NanumSquareRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRegular.ttf; sourceTree = "<group>"; };
+		E85507B124F5DCF000CCC302 /* NanumSquareLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareLight.ttf; sourceTree = "<group>"; };
+		E85507B224F5DCF000CCC302 /* NanumSquareExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareExtraBold.ttf; sourceTree = "<group>"; };
+		E85507B324F5DCF000CCC302 /* NanumSquareBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareBold.ttf; sourceTree = "<group>"; };
 		E85BECAA24E642FE00F48A85 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		E85BECAC24E6432500F48A85 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E85BECAE24E6659400F48A85 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -128,7 +135,6 @@
 		E8ACCA9424EF732D00C72D17 /* AdMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMainViewController.swift; sourceTree = "<group>"; };
 		E8ACCA9624EFC24900C72D17 /* AdContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdContentViewController.swift; sourceTree = "<group>"; };
 		E8ACCA9824EFC9DF00C72D17 /* ExAdMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAdMainViewController.swift; sourceTree = "<group>"; };
-		E8B7663524BECADC0050B394 /* OldSermonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSermonViewController.swift; sourceTree = "<group>"; };
 		E8C73342248897C2006AF284 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		E8C73344248898AE006AF284 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		E8E05F3324630B7400F6FB2B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 		E84966C2245DC19100BBD851 /* MyChurch_ver2 */ = {
 			isa = PBXGroup;
 			children = (
+				E85507AF24F5DCC700CCC302 /* Fonts */,
 				E85BECDD24E9616200F48A85 /* animation */,
 				E8FAE48C24D2577F0043CA62 /* Constraint */,
 				E811ACED24C2E0D8003E61B3 /* Model */,
@@ -335,9 +342,19 @@
 			isa = PBXGroup;
 			children = (
 				E89D89AE24BA0B5E00594B83 /* OldDataViewController.swift */,
-				E8B7663524BECADC0050B394 /* OldSermonViewController.swift */,
 			);
 			path = DataView;
+			sourceTree = "<group>";
+		};
+		E85507AF24F5DCC700CCC302 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E85507B324F5DCF000CCC302 /* NanumSquareBold.ttf */,
+				E85507B224F5DCF000CCC302 /* NanumSquareExtraBold.ttf */,
+				E85507B124F5DCF000CCC302 /* NanumSquareLight.ttf */,
+				E85507B024F5DCF000CCC302 /* NanumSquareRegular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		E85BECB024E83E1B00F48A85 /* SubMoreViewController */ = {
@@ -506,6 +523,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E85507B624F5DD0100CCC302 /* NanumSquareLight.ttf in Resources */,
+				E85507B424F5DCF800CCC302 /* NanumSquareBold.ttf in Resources */,
 				E85BECB824E942F100F48A85 /* OfferingTableViewCell.xib in Resources */,
 				E84966D0245DC19300BBD851 /* LaunchScreen.storyboard in Resources */,
 				E89AF51A24F2B06800082AF1 /* GoogleService-Info.plist in Resources */,
@@ -515,6 +534,8 @@
 				E85BECE824EADBBA00F48A85 /* loading2.json in Resources */,
 				E84966CB245DC19100BBD851 /* Main.storyboard in Resources */,
 				E8E05F3C246396F700F6FB2B /* SermonTableViewCell.xib in Resources */,
+				E85507B524F5DCFD00CCC302 /* NanumSquareExtraBold.ttf in Resources */,
+				E85507B724F5DD0500CCC302 /* NanumSquareRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +667,6 @@
 				E84966F0245DD47100BBD851 /* ColumnViewController.swift in Sources */,
 				E8E05F3424630B7400F6FB2B /* NewsTableViewCell.swift in Sources */,
 				E8ACCA8724EE091300C72D17 /* CustomVerticalSegue.swift in Sources */,
-				E8B7663624BECADC0050B394 /* OldSermonViewController.swift in Sources */,
 				E8E05F3B246396F700F6FB2B /* SermonTableViewCell.swift in Sources */,
 				E855078E24F49E2800CCC302 /* SettingViewController.swift in Sources */,
 				E89D89B524BDEFE300594B83 /* TableViewCell.swift in Sources */,

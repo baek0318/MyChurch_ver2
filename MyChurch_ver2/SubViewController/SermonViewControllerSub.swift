@@ -95,7 +95,7 @@ class SermonViewControllerSub: UIViewController {
         self.liveView.backgroundColor = .lightGray
         self.liveView.translatesAutoresizingMaskIntoConstraints = false
         self.liveView.heightAnchor.constraint(equalTo: self.liveView.widthAnchor, multiplier: 0.56).isActive = true
-        self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/live_stream?channel=UC5PmuQM7rLMw5WwYDNCfWXw?playsinline=1"))
+        self.liveView.load(WebLiveGet.loadVideo(url: "https://www.youtube.com/embed/live_stream?channel=UC5PmuQM7rLMw5WwYDNCfWXw;playsinline=1"))
         
         let sermonView = setSermonStackView()
         sermonView.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
@@ -365,6 +365,19 @@ class SermonViewControllerSub: UIViewController {
         }
         self.sermonTableView.isHidden = false
     }
+    
+    func attributedString(text: String) -> NSMutableAttributedString {
+        
+        let attributedString = NSMutableAttributedString(string: text)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+
+        paragraphStyle.lineSpacing = 10
+
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        return attributedString
+    }
 }
 
 //MARK:- TableView Protocol
@@ -386,12 +399,15 @@ extension SermonViewControllerSub : UITableViewDelegate, UITableViewDataSource {
             let cell = self.sermonTableView.dequeueReusableCell(withIdentifier: "SermonCell", for: indexPath) as! SermonTableViewCell
             
             if fontSize != 0 {
-                cell.title.font = UIFont.boldSystemFont(ofSize: fontSize!)
-                cell.sermonText.font = UIFont.systemFont(ofSize: fontSize!)
+                cell.title.font = UIFont(name: "NanumSquareB", size: fontSize!)
+                cell.sermonText.font = UIFont(name: "NanumSquareR", size: fontSize!)
             }
             
-            cell.title.text = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
-            cell.sermonText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+            let title = index["subtitle"]?.replacingOccurrences(of: "\\n", with: "\n")
+            cell.title.attributedText = attributedString(text: title ?? "")
+            
+            let text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+            cell.sermonText.attributedText = attributedString(text: text ?? "")
             
             return cell
         }else {
@@ -400,8 +416,8 @@ extension SermonViewControllerSub : UITableViewDelegate, UITableViewDataSource {
             let cell = self.sequenceTableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! SermonListTableView
             
             if fontSize != 0 {
-                cell.title.font = UIFont.boldSystemFont(ofSize: fontSize!+1)
-                cell.content.font = UIFont.boldSystemFont(ofSize: fontSize!+3)
+                cell.title.font = UIFont(name: "NanumSquareB", size: fontSize!+1)
+                cell.content.font = UIFont(name: "NanumSquareB", size: fontSize!+3)
             }
             
             cell.title.text = index["title"]
@@ -438,11 +454,11 @@ extension SermonViewControllerSub {
         guard let kind = kind else {return}
         let date = Date(timeIntervalSinceNow: 0)
         let calendar = Calendar(identifier: .gregorian)
-        let component = calendar.dateComponents([.month, .day, .weekday], from: date)
+        let component = calendar.dateComponents([.month, .day, .weekday, .hour], from: date)
 
         var date_path = ""
         
-        if component.weekday! == 1 || component.weekday! == 4 {
+        if component.weekday! == 1 || (component.weekday! == 4 && (component.hour! >= 20 && component.hour! <= 22)){
             date_path = "\(String(describing: component.month!))_\(String(describing: component.day!))"
         }
         else {

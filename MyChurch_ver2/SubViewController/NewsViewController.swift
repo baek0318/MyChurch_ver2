@@ -38,6 +38,19 @@ class NewsViewController : UIViewController {
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    func attributedString(text: String) -> NSMutableAttributedString {
+        
+        let attributedString = NSMutableAttributedString(string: text)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+
+        paragraphStyle.lineSpacing = 10
+
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        return attributedString
+    }
 }
 
 //MARK:-UITableView Delegate, Data
@@ -62,14 +75,15 @@ extension NewsViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsTableViewCell
         
         if fontSize != 0 {
-            cell.newsKind.font = UIFont.systemFont(ofSize: fontSize!, weight: UIFont.Weight(rawValue: 0.3))
-            cell.newsTitle.font = UIFont.boldSystemFont(ofSize: fontSize!+3)
-            cell.newsText.font = UIFont.systemFont(ofSize: fontSize!)
+            cell.newsKind.font = UIFont(name: "NanumSquareB", size: fontSize!)
+            cell.newsTitle.font = UIFont(name: "NanumSquareB", size: fontSize!+3)
+            cell.newsText.font = UIFont(name: "NanumSquareR", size: fontSize!)
         }
         
         cell.newsKind.text = index["kind"]?.replacingOccurrences(of: "\\n", with: "\n")
         cell.newsTitle.text = index["title"]?.replacingOccurrences(of: "\\n", with: "\n")
-        cell.newsText.text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+        let text = index["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.newsText.attributedText = attributedString(text: text ?? "")
         
         return cell
     }

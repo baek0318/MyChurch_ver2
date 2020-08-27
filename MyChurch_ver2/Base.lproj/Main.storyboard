@@ -8,6 +8,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareBold.ttf">
+            <string>NanumSquareB</string>
+        </array>
+        <array key="NanumSquareExtraBold.ttf">
+            <string>NanumSquareEB</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--홈-->
         <scene sceneID="NcO-Lt-jn1">
@@ -101,8 +109,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소식" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Sx-K8-iQ6">
-                                        <rect key="frame" x="8" y="70" width="52" height="36"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <rect key="frame" x="8" y="71" width="52" height="35"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BQ-zj-QGq" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
@@ -129,27 +137,19 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1C-CR-FKO">
                                 <rect key="frame" x="0.0" y="114" width="375" height="698"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bin.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zZG-zA-oH1">
-                                        <rect key="frame" x="142" y="125.66666666666666" width="91" height="80"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nofile" translatesAutoresizingMaskIntoConstraints="NO" id="zZG-zA-oH1">
+                                        <rect key="frame" x="127.66666666666669" y="170" width="120" height="120"/>
                                         <color key="tintColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="7MH-oC-oI5"/>
+                                            <constraint firstAttribute="width" constant="120" id="JWl-qT-NdU"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="데이터가 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4Y-XP-oVd">
-                                        <rect key="frame" x="98" y="215" width="179" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <color key="textColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="zZG-zA-oH1" firstAttribute="top" relation="lessThanOrEqual" secondItem="o1C-CR-FKO" secondAttribute="top" constant="124" id="0uJ-3m-lfM"/>
-                                    <constraint firstItem="z4Y-XP-oVd" firstAttribute="top" secondItem="zZG-zA-oH1" secondAttribute="bottom" constant="8.0000000000000284" id="BrN-y2-AUF"/>
-                                    <constraint firstItem="z4Y-XP-oVd" firstAttribute="top" secondItem="o1C-CR-FKO" secondAttribute="top" constant="215" id="Ed4-da-m0q"/>
-                                    <constraint firstItem="zZG-zA-oH1" firstAttribute="leading" relation="lessThanOrEqual" secondItem="o1C-CR-FKO" secondAttribute="leading" constant="142" id="Gae-sR-qqC"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zZG-zA-oH1" secondAttribute="trailing" constant="142" id="LQg-Fj-gny"/>
+                                    <constraint firstItem="zZG-zA-oH1" firstAttribute="top" secondItem="o1C-CR-FKO" secondAttribute="top" constant="170" id="0uJ-3m-lfM"/>
                                     <constraint firstItem="zZG-zA-oH1" firstAttribute="centerX" secondItem="o1C-CR-FKO" secondAttribute="centerX" id="SxA-vY-glg"/>
-                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="z4Y-XP-oVd" secondAttribute="bottom" constant="453" id="UCz-WC-ix4"/>
-                                    <constraint firstItem="z4Y-XP-oVd" firstAttribute="centerX" secondItem="o1C-CR-FKO" secondAttribute="centerX" id="eBO-TT-d43"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -186,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bfK-Bv-r0Q">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfK-Bv-r0Q">
                                 <rect key="frame" x="10" y="122.33333333333331" width="355" height="689.66666666666674"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -196,14 +196,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="114.33333333333333"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="칼럼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogs-gF-gWj">
-                                        <rect key="frame" x="8" y="77.333333333333329" width="41.666666666666664" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <rect key="frame" x="8" y="78.333333333333329" width="41.666666666666664" height="28"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZL-vy-MVG" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                        <rect key="frame" x="333" y="44" width="34" height="34"/>
+                                        <rect key="frame" x="332" y="44" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6ZL-vy-MVG" secondAttribute="height" multiplier="1:1" id="GNs-CL-Ie0"/>
+                                            <constraint firstAttribute="height" constant="35" id="OIb-2m-4k0"/>
                                         </constraints>
                                         <connections>
                                             <action selector="closeAction:" destination="TTo-oD-kWX" eventType="touchUpInside" id="WEj-8I-btp"/>
@@ -212,9 +213,8 @@
                                 </subviews>
                                 <color key="backgroundColor" name="moreButton"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6ZL-vy-MVG" secondAttribute="bottom" constant="36.333333333333329" id="B79-LT-Vlv"/>
                                     <constraint firstAttribute="trailing" secondItem="6ZL-vy-MVG" secondAttribute="trailing" constant="8" id="CIR-Gp-Ufk"/>
-                                    <constraint firstItem="6ZL-vy-MVG" firstAttribute="top" secondItem="VG7-dc-3YK" secondAttribute="top" constant="44" id="XaV-MV-Lk7"/>
+                                    <constraint firstItem="6ZL-vy-MVG" firstAttribute="top" secondItem="VG7-dc-3YK" secondAttribute="top" constant="44" id="j4a-d8-8GS"/>
                                     <constraint firstItem="6ZL-vy-MVG" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Ogs-gF-gWj" secondAttribute="trailing" constant="283.33333333333331" id="rc3-Fa-Qn3"/>
                                     <constraint firstAttribute="bottom" secondItem="Ogs-gF-gWj" secondAttribute="bottom" constant="8.0000000000000142" id="vja-Gl-lCI"/>
                                     <constraint firstItem="Ogs-gF-gWj" firstAttribute="leading" secondItem="VG7-dc-3YK" secondAttribute="leading" constant="8" id="wHJ-Is-bXo"/>
@@ -223,27 +223,19 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olt-9B-EY0">
                                 <rect key="frame" x="0.0" y="114" width="375" height="698"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="데이터가 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDH-WS-BST">
-                                        <rect key="frame" x="98" y="215" width="179" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <color key="textColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bin.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hge-Ik-Isd">
-                                        <rect key="frame" x="142" y="137" width="91" height="68.666666666666657"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nofile" translatesAutoresizingMaskIntoConstraints="NO" id="hge-Ik-Isd">
+                                        <rect key="frame" x="127.66666666666669" y="170" width="120" height="120"/>
                                         <color key="tintColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="70J-uC-Br8"/>
+                                            <constraint firstAttribute="height" constant="120" id="aAe-rq-ChS"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="SDH-WS-BST" firstAttribute="top" secondItem="Olt-9B-EY0" secondAttribute="top" constant="215" id="293-Yn-gTv"/>
-                                    <constraint firstItem="SDH-WS-BST" firstAttribute="centerX" secondItem="Olt-9B-EY0" secondAttribute="centerX" id="8Q2-6R-Qjt"/>
-                                    <constraint firstItem="hge-Ik-Isd" firstAttribute="top" relation="lessThanOrEqual" secondItem="Olt-9B-EY0" secondAttribute="top" constant="135.30000000000001" id="Ag4-Ga-BaO"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hge-Ik-Isd" secondAttribute="trailing" constant="142" id="GQ9-KS-1nc"/>
-                                    <constraint firstItem="hge-Ik-Isd" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Olt-9B-EY0" secondAttribute="leading" constant="142" id="X4u-OV-6sP"/>
-                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="SDH-WS-BST" secondAttribute="bottom" constant="453" id="axy-ic-PRb"/>
+                                    <constraint firstItem="hge-Ik-Isd" firstAttribute="top" secondItem="Olt-9B-EY0" secondAttribute="top" constant="170" id="Aaa-Tq-DnK"/>
                                     <constraint firstItem="hge-Ik-Isd" firstAttribute="centerX" secondItem="Olt-9B-EY0" secondAttribute="centerX" id="ozh-mk-GfJ"/>
-                                    <constraint firstItem="SDH-WS-BST" firstAttribute="top" secondItem="hge-Ik-Isd" secondAttribute="bottom" constant="8" id="pbL-bg-YpM"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -283,7 +275,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEE-Hk-v3x">
-                                <rect key="frame" x="0.0" y="76" width="375" height="682"/>
+                                <rect key="frame" x="0.0" y="75" width="375" height="683"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="BF5-0z-O7g">
                                     <rect key="frame" x="0.0" y="152" width="375" height="44"/>
@@ -299,8 +291,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOq-so-Isd">
-                                                    <rect key="frame" x="82" y="12" width="50" height="72.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                    <rect key="frame" x="82" y="12" width="47" height="72.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -329,34 +321,33 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교회 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-E6-JFF">
-                                <rect key="frame" x="16" y="20" width="111" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <rect key="frame" x="15.999999999999993" y="20" width="112.33333333333331" height="35"/>
+                                <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9i-FZ-JZ1" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                <rect key="frame" x="325" y="20" width="34" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCh-Lb-ep8" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
+                                <rect key="frame" x="324" y="20" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="y9i-FZ-JZ1" secondAttribute="height" multiplier="1:1" id="ctl-nw-eE0"/>
+                                    <constraint firstAttribute="height" constant="35" id="WRR-HE-r7P"/>
+                                    <constraint firstAttribute="width" secondItem="mCh-Lb-ep8" secondAttribute="height" multiplier="1:1" id="abK-0J-gG5"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="close:" destination="wQ8-kz-zLi" eventType="touchUpInside" id="1fq-su-U48"/>
+                                    <action selector="close:" destination="wQ8-kz-zLi" eventType="touchUpInside" id="a1F-qy-cLH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="WSt-E6-JFF" secondAttribute="trailing" constant="274" id="5qT-MX-evZ"/>
-                            <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" secondItem="y9i-FZ-JZ1" secondAttribute="trailing" constant="16" id="ELg-eK-gXR"/>
+                            <constraint firstItem="mCh-Lb-ep8" firstAttribute="top" secondItem="GhK-ND-Vd5" secondAttribute="top" constant="20" id="Q4q-Zq-3mr"/>
                             <constraint firstItem="qEE-Hk-v3x" firstAttribute="leading" secondItem="GhK-ND-Vd5" secondAttribute="leading" id="QhM-Mq-RRp"/>
+                            <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" secondItem="mCh-Lb-ep8" secondAttribute="trailing" constant="16" id="QwL-nE-itu"/>
                             <constraint firstItem="GhK-ND-Vd5" firstAttribute="trailing" secondItem="qEE-Hk-v3x" secondAttribute="trailing" id="SR0-bz-Sqi"/>
                             <constraint firstItem="WSt-E6-JFF" firstAttribute="leading" secondItem="GhK-ND-Vd5" secondAttribute="leading" constant="16" id="Vt5-xF-u07"/>
                             <constraint firstItem="WSt-E6-JFF" firstAttribute="top" secondItem="GhK-ND-Vd5" secondAttribute="top" constant="20" id="bpT-fP-gja"/>
                             <constraint firstItem="qEE-Hk-v3x" firstAttribute="top" secondItem="WSt-E6-JFF" secondAttribute="bottom" constant="20" id="cD1-G3-DnB"/>
                             <constraint firstItem="qEE-Hk-v3x" firstAttribute="bottom" secondItem="cDE-1Y-shm" secondAttribute="bottom" id="fpn-KM-VY2"/>
-                            <constraint firstItem="y9i-FZ-JZ1" firstAttribute="top" secondItem="GhK-ND-Vd5" secondAttribute="top" constant="20" id="hb3-WC-7c4"/>
-                            <constraint firstItem="y9i-FZ-JZ1" firstAttribute="leading" relation="lessThanOrEqual" secondItem="WSt-E6-JFF" secondAttribute="trailing" constant="228" id="iQW-Cl-71R"/>
-                            <constraint firstItem="qEE-Hk-v3x" firstAttribute="top" secondItem="y9i-FZ-JZ1" secondAttribute="bottom" constant="22" id="sbO-vT-GFd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GhK-ND-Vd5"/>
                     </view>
@@ -382,30 +373,29 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교 파일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vm5-Ol-0XW">
+                                    <rect key="frame" x="15.999999999999993" y="20" width="112.33333333333331" height="36"/>
+                                    <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="30"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shp-zq-VsP" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                    <rect key="frame" x="325" y="20" width="34" height="34"/>
+                                    <rect key="frame" x="324" y="20" width="35" height="35"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Shp-zq-VsP" secondAttribute="height" multiplier="1:1" id="Rnx-9X-pjH"/>
+                                        <constraint firstAttribute="height" constant="35" id="u8v-jc-ZRe"/>
                                     </constraints>
                                     <connections>
                                         <action selector="close:" destination="pLu-Kq-eZR" eventType="touchUpInside" id="j7m-UT-QJc"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설교 파일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vm5-Ol-0XW">
-                                    <rect key="frame" x="16" y="20" width="111" height="36"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="Shp-zq-VsP" secondAttribute="bottom" constant="22" id="6oZ-i8-O91"/>
                                 <constraint firstItem="vm5-Ol-0XW" firstAttribute="top" secondItem="y2R-hG-Jet" secondAttribute="top" constant="20" id="Jiq-Yw-0CN"/>
-                                <constraint firstAttribute="trailing" secondItem="Shp-zq-VsP" secondAttribute="trailing" constant="16" id="YPi-Ns-GCr"/>
-                                <constraint firstItem="Shp-zq-VsP" firstAttribute="leading" relation="lessThanOrEqual" secondItem="vm5-Ol-0XW" secondAttribute="trailing" constant="198" id="dal-ZK-6VV"/>
                                 <constraint firstItem="vm5-Ol-0XW" firstAttribute="leading" secondItem="y2R-hG-Jet" secondAttribute="leading" constant="16" id="dbf-cI-nKg"/>
                                 <constraint firstAttribute="bottom" secondItem="vm5-Ol-0XW" secondAttribute="bottom" constant="20" id="eaC-W3-hT2"/>
+                                <constraint firstAttribute="trailing" secondItem="Shp-zq-VsP" secondAttribute="trailing" constant="16" id="gOZ-uP-vL2"/>
                                 <constraint firstItem="Shp-zq-VsP" firstAttribute="top" secondItem="y2R-hG-Jet" secondAttribute="top" constant="20" id="zdE-WB-4dn"/>
                             </constraints>
                         </view>
@@ -446,41 +436,13 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="h6f-el-hAA" kind="presentation" id="uca-mT-rqg"/>
+                        <outlet property="sermonTableView" destination="DJq-5y-otG" id="Htk-tN-xEQ"/>
+                        <segue destination="4qD-ud-L01" kind="presentation" identifier="Detail" id="m6E-DY-5ha"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6HR-mY-c7J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="864"/>
-        </scene>
-        <!--Old Sermon View Controller-->
-        <scene sceneID="k5d-a8-3az">
-            <objects>
-                <viewController id="h6f-el-hAA" customClass="OldSermonViewController" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lZ3-YV-cq3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXI-vC-5S6" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                <rect key="frame" x="325" y="20" width="34" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="bXI-vC-5S6" secondAttribute="height" multiplier="1:1" id="rd2-4F-JfE"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="close:" destination="pLu-Kq-eZR" eventType="touchUpInside" id="f8K-x4-aUK"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="bXI-vC-5S6" firstAttribute="width" secondItem="bXI-vC-5S6" secondAttribute="height" multiplier="1:1" id="4iS-m2-Lug"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kx9-02-3Gt"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aXK-HG-bQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3005.5999999999999" y="863.79310344827593"/>
+            <point key="canvasLocation" x="-1202" y="136"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="5aP-Jy-vpv">
@@ -491,34 +453,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlt-hA-7lM">
-                                <rect key="frame" x="16" y="20" width="64" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <rect key="frame" x="15.999999999999996" y="20" width="56.666666666666657" height="41"/>
+                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6y-i5-yaM" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                <rect key="frame" x="325" y="20" width="34" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="r6y-i5-yaM" secondAttribute="height" multiplier="1:1" id="Qzh-ml-RH4"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="close:" destination="OC0-ux-f78" eventType="touchUpInside" id="esV-Gb-6i1"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gAT-NB-HYo">
-                                <rect key="frame" x="0.0" y="70" width="375" height="688"/>
+                                <rect key="frame" x="0.0" y="69" width="375" height="689"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgv-uo-Xhg" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
+                                <rect key="frame" x="324" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fgv-uo-Xhg" secondAttribute="height" multiplier="1:1" id="58t-OU-W9F"/>
+                                    <constraint firstAttribute="height" constant="35" id="n43-UC-s3V"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="close:" destination="OC0-ux-f78" eventType="touchUpInside" id="ENM-jh-85U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="p8D-lD-X5V" firstAttribute="trailing" secondItem="Fgv-uo-Xhg" secondAttribute="trailing" constant="16" id="28n-vT-3bY"/>
                             <constraint firstItem="tlt-hA-7lM" firstAttribute="top" secondItem="p8D-lD-X5V" secondAttribute="top" constant="20" id="4yn-E0-re2"/>
                             <constraint firstAttribute="bottom" secondItem="gAT-NB-HYo" secondAttribute="bottom" id="8dT-zp-1fr"/>
                             <constraint firstItem="tlt-hA-7lM" firstAttribute="leading" secondItem="p8D-lD-X5V" secondAttribute="leading" constant="16" id="EC2-35-yA3"/>
                             <constraint firstItem="gAT-NB-HYo" firstAttribute="trailing" secondItem="p8D-lD-X5V" secondAttribute="trailing" id="FGL-Dd-0JK"/>
                             <constraint firstItem="gAT-NB-HYo" firstAttribute="top" secondItem="tlt-hA-7lM" secondAttribute="bottom" constant="8" id="Kdt-tb-w1P"/>
-                            <constraint firstItem="p8D-lD-X5V" firstAttribute="trailing" secondItem="r6y-i5-yaM" secondAttribute="trailing" constant="16" id="NDx-Cf-lqN"/>
-                            <constraint firstItem="r6y-i5-yaM" firstAttribute="top" secondItem="p8D-lD-X5V" secondAttribute="top" constant="20" id="mbW-5B-81W"/>
+                            <constraint firstItem="Fgv-uo-Xhg" firstAttribute="top" secondItem="p8D-lD-X5V" secondAttribute="top" constant="20" id="jff-eP-TLW"/>
                             <constraint firstItem="gAT-NB-HYo" firstAttribute="leading" secondItem="p8D-lD-X5V" secondAttribute="leading" id="nfj-jF-wb3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p8D-lD-X5V"/>
@@ -543,31 +506,32 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JAz-33-I6J">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk4-yM-kQI" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
-                                <rect key="frame" x="325" y="20" width="34" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wk4-yM-kQI" secondAttribute="height" multiplier="1:1" id="U68-kF-f0K"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="moveToBack:" destination="NU5-Rn-yS9" eventType="touchUpInside" id="gei-VM-eSj"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kX-DR-ZvI">
-                                <rect key="frame" x="16" y="20" width="64" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <rect key="frame" x="15.999999999999996" y="20" width="56.666666666666657" height="41"/>
+                                <fontDescription key="fontDescription" name="NanumSquareB" family="NanumSquare" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxk-No-yf9" customClass="CustomCloseButton" customModule="MyChurch_ver2" customModuleProvider="target">
+                                <rect key="frame" x="324" y="20" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8qx-ab-HKQ"/>
+                                    <constraint firstAttribute="width" secondItem="yxk-No-yf9" secondAttribute="height" multiplier="1:1" id="lap-4R-jwl"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="moveToBack:" destination="NU5-Rn-yS9" eventType="touchUpInside" id="EDF-hh-GKe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JAz-33-I6J" firstAttribute="trailing" secondItem="C2u-XP-msS" secondAttribute="trailing" id="3a1-Uh-skt"/>
+                            <constraint firstItem="yxk-No-yf9" firstAttribute="top" secondItem="C2u-XP-msS" secondAttribute="top" constant="20" id="BSb-hD-53P"/>
                             <constraint firstItem="7kX-DR-ZvI" firstAttribute="leading" secondItem="C2u-XP-msS" secondAttribute="leading" constant="16" id="Etz-AI-nGP"/>
                             <constraint firstItem="JAz-33-I6J" firstAttribute="leading" secondItem="C2u-XP-msS" secondAttribute="leading" id="KOB-64-Vg0"/>
-                            <constraint firstItem="wk4-yM-kQI" firstAttribute="top" secondItem="C2u-XP-msS" secondAttribute="top" constant="20" id="SN8-yG-JbT"/>
                             <constraint firstItem="JAz-33-I6J" firstAttribute="top" secondItem="C2u-XP-msS" secondAttribute="top" id="ddX-7O-mTc"/>
-                            <constraint firstItem="C2u-XP-msS" firstAttribute="trailing" secondItem="wk4-yM-kQI" secondAttribute="trailing" constant="16" id="iFW-Wb-i3W"/>
                             <constraint firstItem="7kX-DR-ZvI" firstAttribute="top" secondItem="C2u-XP-msS" secondAttribute="top" constant="20" id="nqA-mp-cfS"/>
+                            <constraint firstItem="C2u-XP-msS" firstAttribute="trailing" secondItem="yxk-No-yf9" secondAttribute="trailing" constant="16" id="uzC-1G-7LT"/>
                             <constraint firstAttribute="bottom" secondItem="JAz-33-I6J" secondAttribute="bottom" id="wgm-EH-shR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C2u-XP-msS"/>
@@ -584,7 +548,7 @@
         <!--Sermon View Controller Sub-->
         <scene sceneID="R6A-kc-Da4">
             <objects>
-                <viewController id="4qD-ud-L01" customClass="SermonViewControllerSub" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="4qD-ud-L01" customClass="SermonViewControllerSub" customModule="MyChurch_ver2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ofM-N6-ENh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -641,8 +605,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-OP-E3M">
-                                <rect key="frame" x="16" y="20" width="61" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <rect key="frame" x="15.999999999999996" y="20" width="60.666666666666657" height="41"/>
+                                <fontDescription key="fontDescription" name="NanumSquareEB" family="NanumSquare" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -657,13 +621,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제자되어 제자삼는 건강한 교회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsI-wg-Hs1">
-                                <rect key="frame" x="85" y="151" width="205" height="21"/>
+                                <rect key="frame" x="85" y="150" width="205" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" minimumValueImage="smallFont" maximumValueImage="bigFont" translatesAutoresizingMaskIntoConstraints="NO" id="f0Q-rw-u9x">
-                                <rect key="frame" x="14" y="347" width="347" height="31"/>
+                                <rect key="frame" x="14" y="346" width="347" height="33"/>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -734,11 +698,14 @@
             <point key="canvasLocation" x="2498" y="-1343"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="m6E-DY-5ha"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bigFont" width="24" height="24"/>
-        <image name="bin.xmark" catalog="system" width="128" height="93"/>
         <image name="homeTab" width="21.333333969116211" height="21.333333969116211"/>
         <image name="moreTab" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="nofile" width="1067" height="1080"/>
         <image name="smallFont" width="16" height="16"/>
         <namedColor name="DefaultColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

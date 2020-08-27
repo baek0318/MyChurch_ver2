@@ -16,26 +16,13 @@ class ChurchVolunteerView: UIView {
     
     var churchVolunteeredData = [Dictionary<String, String>]()
     
-    var fontSize : CGFloat?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setFontSize()
         setSuperTableView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    ///setFontSize
-    func setFontSize() {
-        let userDefault = UserDefaults.standard
-        if userDefault.float(forKey: "fontSetting") != 0 {
-            fontSize = CGFloat(userDefault.float(forKey: "fontSetting"))
-        }else {
-            fontSize = 0
-        }
     }
     
     func setSuperTableView() {
@@ -55,6 +42,19 @@ class ChurchVolunteerView: UIView {
     func getChurchVolunteerTable() -> UITableView {
         return self.superTableView
     }
+    
+    func attributedString(text: String) -> NSMutableAttributedString {
+        
+        let attributedString = NSMutableAttributedString(string: text)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+
+        paragraphStyle.lineSpacing = 7
+
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        return attributedString
+    }
 }
 
 extension ChurchVolunteerView : UITableViewDelegate, UITableViewDataSource {
@@ -68,13 +68,10 @@ extension ChurchVolunteerView : UITableViewDelegate, UITableViewDataSource {
         let data = churchVolunteeredData[indexPath.row]
             
         let cell = self.superTableView.dequeueReusableCell(withIdentifier: "OfferCell", for: indexPath) as! OfferingTableViewCell
-        
-        if fontSize != 0 {
-            cell.offeredName.font = UIFont.systemFont(ofSize: fontSize!)
-        }
-        
+    
         cell.offeringKind.text = data["title"]?.replacingOccurrences(of: "\\n", with: "\n")
-        cell.offeredName.text = data["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+        let names = data["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+        cell.offeredName.attributedText = attributedString(text: names ?? "")
             
         return cell
 

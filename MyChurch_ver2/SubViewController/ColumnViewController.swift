@@ -37,6 +37,19 @@ class ColumnViewController : UIViewController {
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    func attributedString(text: String) -> NSMutableAttributedString {
+        
+        let attributedString = NSMutableAttributedString(string: text)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+
+        paragraphStyle.lineSpacing = 10
+
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        
+        return attributedString
+    }
 }
 //MARK:- FireStore Data read
 
@@ -63,11 +76,15 @@ extension ColumnViewController {
                 print(error.localizedDescription)
             }else {
                 if let data = docSnapshot?.data() as? Dictionary<String,String> {
-                    if _self.fontSize != 0 {
-                        _self.textView.font = UIFont.systemFont(ofSize: _self.fontSize!, weight: UIFont.Weight(0.2))
-                    }
+        
                     _self.columnTitle.text = data["title"]?.replacingOccurrences(of: "\\n", with: "\n")
-                    _self.textView.text = data["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+                    
+                    let text = data["content"]?.replacingOccurrences(of: "\\n", with: "\n")
+                    _self.textView.attributedText = _self.attributedString(text: text ?? "")
+                    if _self.fontSize != 0 {
+                        _self.textView.font = UIFont(name: "NanumSquareR", size: _self.fontSize!)
+                    }
+                    
                     if _self.columnTitle.text == "칼럼" {
                         _self.noData.isHidden = false
                     }else{

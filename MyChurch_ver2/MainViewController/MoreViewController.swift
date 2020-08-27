@@ -243,7 +243,7 @@ extension MoreViewController {
         
         var date_path = ""
         
-        if weekday == 1 || weekday == 4 {
+        if weekday == 1 {
             date_path = "\(month)_\(day)"
         }
         else {
@@ -280,7 +280,7 @@ extension MoreViewController {
         
         var date_path = ""
         
-        if weekday == 1 || weekday == 4 {
+        if weekday == 1 {
             date_path = "\(month)_\(day)"
         }
         else {
