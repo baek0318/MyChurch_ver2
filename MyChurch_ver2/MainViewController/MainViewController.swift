@@ -514,20 +514,17 @@ extension MainViewController {
                     if component.minute! >= 30 {
                         kindLabel.text = "오후 예배"
                     }
-                }else if component.hour! >= 11 && component.hour! <= 13{
-                    kindLabel.text = "오전2부 예배"
-                    
-                }else if component.hour! >= 9 && component.hour! < 11 {
-                    kindLabel.text = "오전1부 예배"
+                }else if component.hour! >= 9 && component.hour! <= 13{
+                    kindLabel.text = "오전 예배"
                     
                 }
             }else if day == 4 {
                 if component.hour! >= 20 && component.hour! <= 22 {
-                    kindLabel.text = "수요예배"
+                    kindLabel.text = "수요 예배"
                 }
             }else if day == 6 {
                 if component.hour! >= 20 && component.hour! <= 22 {
-                    kindLabel.text = "금요예배"
+                    kindLabel.text = "금요 예배"
                 }
             }
         }

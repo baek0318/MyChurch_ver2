@@ -241,10 +241,11 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
             
             let cell = listTableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
             cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-            cell.textLabel?.text = data["number"]
+            cell.textLabel?.text = data["course"]
+            cell.textLabel?.numberOfLines = 0
             
             cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
-            cell.detailTextLabel?.text = data["person"]
+            cell.detailTextLabel?.text = data["number"]
             
             return cell
         }
