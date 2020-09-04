@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController : UIViewController {
     
@@ -59,12 +60,13 @@ class MainViewController : UIViewController {
     var impactFeedbackGenerator : UIImpactFeedbackGenerator?
     
     var pageVC : UIPageViewController!
-    var pageAds : Array<String>!
+    var pageAds = [Data]()
     var chooseIdx : Int = 0
     var currentIdx : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAdView()
         deviceCheck()
         setSuperView()
         setRootStackView()
@@ -265,15 +267,11 @@ class MainViewController : UIViewController {
         
         let topView = setTopView()
         
-        let adMainView = setAdView()
-        adMainView.heightAnchor.constraint(equalToConstant: self.moreNadHeight).isActive = true
-        
         let mainView = setMainView()
         mainView.setContentCompressionResistancePriority(UILayoutPriority(749), for: .vertical)
         mainView.setContentHuggingPriority(UILayoutPriority(249), for: .vertical)
         
         self.rootStackView.addArrangedSubview(topView)
-        self.rootStackView.addArrangedSubview(adMainView)
         self.rootStackView.addArrangedSubview(mainView)
     }
     
@@ -291,7 +289,8 @@ class MainViewController : UIViewController {
         titleKindLabelView.setContentHuggingPriority(UILayoutPriority(251), for: .vertical)
         titleKindLabelView.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         
-        self.logoButton.setImage(UIImage(named: "church_logo"), for: .normal)
+        self.logoButton.setImage(UIImage(named: "list"), for: .normal)
+        self.logoButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
         self.logoButton.widthAnchor.constraint(equalToConstant: self.logoSizeWidth).isActive = true
         self.logoButton.heightAnchor.constraint(equalToConstant: self.logoSizeHeight).isActive = true
         self.logoButton.setContentHuggingPriority(UILayoutPriority(48), for: .horizontal)
@@ -310,7 +309,6 @@ class MainViewController : UIViewController {
         impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
         switch sender.state {
         case .highlighted:
-            print("selected")
             impactFeedbackGenerator?.prepare()
             impactFeedbackGenerator?.impactOccurred()
             impactFeedbackGenerator = nil
@@ -368,9 +366,7 @@ class MainViewController : UIViewController {
     func setAdView() -> UIView {
         self.adView.layer.cornerRadius = 10
         self.adView.layer.masksToBounds = true
-        
-        self.pageAds = ["ad3","ad1","ad2"]
-        
+
         self.pageVC = self.storyboard?.instantiateViewController(withIdentifier: "AdMainViewController") as! AdMainViewController
         pageVC.dataSource = self
         pageVC.delegate = self
@@ -428,6 +424,7 @@ class MainViewController : UIViewController {
         todaySermonLabel.text = "오늘의 설교"
         todaySermonLabel.font = UIFont(name: "NanumSquareB", size: self.sermonFontSize)
         todaySermonLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         self.sermonView.addSubview(todaySermonLabel)
         todaySermonLabel.leadingAnchor.constraint(equalTo: self.sermonView.leadingAnchor, constant: 10).isActive = true
         todaySermonLabel.topAnchor.constraint(equalTo: self.sermonView.topAnchor, constant: 10).isActive = true
@@ -502,6 +499,7 @@ class MainViewController : UIViewController {
 
 
 //MARK: -모델 부분이여서 나중에 별도로 만들 예정
+
 extension MainViewController {
     func setUpDateKind() {
         let date = Date(timeIntervalSinceNow: 0)
@@ -541,3 +539,47 @@ extension MainViewController {
     }
 }
 
+extension MainViewController {
+    func getAdView() {
+        var urlArr = [String]()
+        let url = "gs://mychurch-94e15.appspot.com/adImage"
+        let storage = Storage.storage()
+        let ref = storage.reference(forURL: url)
+        ref.listAll {[weak self] (list, error) in
+            guard let _self = self else {return}
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            else {
+                for i in list.items {
+                    let path = i.fullPath.split(separator: "/")
+                    urlArr.append(String(path[1]))
+                }
+                for i in 0..<urlArr.count {
+                    storage.reference(forURL: url+"/"+urlArr[i]).getData(maxSize: 1*1024*1024) { (data, error) in
+                        if let _error = error {
+                            print(_error.localizedDescription)
+                        }
+                        else {
+                            if let _data = data {
+                                _self.pageAds.append(_data)
+                            }
+                            else {
+                                print("no data")
+                            }
+                        }
+                        if i == urlArr.count-1 {
+                            let adMainView = _self.setAdView()
+                            adMainView.heightAnchor.constraint(equalToConstant: _self.moreNadHeight).isActive = true
+                            adMainView.isHidden = true
+                            UIView.animate(withDuration: 0.1) {
+                                _self.rootStackView.insertArrangedSubview(adMainView, at: 1)
+                                adMainView.isHidden = false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

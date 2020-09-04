@@ -14,7 +14,7 @@ class AdContentViewController : UIViewController {
     
     var idx : Int!
     
-    var imgStr : String!
+    var imgStr : Data!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class AdContentViewController : UIViewController {
     
     func setImageView() {
         self.imageView = UIImageView()
-        self.imageView.image = UIImage(named: imgStr)
+        self.imageView.image = UIImage(data: imgStr)
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.imageView)
