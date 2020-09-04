@@ -66,6 +66,7 @@ class MainViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNotification()
         getAdView()
         deviceCheck()
         setSuperView()
@@ -88,11 +89,15 @@ class MainViewController : UIViewController {
         }else{
             NotificationCenter.default.addObserver(self, selector: #selector(foregroundNotification), name: UIApplication.willEnterForegroundNotification, object: nil)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(backgroundNotification), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     @objc func foregroundNotification() {
         setUpDateKind()
         inputDay()
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.autoSwipe), userInfo: nil, repeats: true)
+        }
     }
     
     func deviceCheck() {
@@ -344,10 +349,13 @@ class MainViewController : UIViewController {
     //MARK: - setAdView
     
     override func viewWillAppear(_ animated: Bool) {
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.autoSwipe), userInfo: nil, repeats: true)
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.autoSwipe), userInfo: nil, repeats: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("expire")
         timer?.invalidate()
         timer = nil
     }
@@ -360,6 +368,11 @@ class MainViewController : UIViewController {
             currentIdx = 0
             pageVC.setViewControllers([setViewControllers(index: currentIdx)], direction: .forward, animated: true)
         }
+    }
+    
+    @objc func backgroundNotification() {
+        timer?.invalidate()
+        timer = nil
     }
     
     ///광고부분을 정의하는 메인 메서드

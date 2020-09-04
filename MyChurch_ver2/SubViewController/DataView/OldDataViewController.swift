@@ -21,6 +21,7 @@ class OldDataViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoadingView()
         getData()
         sermonTableView.delegate = self
         sermonTableView.dataSource = self
@@ -37,6 +38,17 @@ class OldDataViewController : UITableViewController {
             dvc.kind = data["kind"]
             dvc.date = data["date"]
         }
+    }
+    
+    func setLoadingView() {
+        loadingView = LoadingView(name: "loading2")
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.addSubview(loadingView)
+        loadingView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -80).isActive = true
+        loadingView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        loadingView.heightAnchor.constraint(equalTo: loadingView.widthAnchor).isActive = true
+        loadingView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        loadingView.startLoading()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,6 +137,8 @@ extension OldDataViewController {
                             }
                         }
                         if num == _self.documentIDArr.count {
+                            _self.loadingView.stopLoading()
+                            _self.loadingView.isHidden = true
                             _self.tableView.reloadData()
                         }
                     }
